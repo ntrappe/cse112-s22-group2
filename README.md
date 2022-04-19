@@ -1,5 +1,8 @@
-![Image of old Apple desktop on fire with the title Brute Force II](/admin/media/images/box_logo_name_header.png)
+![Image of old Apple desktop on fire with the title Brute Force II](/admin/media/images/logo_header_whitespace.png)
 
+### About the Team
+
+### Setup
 
 ### Meeting Notes Rotatation
 | Position | Note Taker         |

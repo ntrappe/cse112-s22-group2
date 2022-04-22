@@ -1,4 +1,4 @@
-![Image of old Apple desktop on fire with the title Brute Force II](/admin/media/images/logo_header_whitespace.png)
+![Image of old Apple desktop on fire with the title Brute Force II](/admin/media/images/logo_header.png)
 
 ### About the Team
 

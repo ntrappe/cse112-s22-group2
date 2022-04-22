@@ -1,4 +1,4 @@
-![Image of old Apple desktop on fire with the title Brute Force II](/admin/media/images/logo_header_whitespace.png)
+![Image of old Apple desktop on fire with the title Brute Force II](/admin/media/images/logo_header.png)
 
 ### About the Team
 
@@ -22,3 +22,6 @@ For the mentor meetings and discussion, those present (as it is optional) will a
 takes notes for each event. The notes template can be found 
 [here](https://github.com/ntrappe/cse112-s22-group2/wiki/Meeting-Note-Guide). All notes
 should be uploaded to the **Wiki**._
+
+### Status Badges
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e7b43559-826c-4fba-95bf-67fd83a6d324/deploy-status)](https://app.netlify.com/sites/symphonious-dasik-e240c1/deploys)

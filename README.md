@@ -1,5 +1,8 @@
 ![Image of old Apple desktop on fire with the title Brute Force II](/admin/media/images/logo_header.png)
 
+### The Site
+https://blue-gum.netlify.app
+
 ### About the Team
 
 ### Setup

@@ -4,6 +4,7 @@
     ],
     "rules": {
         "declaration-block-semicolon-newline-after": "always",
-        "rule-empty-line-before": "always-multi-line"
+        "rule-empty-line-before": "always-multi-line",
+        "indentation": "tab"
     }
 }

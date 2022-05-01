@@ -4,7 +4,8 @@
         "es2021": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "const-uppercase" // https://github.com/WaveString/eslint-plugin-const-uppercase
     ],
     "parserOptions": {
         "ecmaVersion": "latest",
@@ -16,6 +17,17 @@
         "no-var": 2, // Disallow the use of var (enforce let and const)
         "indent": [2, "tab"], // Enforce use of tabs to indent
         "semi": [2, "always"], // Always use semi colons
-        "spaced-comment": [2, "always"] // Force one space after // comment
+        "spaced-comment": [2, "always"], // Force one space after // comment
+        "quotes": ["error", "double"], // Enforce the use of double quotes around strings
+        "space-infix-ops": ["error", { "int32Hint": false }], // Ensure having spaces around operators
+        "camelcase": ["error", {
+            "properties": "always",
+            "ignoreImports": true 
+        }], // Ensure using camelcases for variables and methods
+        "new-cap": ["error", {"newIsCap": true}], // Ensure all new operators to be called with uppercase-started function
+        "const-uppercase/const-uppercase": 2 // For ensuring constant variables to be all uppercases
+
+        // For ensuring uppercase-started class name, we need to use a plugin named "coffee"
+        // https://github.com/helixbass/eslint-plugin-coffee/blob/master/docs/rules/capitalized-class-names.md
     }
 }

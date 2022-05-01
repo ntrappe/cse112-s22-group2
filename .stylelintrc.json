@@ -9,6 +9,6 @@
         "no-eol-whitespace":{
             "ignore": ["empty-lines"]
         },
-        "block-closing-brace-newline-after": "always"
+        "block-closing-brace-newline-after": "never-single-line"
     }
 }

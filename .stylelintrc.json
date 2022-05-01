@@ -6,9 +6,7 @@
         "declaration-block-semicolon-newline-after": "always",
         "rule-empty-line-before": "always-multi-line",
         "indentation": 4,
-        "no-eol-whitespace":{
-            "ignore": ["empty-lines"]
-        },
-        "block-closing-brace-newline-after": "never-single-line"
+        "no-eol-whitespace": null,
+        "block-closing-brace-newline-after": null
     }
 }

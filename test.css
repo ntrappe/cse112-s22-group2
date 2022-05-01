@@ -1,6 +1,6 @@
-.class{
+/* .class{
     width: auto;
-}                   /*Check "rule-empty-line-before" */
+}                   
 .class1{
-    width: auto; line-height: normal;   /* Check "declaration-block-semicolon-newline-after"*/
-}
+    width: auto; line-height: normal;  
+} */

@@ -1,0 +1,9 @@
+{
+    "extends": [
+        "stylelint-config-standard"
+    ],
+    "rules": {
+        "declaration-block-semicolon-newline-after": "always",
+        "rule-empty-line-before": "always-multi-line"
+    }
+}

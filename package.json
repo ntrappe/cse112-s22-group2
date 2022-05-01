@@ -1,10 +1,13 @@
 {
   "scripts": {
-    "lint_test": "eslint \"./*.js\""
+    "lint_test": "eslint \"./*.js\" && stylelint \"./*.css\"" 
+   
   },
   "devDependencies": {
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.26.0"
+    "eslint-plugin-import": "^2.26.0",
+    "stylelint": "^14.8.1",
+    "stylelint-config-standard": "^25.0.0"
   }
 }

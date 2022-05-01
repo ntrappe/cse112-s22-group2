@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "lint_test": "eslint \"./*.js\" && stylelint \"./*.css\"" 
+    "lint_test": "stylelint \"./*.css\"" 
    
   },
   "devDependencies": {

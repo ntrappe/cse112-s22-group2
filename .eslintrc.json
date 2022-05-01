@@ -15,7 +15,7 @@
         "import/extensions": 0, // Allow .js in filenames
         "no-unused-vars": [0,{"argsIgnorePartern": "res|next|~err"}], // Don't allow unused variables
         "no-var": 2, // Disallow the use of var (enforce let and const)
-        "indent": [2, "tab"], // Enforce use of tabs to indent
+        "indent": [2, 4], // Enforce the use of 4-space indentation
         "semi": [2, "always"], // Always use semi colons
         "spaced-comment": [2, "always"], // Force one space after // comment
         "quotes": ["error", "double"], // Enforce the use of double quotes around strings

@@ -7,6 +7,8 @@
         "rule-empty-line-before": "always-multi-line",
         "indentation": 4,
         "no-eol-whitespace": null,
-        "block-closing-brace-newline-after": null
+        "block-closing-brace-newline-before": null,
+        "block-closing-brace-newline-after": "always"
+
     }
 }

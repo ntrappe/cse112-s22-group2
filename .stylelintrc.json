@@ -4,6 +4,9 @@
     ],
     "rules": {
         "rule-empty-line-before": "always-multi-line",
-        "indentation": 4
+        "indentation": 4,
+        "no-eol-whitespace":{
+            "ignore": ["empty-lines"]
+        } 
     }
 }

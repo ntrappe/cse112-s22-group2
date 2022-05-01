@@ -27,7 +27,6 @@ jobs:
       - name: Run Eslint
         run: | 
               npm i # Handle installation on virtual machine
-              npm install eslint-plugin-const-uppercase --save-dev # Install plugin for const-uppercase
               npm run lint_test # Run linter tests and output results
    
    

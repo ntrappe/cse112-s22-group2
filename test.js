@@ -21,6 +21,3 @@ function do_something(test){
     let some_variable = test;
     return some_variable;
 }
-
-const constant = 1; // For checking "const-uppercase"
-

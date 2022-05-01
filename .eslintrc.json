@@ -24,7 +24,7 @@
             "properties": "always",
             "ignoreImports": true 
         }], // Ensure using camelcases for variables and methods
-        "new-cap": ["error", {"newIsCap": true}], // Ensure all new operators to be called with uppercase-started function
+        "new-cap": ["error", {"newIsCap": true}] // Ensure all new operators to be called with uppercase-started function
         // "const-uppercase/const-uppercase": 2 // For ensuring constant variables to be all uppercases
 
         // For ensuring uppercase-started class name, we need to use a plugin named "coffee"

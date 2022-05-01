@@ -8,6 +8,7 @@
         "indentation": 4,
         "no-eol-whitespace":{
             "ignore": ["empty-lines"]
-        } 
+        },
+        "block-closing-brace-newline-after": "always"
     }
 }

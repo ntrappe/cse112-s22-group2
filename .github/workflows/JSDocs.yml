@@ -22,8 +22,8 @@ jobs:
       - name: Make Docs
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: ./source # Where to start searching
-          output_dir: ./JSDocumentation # Where to output documentation
+          source_dir: /source # Where to start searching
+          output_dir: /JSDocumentation # Where to output documentation
           recurse: true # Whether or not to recurse to lower folders
 
       # Deploy changes to JS documentation to a branch specifically made for JSDocs

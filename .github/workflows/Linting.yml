@@ -4,7 +4,7 @@ name: Make JSDocs
 on:
   push:
     branches:
-      - main
+      - alex-branch
 
   # Can be triggered manually on Actions section on GitHub
   workflow_dispatch:

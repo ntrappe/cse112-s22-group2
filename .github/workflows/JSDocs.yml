@@ -1,0 +1,34 @@
+name: Make JSDocs
+
+# Only run when the main branch has been updated
+on:
+  push:
+    branches:
+      - main
+
+  # Can be triggered manually on Actions section on GitHub
+  workflow_dispatch:
+
+jobs:
+  run-JSDocs:
+    name: Make JS Documentation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Generate documentation based on comments in JS code
+      - name: Make Docs
+        uses: andstor/jsdoc-action@v1.2.0
+        with:
+          source_dir: ./source # Where to start searching
+          output_dir: ./JSDocumentation # Where to output documentation
+          recurse: true # Whether or not to recurse to lower folders
+
+      # Deploy changes to JS documentation to a branch specifically made for JSDocs
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@4.0.0
+        with:
+          branch: gh-pages # The branch the action should deploy to.
+          folder: ./JSDocumentation # The folder the action should deploy.

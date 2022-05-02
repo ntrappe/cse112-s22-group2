@@ -27,8 +27,8 @@ jobs:
           recurse: true # Whether or not to recurse to lower folders
 
       # Deploy changes to JS documentation to a branch specifically made for JSDocs
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@4.0.0
-        with:
-          branch: gh-pages # The branch the action should deploy to.
-          folder: ./JSDocumentation # The folder the action should deploy.
+      #- name: Deploy to GitHub Pages
+        #uses: JamesIves/github-pages-deploy-action@4.0.0
+        #with:
+          #branch: gh-pages # The branch the action should deploy to.
+          #folder: ./JSDocumentation # The folder the action should deploy.

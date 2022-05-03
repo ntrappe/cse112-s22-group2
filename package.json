@@ -1,13 +1,21 @@
 {
   "scripts": {
-    "lint_test": "stylelint \"./*.css\"" 
-   
+    "lint_test": "stylelint \"./*.css\"",
+    "jest_test": "jest",
+    "cypress_test": "cypress run"
   },
   "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-jest": "^28.0.3",
+    "cypress": "^9.6.0",
     "eslint": "^8.14.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.26.0",
+    "htmlhint": "^1.1.4",
+    "jest": "^28.0.3",
     "stylelint": "^14.8.1",
     "stylelint-config-standard": "^25.0.0"
-  }
+  },
+  "dependencies": {}
 }

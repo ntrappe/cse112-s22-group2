@@ -1,0 +1,27 @@
+name: Test Code Base
+
+# Run for PRs and ignore merges and documentation
+on:
+  push:
+    branches-ignore:
+      - main
+
+  # Can be triggered manually on Actions section on GitHub
+  workflow_dispatch:
+
+jobs:
+  run-tests:
+    name: Test Code Base Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Run Jest and Cypress to automatically run tests and show code coverage
+      - name: Run Jest and Cypress
+        run: | 
+              npm i # Handle installation on virtual machine
+              npm run jest_test # Run Jest tests and output results
+              npm run jest_coverage # Output code coverage of unit tests
+              npm run cypress_test # Run Cypress tests and output results

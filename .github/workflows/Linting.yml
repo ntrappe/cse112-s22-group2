@@ -22,13 +22,11 @@ jobs:
         uses: actions/checkout@v2
 
       # Run Jest and Cypress to automatically run tests and show code coverage
-      - name: Run StyleLint
+      - name: Run EsLint & StyleLint
         run: | 
               npm i # Handle installation on virtual machine
-              npm run css_lint_test # Run linter tests and output results
-      - name: Run ESlint
-        run: |
-              npm i
               npm run js_lint_test # Run linter tests for javascript
+              npm run css_lint_test # Run linter tests and output results
+
    
    

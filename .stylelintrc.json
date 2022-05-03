@@ -2,9 +2,6 @@
     "extends": [
         "stylelint-config-standard"
     ],
-    "plugins": [
-		"stylelint-order"
-	],
     "rules": {
         "declaration-block-semicolon-newline-after": "always",
         "rule-empty-line-before": "always-multi-line",
@@ -14,7 +11,7 @@
         "declaration-colon-space-after": "always",
         "property-case": "lower",
         "color-hex-case": "lower",
-        "order/properties-alphabetical-order": true,
+        "properties-alphabetical-order": true,
         "selector-type-case": "lower"
     }
 }

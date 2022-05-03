@@ -25,6 +25,10 @@ jobs:
       - name: Run StyleLint
         run: | 
               npm i # Handle installation on virtual machine
-              npm run lint_test # Run linter tests and output results
+              npm run css_lint_test # Run linter tests and output results
+      - name: Run ESlint
+        run: |
+              npm i
+              npm run js_lint_test # Run linter tests for javascript
    
    

@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "lint_test": "stylelint \"./*.css\"",
+    "css_lint_test": "stylelint \"./*.css\"",
+    "js_lint_test": "eslint \"./*.js\"",
     "jest_test": "jest",
     "cypress_test": "cypress run"
   },

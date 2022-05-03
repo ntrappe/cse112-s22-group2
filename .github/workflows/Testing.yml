@@ -5,6 +5,7 @@ on:
   push:
     branches-ignore:
       - main
+  
 
   # Can be triggered manually on Actions section on GitHub
   workflow_dispatch:

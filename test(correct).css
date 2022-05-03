@@ -2,9 +2,10 @@
 
 .class {
     width: auto;
+    color: #FFFF
 }
 
-.class1 {
-    width: auto;
-    line-height: normal;
+.classH {
+    width:auto;
+    line-Height: normal;
 }

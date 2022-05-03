@@ -7,6 +7,10 @@
         "rule-empty-line-before": "always-multi-line",
         "indentation": 4,
         "no-eol-whitespace": null,
-        "block-closing-brace-newline-after": null
+        "block-closing-brace-newline-after": null,
+        "declaration-colon-space-after": "always",
+        "property-case": "lower",
+        "color-hex-case": "lower",
+        "order/properties-alphabetical-order": true
     }
 }

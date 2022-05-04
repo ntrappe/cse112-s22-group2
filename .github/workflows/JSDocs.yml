@@ -4,7 +4,7 @@ name: Make JSDocs
 on:
   push:
     branches:
-      - docs-workflow                   # just use my dev branch for now
+      - main                            # only generate docs on push to main
 
   # Can be triggered manually on Actions section on GitHub
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
       - name: Make Docs
         uses: andstor/jsdoc-action@v1.2.0
         with:
-          source_dir: .                 # Search starting in root
+          source_dir: ./source          # Search starting in source dir
           output_dir: ./JSDocumentation # Where to output documentation
           recurse: true                 # Recurse to lower folders
 

@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Lint Code Base
+name: Lint HTML Code Base
 
 # Controls when the workflow will run
 on:
@@ -15,7 +15,7 @@ on:
 
 jobs:
   run-tests:
-    name: Lint Code Base
+    name: HTML Lint
     runs-on: ubuntu-latest
 
     steps:

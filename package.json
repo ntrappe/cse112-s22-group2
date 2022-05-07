@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "html_style_lint": "html-linter --config ./html-linter-config.json",
-    "html_format_lint": "./node_modules/.bin/htmlhint **/*.html"
+    "html_format_lint": "html-linter --config ./html-linter-config.json",
+    "html_style_lint": "./node_modules/.bin/htmlhint ./source/**/*.html"
 
   },
   "devDependencies": {

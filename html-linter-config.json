@@ -1,6 +1,6 @@
 {
   "files": [
-    "**/*.html"
+    "./source/**/*.html"
   ],
   "indentation": {
     "char": "tab",

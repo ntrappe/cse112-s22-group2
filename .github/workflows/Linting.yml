@@ -4,24 +4,26 @@ name: Lint Code Base
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
+  # Triggers the workflow on push to dev branches
   push:
-    branches: [ alex-branch ]
+    branches-ignore:
+      - main
+      - js-docs 
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   run-tests:
-    name: Lint Code Base Job
+    name: Lint Code Base
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v2
 
-      # Run Jest and Cypress to automatically run tests and show code coverage
-      - name: Run Eslint
+      # Run HTML Linters automatically
+      - name: Run HTML Style and Format Linters 
         run: | 
               npm i # Handle installation on virtual machine
               npm run html_style_lint # Run linter tests and output results

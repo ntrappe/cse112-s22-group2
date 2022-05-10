@@ -1,0 +1,30 @@
+{
+  "name": "eucalyptus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --coverage --passWithNoTests \"./source/Testing/backend.test.js\"",
+    "cypress_test": "cypress run",
+    "cypress_start": "cypress open",
+    "lint": "eslint \"source/Frontend\" --ext .js && eslint \"source/Backend\" --ext .js",
+    "lint:fix": "npm run lint -- --fix",
+    "docs": "npm run docsFront && npm run docsBack",
+    "docsFront": "jsdoc -c jsdocFront.conf.json",
+    "docsBack": "jsdoc -c jsdocBack.conf.json"
+  },
+  "author": "cse110-group-19",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.14.3",
+    "cypress": "^6.9.1",
+    "@babel/preset-env": "^7.14.4",
+    "eslint": "^7.25.0",
+    "fake-indexeddb": "^3.1.2",
+    "jest": "^26.6.3",
+    "jsdoc": "^3.6.10"
+  },
+  "dependencies": {
+    "ts-jest": "^27.0.2"
+  }
+}

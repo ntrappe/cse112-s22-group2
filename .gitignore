@@ -14,3 +14,6 @@ desktop.ini
 node_modules
 coverage
 package-lock.json   # Do not let people overwrite this file
+
+# Yarn files
+yarn.lock

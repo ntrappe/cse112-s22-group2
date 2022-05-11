@@ -5,7 +5,7 @@ on:
   push:
     branches-ignore:
       - main
-      - Mingyu-branch
+      - js-docs
   
 
   # Can be triggered manually on Actions section on GitHub

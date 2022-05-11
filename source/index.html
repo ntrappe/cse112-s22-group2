@@ -6,6 +6,7 @@
         <meta name="description" content="CSE 112 Project">
         <meta name="author" content="CSE 112 - Group 2">
         <meta name="keywords" content="swe, software engineering, web development">
+        <!--link rel="shortcut icon" type="image/jpg" href="./favicon/favicon.ico"/-->
         <title>JOT</title>
     </head>
     <body>
@@ -13,8 +14,29 @@
             <nav></nav>
         </header>
         <main>
-            This is the site for CSE 112 - Group 2 aka <b>Brute Force II</b>. We're
-            revamping a bullet journal.
+            <div id="container" class="container">
+                <div id="left-side-container" class="left-side-container">
+                    <div id="side-nav-container" class="side-nav-container"></div>
+                    <div id="weekly-nav-container" class="weekly-nav-container"></div>
+                    <div id="todo-component-container" class="todo-component-container"></div>
+                    <div id="calendar-component-container" class="calendar-component-container"></div>   
+                </div>
+                <div id="daily-log" class="daily-log">
+                    <div id="date" class="daily-log-title">
+                        <i id="prev-log" class="fas fa-chevron-left"></i>
+                        <log-type></log-type>
+                        <i id="next-log" class="fas fa-chevron-right"></i>
+                    </div>
+                    <div class="flexgrow">
+                        <div id="main-text-container" class="main-text-container">
+                            <div id="main-text" class="main-text"></div>
+                        </div>
+                    </div>
+                    <!-- Begin Additional entries-->
+                    <div id="additional" class="additional"></div>
+                    <!-- End Additional entries-->
+                </div>
+            </div>
         </main>
         <footer>JOT 2022</footer>
     </body>

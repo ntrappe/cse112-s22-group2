@@ -8,8 +8,9 @@ desktop.ini
 .Trashes
 ._*
 
-#VSCode
+# VSCode
 .vscode
 
 node_modules
 coverage
+package-lock.json   # Do not let people overwrite this file

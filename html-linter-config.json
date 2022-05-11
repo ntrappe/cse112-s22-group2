@@ -1,0 +1,14 @@
+{
+  "files": [
+    "./source/**/*.html"
+  ],
+  "indentation": {
+    "char": "tab",
+    "number": 1
+  },
+  "attributes": {
+    "quotes": "double",
+    "whitespace": 0,
+    "vertical-align": true
+  }
+}

@@ -1,0 +1,13 @@
+{
+	"title-require": true,
+	"inline-script-disabled": true,
+	"inline-style-disabled": true,
+	"html-lang-require": true,
+	"tag-pair": true,
+	"id-class-value": "dash",
+	"id-unique": true,
+	"doctype-first": true,
+	"tagname-lowercase": true,
+	"attr-lowercase": true,
+	"space-tab-mixed-disabled": "tab"
+}

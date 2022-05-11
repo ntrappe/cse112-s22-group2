@@ -1,12 +1,11 @@
 name: Test Code Base
 
-# Run for PRs and ignore merges and documentation
+# Run on pushes to all dev branches (aka not docs or main)
 on:
   push:
     branches-ignore:
       - main
       - js-docs
-  
 
   # Can be triggered manually on Actions section on GitHub
   workflow_dispatch:
@@ -23,7 +22,8 @@ jobs:
       # Run Jest and Cypress to automatically run tests and show code coverage
       - name: Run Jest and Cypress
         run: | 
-              npm i # Handle installation on virtual machine
-              npm run jest_test # Run Jest tests and output results
+              npm i                 # Handle installation on virtual machine
+              npm run test          # Run both Jest + Cypress tests
+              npm run jest_test     # Run Jest tests and output results
               npm run jest_coverage # Output code coverage of unit tests
-              npm run cypress_test # Run Cypress tests and output results
+              npm run cypress_test  # Run Cypress tests and output results (not UI version)

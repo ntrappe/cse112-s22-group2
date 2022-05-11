@@ -25,3 +25,9 @@ should be uploaded to the **Wiki**._
 
 ### Status Badges
 [![Netlify Status](https://api.netlify.com/api/v1/badges/e7b43559-826c-4fba-95bf-67fd83a6d324/deploy-status)](https://app.netlify.com/sites/symphonious-dasik-e240c1/deploys)
+
+![JS Docs](https://github.com/ntrappe/cse112-s22-group2/actions/workflows/JSDocs.yml/badge.svg)
+
+![Linting](https://github.com/ntrappe/cse112-s22-group2/actions/workflows/Linting.yml/badge.svg)
+
+![Testing](https://github.com/ntrappe/cse112-s22-group2/actions/workflows/Testing.yml/badge.svg)

@@ -6,7 +6,9 @@
         "cypress_test": "cypress run",
         "cypress_start": "cypress open",
         "html_format_lint": "html-linter --config ./html-linter-config.json",
-        "html_style_lint": "./node_modules/.bin/htmlhint ./source/**/*.html"
+        "html_style_lint": "./node_modules/.bin/htmlhint ./source/**/*.html",
+        "css_lint_test": "stylelint \"./source/**/*.css\"",
+        "js_lint_test": "eslint \"./source/**/*.js\""
     },
     "devDependencies": {
         "@babel/plugin-transform-runtime": "^7.14.3",

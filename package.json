@@ -1,0 +1,20 @@
+{
+  "scripts": {
+    "html_format_lint": "html-linter --config ./html-linter-config.json",
+    "html_style_lint": "./node_modules/.bin/htmlhint ./source/**/*.html"
+
+  },
+  "devDependencies": {
+    "@html-eslint/eslint-plugin": "^0.13.1",
+    "@html-eslint/parser": "^0.13.1",
+    "eslint": "^8.14.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-html": "^6.2.0",
+    "eslint-plugin-import": "^2.26.0",
+    "html-linter": "^1.1.1",
+    "htmlhint": "^1.1.4"
+  },
+  "dependencies": {
+    "eslint-config-airbnb": "^19.0.4"
+  }
+}

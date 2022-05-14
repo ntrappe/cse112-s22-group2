@@ -1,49 +1,53 @@
 @media only screen and (max-width: 500px) {
+    
     header {
-        padding: 0px;
-        margin: 0px;
+        margin: 0;
         width: 100%;
         height: var(--header-height);
+        
         /* to help align text vertically inside header */
         padding-top: 10px;
     }
 
     div.nav-text {
+
         /* space between text in nav section and button icon */
         margin-right: 20px;
     }
 }
 
 /* always have styling apply irrespective of mobile/desktop */
+
 #arrow-button {
     border: none;
     background: none;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     font-size: 25px;
     font-weight: 200;
     color: var(--stone);
 }
 
 /* flex box so left is text content + spaced away from right button */
+
 nav section {
     display: flex;
     background-color: var(--section-background);
     justify-content: space-between;
+    
     /* space between edge of section and internal content */
-    padding-top: 5px;
-    padding-bottom: 5px;
-    padding-left: var(--pad-screen-edge);
-    padding-right: var(--pad-screen-edge);
+    padding: 5px var(--pad-screen-edge) 5px var(--pad-screen-edge);
+    
     /* space between sections */
     margin-bottom: var(--section-distance);
 }
 
 header {
     display: flex;
+    
     /* center content horizontally */
     justify-content: center;
-    background-color: var(--header-background); 
+    background-color: var(--header-background);
 }
 
 body {
@@ -55,6 +59,7 @@ main {
 }
 
 /* h1 for header title (e.g. page name) */
+
 h1 {
     font-family: var(--font-sans);
     font-size: 16px;
@@ -77,6 +82,7 @@ p {
 }
 
 /* define color palette, fonts, & dimensions */
+
 :root {
     --max-mobile-width: 500px;
     --midnight: #020c1b;
@@ -90,6 +96,6 @@ p {
     --stone: #a6a3ae;
     --granite: #807f86;
     --snow: #fff;
-    --font-mono: 'SF Mono', 'Fira Code', 'Fira Mono', 'Roboto Mono', monospace;
-    --font-sans: 'Calibre', 'SF Pro Text', 'Inter', 'San Francisco', -apple-system, system-ui, BlinkMacSystemFont, sans-serif;
+    --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+    --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
 }

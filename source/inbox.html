@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Jot Daily Log Inbox">
+        <title>Daily Log Inbox</title>
+        <link rel="icon" href="../../images/logo.png"/>
+        <script defer src="index.js"></script>
+
+        <style>
+            header>nav>ul{
+                display: flex;
+                justify-content: space-between;
+            }
+            header>nav>ul{
+                padding: 0em 1em;
+                list-style-type: none;
+            }
+            main>ul{
+                padding: 0em;
+                list-style-type: none;
+            }
+            input[type=checkbox]{
+                display: none;
+                float: left;
+                margin: 0em 4em 0em 1em;
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li><a href="index.html">&lt; HOME</a></li>
+                    <li>Daily Logs</li>
+                    <li><button id="edit-btn">Edit</button></li>
+                </ul>
+            </nav>
+        </header>
+
+        <main>
+            <ul id="log-list">
+                <section>
+                    <input type="checkbox">
+                    <p>Hello there</p>
+                </section>
+                <section>
+                    <input type="checkbox">
+                    <p>Bye there</p>
+                </section>
+                <section>
+                    <input type="checkbox">
+                    <p>Adios</p>
+                </section>
+                <section>
+                    <input type="checkbox">
+                    <p>Guten Tag</p>
+                </section>
+                <section>
+                    <input type="checkbox">
+                    <p>Das Vadanya</p>
+                </section>
+            </ul>
+        </main>
+
+        <footer>
+        </footer>
+    </body>
+</html>

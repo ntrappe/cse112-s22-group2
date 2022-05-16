@@ -4,6 +4,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <meta name="description" content="Jot Daily Log Inbox">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Daily Log Inbox</title>
         <link rel="icon" href="../../images/logo.png"/>
         <script defer src="index.js"></script>
@@ -35,6 +36,30 @@
                 font-size: 1em;
                 color: blue;
                 width: 4em;
+            }
+            footer{
+                position: absolute;
+                bottom: 0px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+                width: 100%;
+            }
+            footer>nav>ul{
+                list-style-type: none;
+                display: inline;
+                position: relative;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+            }
+            footer>nav>ul>li:last-child {
+                position: absolute;
+                right: 0;
+                margin-right: 50px;
             }
             a{
                 text-decoration: none;
@@ -80,6 +105,27 @@
         </main>
 
         <footer>
+            <script type="text/javascript">
+                var log_list = document.getElementById('log-list');
+                var log_number = log_list.getElementsByTagName("section").length;
+            </script>
+            <nav>
+                <ul>
+                    <li>
+                        <p>Updated Just Now</p>
+                        <p style="color:#ABB2B9"> 
+                            <script type="text/javascript">
+                                document.write(log_number)
+                            </script>
+                            logs
+                        </p>
+                    </li>
+                    <li>
+                        <i class='fa fa-edit' style='font-size:36px;color:blue'></i>
+                    </li>
+                </ul>
+            </nav>
         </footer>
     </body>
+
 </html>

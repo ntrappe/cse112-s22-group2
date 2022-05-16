@@ -8,37 +8,44 @@
         <meta name="keywords" content="swe, software engineering, web development">
         <!--link rel="shortcut icon" type="image/jpg" href="./favicon/favicon.ico"/-->
         <title>JOT</title>
+        <!--add styles and import fonts-->
+        <link rel="stylesheet" href="./styles/home-screen.css">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,200;1,500&display=swap" rel="stylesheet"> 
+        <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
     </head>
     <body>
         <header>
-            <nav></nav>
+            <h1>JOT</h1>
         </header>
         <main>
-            BUJO
-            <div id="container" class="container">
-                <div id="left-side-container" class="left-side-container">
-                    <div id="side-nav-container" class="side-nav-container"></div>
-                    <div id="weekly-nav-container" class="weekly-nav-container"></div>
-                    <div id="todo-component-container" class="todo-component-container"></div>
-                    <div id="calendar-component-container" class="calendar-component-container"></div>   
-                </div>
-                <div id="daily-log" class="daily-log">
-                    <div id="date" class="daily-log-title">
-                        <i id="prev-log" class="fas fa-chevron-left"></i>
-                        <log-type></log-type>
-                        <i id="next-log" class="fas fa-chevron-right"></i>
+            <nav>
+                <section id="nav-daily-log">
+                    <div class="nav-text">
+                        <h2>Daily Logs</h2>
+                        <p>Jot down notes, journal your thoughts, or track your goals.</p>
                     </div>
-                    <div class="flexgrow">
-                        <div id="main-text-container" class="main-text-container">
-                            <div id="main-text" class="main-text"></div>
-                        </div>
+                    <button class="arrow-button">></button>
+                </section>
+                <section id="nav-monthly-log">
+                    <div class="nav-text">
+                        <h2>Monthly Logs</h2>
+                        <p>See a month-to-month overview of all deadlines, events, and goals.</p>
                     </div>
-                    <!-- Begin Additional entries-->
-                    <div id="additional" class="additional"></div>
-                    <!-- End Additional entries-->
-                </div>
-            </div>
+                    <button class="arrow-button">></button>
+                </section>
+                <section id="nav-progress">
+                    <div class="nav-text">
+                        <h2>Progress</h2>
+                        <p>See the progress you've made towards your goals.</p>
+                    </div>
+                    <button class="arrow-button">></button>
+                </section>
+            </nav>
         </main>
-        <footer>JOT 2022</footer>
+        <footer></footer>
     </body>
 </html>

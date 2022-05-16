@@ -24,6 +24,7 @@
     }
 
     /* holds "Date" label and the actual date */
+   
     #date-container {
         display: flex;
     }
@@ -39,17 +40,20 @@
 
 h2 {
     font-family: var(--font-sans);
-    color: var(--snow); 
+    color: var(--snow);
     font-size: 30px;
 }
 
 h3 {
     font-family: var(--font-sans);
+    font-size: 16px;
+    font-weight: 400;
 }
 
 #wrapper {
     background-color: yellow;
     border-top-left-radius: var(--rounded-rect);
+    border-top-right-radius: var(--rounded-rect);
     padding: 10px;
 }
 

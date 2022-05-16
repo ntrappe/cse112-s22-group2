@@ -17,7 +17,7 @@
         "indent": [2, 4],                                               // Enforce the use of 4-space indentation
         "semi": [2, "always"],                                          // Always use semi colons
         "spaced-comment": [2, "always"],                                // Force one space after // comment
-        "quotes": ["error", "double"],                                  // Enforce the use of double quotes around strings
+        "quotes": ["error", "single"],                                  // Enforce the use of double quotes around strings
         "space-infix-ops": ["error", { "int32Hint": false }],           // Ensure having spaces around operators
         "camelcase": ["error", {
             "properties": "always",

@@ -96,6 +96,8 @@ p {
     --stone: #a6a3ae;
     --granite: #807f86;
     --snow: #fff;
+    --red: #ff7070;
+    --blue: #0a84fe;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
     --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
 }

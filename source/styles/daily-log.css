@@ -1,0 +1,76 @@
+@import "./home-screen.css";
+
+@media only screen and (max-width: 500px) {
+
+    div.nav-text {
+
+        /* space between text in nav section and button icon */
+        margin-right: 20px;
+    }
+
+    div.control-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    button.control-btn {
+        background: none;
+        color: var(--blue);
+        border: none;
+    }
+    
+    button.control-btn[priority="high"] {
+        color: var(--red);
+    }
+
+    /* holds "Date" label and the actual date */
+    #date-container {
+        display: flex;
+    }
+
+    #date-button {
+        border: none;
+        border-radius: var(--rounded-button);
+        background-color: var(--button-blue);
+        color: var(--snow);
+        height: 30px;
+    }
+}
+
+h2 {
+    font-family: var(--font-sans);
+    color: var(--snow); 
+    font-size: 30px;
+}
+
+h3 {
+    font-family: var(--font-sans);
+}
+
+#wrapper {
+    background-color: yellow;
+    border-top-left-radius: var(--rounded-rect);
+    padding: 10px;
+}
+
+:root {
+    --rounded-rect: 15px;
+    --rounded-button: 7px;
+    --max-mobile-width: 500px;
+    --midnight: #020c1b;
+    --full-background: #000;
+    --section-background: #1c1c1e;
+    --header-background: #262628;
+    --header-height: 50px;
+    --pad-screen-edge: 20px;
+    --section-distance: 20px;
+    --distance-to-header: 30px;
+    --stone: #a6a3ae;
+    --granite: #807f86;
+    --snow: #fff;
+    --red: #ff7070;
+    --blue: #0a84fe;
+    --button-blue: #538fbb;
+    --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+    --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
+}

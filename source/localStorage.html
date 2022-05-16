@@ -1,0 +1,91 @@
+<title>Local Storage -js</title>
+<body>
+    <h2>Local Storage -js</h2>
+
+    <button onclick="add()" type="button1">Add</button>
+    <button onclick="update()" type="button1">Update</button>
+    <button onclick="deleteLog()" type="button1">Delete</button>
+    <button onclick="search()" type="button1">Search</button>
+    <br>
+    <br>
+    Title: <input type="text" id="title"> </input><br><br>
+    Notes: <input type="text" id="notes"> </input><br><br>
+    Journal: <input type="text" id="journal"> </input>
+
+    
+    <script type="text/javascript">
+        //uuidv4();
+        function add(){
+            //let uuid = uuidv4();
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = mm + '/' + dd + '/' + yyyy;
+
+            let title = document.getElementById('title').value;
+            let notes = document.getElementById('notes').value;
+            let journal = document.getElementById('journal').value;
+            
+            const myObject = {
+                title: title,
+                notes: notes,
+                journal : journal,
+            }
+        
+            localStorage.setItem(today, JSON.stringify(myObject));
+        }
+    
+        function update(){
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+            today = mm + '/' + dd + '/' + yyyy;
+            let title = document.getElementById('title').value;
+            let notes = document.getElementById('notes').value;
+            let journal = document.getElementById('journal').value;
+
+
+            const myObject = {
+                title: title,
+                notes: notes,
+                journal : journal,
+            }
+            localStorage.setItem(today, JSON.stringify(myObject));
+        }
+    
+        function deleteLog(){
+            var today = new Date();
+            var dd = String(today.getDate()).padStart(2, '0');
+            var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = today.getFullYear();
+
+
+            console.log("item removed: "+ today);
+            localStorage.removeItem(today);
+        }
+    
+        function search(){
+            var i;
+            for (i = 0; i < localStorage.length; i++)   {
+                console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+            }
+        }    
+
+        //Generate an unique id
+        function uuidv4() {
+            return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16));
+        }
+
+
+       
+    </script>
+    
+
+</body>
+
+

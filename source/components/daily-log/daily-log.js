@@ -2,6 +2,7 @@ const CANCEL = 'Cancel';
 const SAVE = 'Save';
 const DATE = 'Date: ';
 const NOTES = 'Notes';
+const TRACKERS = 'Trackers';
 const JOURNAL = 'Journal';
 const LOG_TITLE = 'New Daily Log';
 
@@ -14,8 +15,9 @@ class DailyLog extends HTMLElement {
 
         /* wrap all the content in one */
         const wrapper = document.createElement('div');
-        wrapper.setAttribute('id', 'wrapper');
+        wrapper.setAttribute('class', 'wrapper');
 
+        /* attach styles */
         const dailyLogStyle = document.createElement('link');
         dailyLogStyle.setAttribute('rel', 'stylesheet');
         dailyLogStyle.setAttribute('href', './styles/daily-log.css');
@@ -46,9 +48,9 @@ class DailyLog extends HTMLElement {
         const dateContainer = document.createElement('div');
         const dateTitle = document.createElement('h3');
         const dateBtn = document.createElement('button');
-
         /* add attributes and text to heading */
         dateContainer.setAttribute('id', 'date-container');
+        dateTitle.setAttribute('id', 'date-title');
         dateBtn.setAttribute('id', 'date-button');
         title.textContent = LOG_TITLE;
         dateTitle.textContent = DATE;
@@ -57,17 +59,26 @@ class DailyLog extends HTMLElement {
         dateContainer.appendChild(dateTitle);
         dateContainer.appendChild(dateBtn);
 
+        /* trackers consists of title and button */
+        const trackerTitle = document.createElement('h3');
+        const trackerBtn = document.createElement('button');
+        trackerTitle.textContent = TRACKERS;
+        trackerBtn.textContent = '>';
+        trackers.setAttribute ('id', 'tracker-container');
+        trackerTitle.setAttribute('id', 'tracker-title');
+        trackerBtn.setAttribute ('class', 'arrow-button');
+        trackers.appendChild (trackerTitle);
+        trackers.appendChild (trackerBtn);
+
         /* notes consist of title and input bullet text */
         const notesTitle = document.createElement('h3');
         const notesInput = document.createElement('input');
         notesTitle.textContent = NOTES;
-        notesInput.textContent = 'Type in a note ...';
-        notesInput.setAttribute('id', 'note-text');
         notes.appendChild(notesTitle);
-        notes.appendChild(notesInput);
 
         const journalTitle = document.createElement('h3');
         const journalInput = document.createElement('input');
+        journalTitle.textContent = JOURNAL;
         journalInput.setAttribute('id', 'journal-text');
         journal.appendChild(journalTitle);
         journal.appendChild(journalInput);
@@ -78,6 +89,7 @@ class DailyLog extends HTMLElement {
         wrapper.appendChild(heading);
         wrapper.appendChild(trackers);
         wrapper.appendChild(notes);
+        wrapper.appendChild(journal);
 
         /* set the date to default to today */
         function setDefaultDate() {

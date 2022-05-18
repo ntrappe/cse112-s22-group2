@@ -15,7 +15,7 @@
 
     button.control-btn {
         background: none;
-        color: var(--blue);
+        color: var(--snow);
         border: none;
     }
     
@@ -29,37 +29,80 @@
         display: flex;
     }
 
+    #date-title {
+
+        /* gap between Date label and date button */
+        margin-right: var(--date-gap);
+    }
+
     #date-button {
         border: none;
         border-radius: var(--rounded-button);
         background-color: var(--button-blue);
         color: var(--snow);
-        height: 30px;
+        height: 24px;
+        font-size: 14px;
+        font-weight: 500;
+        margin-top: 12px;
+        padding-left: var(--button-text-pad);
+        padding-right: var(--button-text-pad);
+    }
+
+    #tracker-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    section {
+        
+        /* bottom of each section (except last) is horizontal line */
+        border-bottom: var(--line-thickness) solid var(--line-grey);
+
+        /* space between sections */
+        padding-top: var(--section-pad);
+        padding-bottom: var(--section-pad);
+    }
+
+    section:last-child {
+        border: none;
     }
 }
 
+/* h2 for log title (BIG) */
+
 h2 {
-    font-family: var(--font-sans);
     color: var(--snow);
-    font-size: 30px;
+    font-size: 26px;
+    font-weight: 600;
 }
 
+/* h3 for section titles (e.g. Notes) */
+
 h3 {
-    font-family: var(--font-sans);
-    font-size: 16px;
+    color: var(--snow);
+    font-size: 15px;
     font-weight: 400;
 }
 
-#wrapper {
-    background-color: yellow;
+.wrapper {
+    background-color: var(--section-background);
     border-top-left-radius: var(--rounded-rect);
     border-top-right-radius: var(--rounded-rect);
-    padding: 10px;
+
+    /* add space between edges of wrapper and internal contents */
+    /* top | right | bottom | left */
+    padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
+
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 :root {
     --rounded-rect: 15px;
-    --rounded-button: 7px;
+    --rounded-button: 5px;
+    --line-thickness: 1px;
+    --button-text-pad: 10px;
+    --date-gap: 20px;
     --max-mobile-width: 500px;
     --midnight: #020c1b;
     --full-background: #000;
@@ -68,13 +111,17 @@ h3 {
     --header-height: 50px;
     --pad-screen-edge: 20px;
     --section-distance: 20px;
+    --section-pad: 5px;
+    --wrap-edge: 15px;
+    --wrap-top: 20px;
     --distance-to-header: 30px;
     --stone: #a6a3ae;
     --granite: #807f86;
+    --line-grey: #3d3c41;
     --snow: #fff;
     --red: #ff7070;
     --blue: #0a84fe;
-    --button-blue: #538fbb;
+    --button-blue: #53a1d9;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
     --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
 }

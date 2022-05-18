@@ -46,10 +46,6 @@ class DailyLogPreview extends HTMLElement {
 		const dailyLogPreviewCSS = document.createElement("link");
 		dailyLogPreviewCSS.setAttribute("rel", "stylesheet");
 		dailyLogPreviewCSS.setAttribute("href", "styles/daily-log-preview.css");
-		const homeScreenCSS = document.createElement("link");
-		homeScreenCSS.setAttribute("rel", "stylesheet");
-		homeScreenCSS.setAttribute("href", "styles/home-screen.css");
-		shadow.appendChild(homeScreenCSS);
 		shadow.appendChild(dailyLogPreviewCSS);
 
 		/* Adds the classnames to the created elements */
@@ -70,24 +66,25 @@ class DailyLogPreview extends HTMLElement {
 			notesIcon.setAttribute("class", this.getIconClass(didNotes));
 			journalIcon.setAttribute("class", this.getIconClass(didJournal));
 		};
-	}
 
-	/* A function to get the preview text */
-	getPreviewText(textEntry) {
-		if (!textEntry) {
-			return NO_PREVIEW_TEXT;
-		}
-		return textEntry.length > MAX_PREVIEW_LENGTH
-			? textEntry.substring(0, MAX_PREVIEW_LENGTH)
-			: textEntry;
-	}
+		/* A function to get the preview text */
+		this.getPreviewText = function (textEntry) {
+			if (!textEntry) {
+				return NO_PREVIEW_TEXT;
+			}
+			return textEntry.length > MAX_PREVIEW_LENGTH
+				? textEntry.substring(0, MAX_PREVIEW_LENGTH)
+				: textEntry;
+		};
 
-	/* A function to set the classes of tracker icons based on completion status */
-	getIconClass(isCompleted) {
-		return isCompleted ? TRACKER_DONE_CLASS : TRACKER_NOT_DONE_CLASS;
+		/* A function to set the classes of tracker icons based on completion status */
+		this.getIconClass = function (isCompleted) {
+			return isCompleted ? TRACKER_DONE_CLASS : TRACKER_NOT_DONE_CLASS;
+		};
 	}
 } /* DailyLogPreview */
 
+/* Sample code of how to render a custom component */
 const data = [
 	{
 		dateOfEntry: "04/17/2022",
@@ -107,6 +104,7 @@ const data = [
 ];
 
 customElements.define("daily-log-preview", DailyLogPreview);
+
 const dailyLogContainer = document.getElementById("custom-element-test");
 data.forEach(function (element) {
 	const dailyLogPreview = document.createElement("daily-log-preview");

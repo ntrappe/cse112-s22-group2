@@ -47,7 +47,7 @@
             }
             footer>nav>ul{
                 list-style-type: none;
-                display: inline;
+                display: flex;
                 position: relative;
                 padding: 0;
                 margin: 0;
@@ -56,7 +56,30 @@
                 justify-content: center;
                 align-items: center;
             }
-            footer>nav>ul>li:last-child {
+            footer>nav>ul>li>button{
+                border-radius: 10px;
+                border: 0px;
+                font-size: 24px;
+                color: white;
+                padding: 20px 20px 20px 20px;
+                display: flex;
+            }
+            footer>nav>ul>li[id=delete_all_btn]{
+                display: none;
+            }
+            footer>nav>ul>li[id=delete_all_btn]>button{
+                background-color:red;   
+                width: 100%;    
+                margin-left: -50%;      
+            }
+            footer>nav>ul>li[id=delete_btn]{
+                display: none;
+                margin-left: 25%;
+            }
+            footer>nav>ul>li[id=delete_btn]>button{
+                background-color:#b5b5b7;
+            }
+            footer>nav>ul>li[id=edit_icon] {
                 position: absolute;
                 right: 0;
                 margin-right: 50px;
@@ -105,23 +128,30 @@
         </main>
 
         <footer>
-            <script type="text/javascript">
-                var log_list = document.getElementById('log-list');
-                var log_number = log_list.getElementsByTagName("section").length;
-            </script>
+
             <nav>
-                <ul>
-                    <li>
+                <ul id="footer_btn">
+                    <li id="delete_all_btn">
+                        <button type="button">Delete All</button>
+                    </li>
+                    <li id="delete_btn">
+                        <button type="button">Delete Selected</button>
+                    </li>
+                    <li id="update_info">
                         <p>Updated Just Now</p>
                         <p style="color:#ABB2B9"> 
+                            <script type="text/javascript">
+                                var log_list = document.getElementById('log-list');
+                                var log_number = log_list.getElementsByTagName("section").length;
+                            </script>
                             <script type="text/javascript">
                                 document.write(log_number)
                             </script>
                             logs
                         </p>
                     </li>
-                    <li>
-                        <i class='fa fa-edit' style='font-size:36px;color:blue'></i>
+                    <li id="edit_icon">
+                        <i class="fa fa-edit" style="font-size:36px;color:blue"></i>
                     </li>
                 </ul>
             </nav>

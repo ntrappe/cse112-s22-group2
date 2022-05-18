@@ -5,6 +5,7 @@ const NOTES = 'Notes';
 const TRACKERS = 'Trackers';
 const JOURNAL = 'Journal';
 const LOG_TITLE = 'New Daily Log';
+const ENTER = 'Enter';
 
 class DailyLog extends HTMLElement {
     constructor() {
@@ -22,12 +23,12 @@ class DailyLog extends HTMLElement {
         dailyLogStyle.setAttribute('rel', 'stylesheet');
         dailyLogStyle.setAttribute('href', './styles/daily-log.css');
 
-        /* top of log has controls (buttons) to cancel or save log */
+        /* CONTROL: top of log has buttons to cancel or save log */
         const controlsContainer = document.createElement('div');
         const cancelBtn = document.createElement('button');
         const saveBtn = document.createElement('button');
 
-        /* add attributes and text to control buttons */
+        /* CONTROL: add attributes and text to control buttons */
         controlsContainer.setAttribute('class', 'control-container');
         cancelBtn.setAttribute('class', 'control-btn');
         cancelBtn.setAttribute('priority', 'high');
@@ -43,12 +44,13 @@ class DailyLog extends HTMLElement {
         const notes = document.createElement('section');
         const journal = document.createElement('section');
 
-        /* heading consists of log name and date */
+        /* SECTION 1: heading consists of log name and date */
         const title = document.createElement('h2');
         const dateContainer = document.createElement('div');
         const dateTitle = document.createElement('h3');
         const dateBtn = document.createElement('button');
-        /* add attributes and text to heading */
+        
+        /* SECTION 1: add attributes and text to heading */
         dateContainer.setAttribute('id', 'date-container');
         dateTitle.setAttribute('id', 'date-title');
         dateBtn.setAttribute('id', 'date-button');
@@ -59,7 +61,7 @@ class DailyLog extends HTMLElement {
         dateContainer.appendChild(dateTitle);
         dateContainer.appendChild(dateBtn);
 
-        /* trackers consists of title and button */
+        /* SECTION 2: trackers consists of title and button */
         const trackerTitle = document.createElement('h3');
         const trackerBtn = document.createElement('button');
         trackerTitle.textContent = TRACKERS;
@@ -70,12 +72,15 @@ class DailyLog extends HTMLElement {
         trackers.appendChild(trackerTitle);
         trackers.appendChild(trackerBtn);
 
-        /* notes consist of title and input bullet text */
+        /* SECTION 3: notes consist of title and input bullet text */
         const notesTitle = document.createElement('h3');
-        const notesInput = document.createElement('input');
+        const notesList = document.createElement('ul');
         notesTitle.textContent = NOTES;
+        notes.setAttribute ('id', 'notes-container');
         notes.appendChild(notesTitle);
+        notes.appendChild (notesList);
 
+        /* SECTION 4: journal */
         const journalTitle = document.createElement('h3');
         const journalInput = document.createElement('input');
         journalTitle.textContent = JOURNAL;
@@ -92,6 +97,13 @@ class DailyLog extends HTMLElement {
         wrapper.appendChild(journal);
 
         /**
+         * 'global' of whether user clicked inside notes 
+         * true when user has clicked and would be actively editing
+         * false if user clicks outside notes to stop editing
+         */
+        let activeEdit = false;
+
+        /**
          * Sets date button to be today's data
          */
         function setDefaultDate() {
@@ -104,6 +116,39 @@ class DailyLog extends HTMLElement {
             });
             dateBtn.textContent = `${day}, ${month} ${date.getDate()}, ${date.getFullYear()}`;
         }
+
+        /**
+         * Creates a new bullet (<li>), appends to the list (<ul>),
+         * and sets bullet as focus so user is already in new bullet
+         */
+        function createBullet() {
+            console.log('create new bullet');
+            const bullet = document.createElement('li');
+            bullet.setAttribute('contenteditable', 'true');
+            bullet.setAttribute('class', 'bullet');
+            notesList.appendChild(bullet);
+            bullet.focus();
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (activeEdit && (e.code == ENTER)) {
+                createBullet();
+            }
+        });
+
+        document.addEventListener('mousedown', (e) => {
+            if (e.composedPath().includes(notes)) {
+                console.log('in notes section');
+                if (!activeEdit) {
+                    console.log ('create 1st');
+                    createBullet();
+                    activeEdit = true;
+                }
+            } else {
+                activeEdit = false;
+                console.log('outside of notes section');
+            }
+        });
 
         setDefaultDate();
     }

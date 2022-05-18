@@ -91,7 +91,9 @@ class DailyLog extends HTMLElement {
         wrapper.appendChild(notes);
         wrapper.appendChild(journal);
 
-        /* set the date to default to today */
+        /**
+         * Sets date button to be today's data
+         */
         function setDefaultDate() {
             const date = new Date();
             const day = date.toLocaleDateString('en-US', { // english version of weekday

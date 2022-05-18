@@ -90,11 +90,11 @@ h3 {
     border-top-right-radius: var(--rounded-rect);
 
     /* add space between edges of wrapper and internal contents */
+    
     /* top | right | bottom | left */
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
-
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: var(--pad-screen-edge);
+    margin-right: var(--pad-screen-edge);
 }
 
 :root {
@@ -109,7 +109,7 @@ h3 {
     --section-background: #1c1c1e;
     --header-background: #262628;
     --header-height: 50px;
-    --pad-screen-edge: 20px;
+    --pad-screen-edge: 15px;
     --section-distance: 20px;
     --section-pad: 5px;
     --wrap-edge: 15px;

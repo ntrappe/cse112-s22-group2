@@ -49,10 +49,10 @@ header {
     justify-content: center;
     background-color: var(--header-background);
 
-   /* flush with screen */
-   width: 100%;
-   margin-left: 0;
-   margin-top: 0;
+    /* flush with screen */
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
 }
 
 body {

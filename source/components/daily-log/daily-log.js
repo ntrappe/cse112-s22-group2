@@ -64,11 +64,11 @@ class DailyLog extends HTMLElement {
         const trackerBtn = document.createElement('button');
         trackerTitle.textContent = TRACKERS;
         trackerBtn.textContent = '>';
-        trackers.setAttribute ('id', 'tracker-container');
+        trackers.setAttribute('id', 'tracker-container');
         trackerTitle.setAttribute('id', 'tracker-title');
-        trackerBtn.setAttribute ('class', 'arrow-button');
-        trackers.appendChild (trackerTitle);
-        trackers.appendChild (trackerBtn);
+        trackerBtn.setAttribute('class', 'arrow-button');
+        trackers.appendChild(trackerTitle);
+        trackers.appendChild(trackerBtn);
 
         /* notes consist of title and input bullet text */
         const notesTitle = document.createElement('h3');

@@ -42,6 +42,16 @@ class DailyLogPreview extends HTMLElement {
 		wrapper.appendChild(rightSideDiv);
 		shadow.appendChild(wrapper);
 
+		/* Apply external styles to the shadow dom */
+		const dailyLogPreviewCSS = document.createElement("link");
+		dailyLogPreviewCSS.setAttribute("rel", "stylesheet");
+		dailyLogPreviewCSS.setAttribute("href", "styles/daily-log-preview.css");
+		const homeScreenCSS = document.createElement("link");
+		homeScreenCSS.setAttribute("rel", "stylesheet");
+		homeScreenCSS.setAttribute("href", "styles/home-screen.css");
+		shadow.appendChild(homeScreenCSS);
+		shadow.appendChild(dailyLogPreviewCSS);
+
 		/* Adds the classnames to the created elements */
 		wrapper.setAttribute("class", DAILY_LOG_PREVIEW_WRAPPER_CLASS);
 		rightSideDiv.setAttribute("class", ICONS_WRAPPER_CLASS);

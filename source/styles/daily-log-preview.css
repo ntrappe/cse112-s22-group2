@@ -1,0 +1,10 @@
+.daily-log-preview-wrapper {
+	display: flex;
+	background-color: var(--section-background);
+	justify-content: space-between;
+	/* space between edge of section and internal content */
+	padding: 5px var(--pad-screen-edge) 5px var(--pad-screen-edge);
+
+	/* space between sections */
+	margin-bottom: var(--section-distance);
+}

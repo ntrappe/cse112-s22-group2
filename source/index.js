@@ -1,11 +1,19 @@
 let editBtn = document.getElementById('edit-btn');
+let deleteAllBtn = document.getElementById('delete-all-btn');
+let deleteSelectedBtn = document.getElementById('delete-selected-btn');
+let newNoteBtn = document.getElementById('new-note-btn');
 let checkboxes = document.querySelectorAll('input[type=checkbox]');
-let deleteAllBtn = document.getElementById('delete_all_btn');
-let deleteBtn = document.getElementById('delete_btn');
-let updateInfo = document.getElementById('update_info');
-let editIcon = document.getElementById('edit_icon');
+let inboxInfo = document.getElementById('inbox-info');
+let deleteAllModal = document.getElementById('delete-all-modal');
+let logList = document.getElementById('log-list');
+let logNumber = logList.querySelectorAll('#log-list>section').length;
+let logCountDisplay = document.getElementById('log-count-display');
 
+logCountDisplay.innerText = `${logNumber} logs`;
+
+// set event listeners for buttons
 editBtn.addEventListener('click', toggleCheckboxDisplay);
+deleteAllBtn.addEventListener('click', deleteAllLogs);
 
 /**
  * @name toggleCheckboxDisplay
@@ -21,10 +29,10 @@ function toggleCheckboxDisplay(){
             checkbox.style.display = 'inline-block';
         });
 
-        updateInfo.style.display = 'none';
-        editIcon.style.display = 'none';
+        inboxInfo.style.display = 'none';
+        newNoteBtn.style.display = 'none';
         deleteAllBtn.style.display = 'block';
-        deleteBtn.style.display = 'block';
+        deleteSelectedBtn.style.display = 'block';
         
     }
     // stop showing checkboxes when cancel is clicked and set text back to edit
@@ -34,10 +42,14 @@ function toggleCheckboxDisplay(){
             checkbox.style.display = 'none';
         });
 
-        updateInfo.style.display = 'block';
-        editIcon.style.display = 'block';
-        delete_all_btn.style.display = 'none';
-        delete_btn.style.display = 'none';
+        inboxInfo.style.display = 'block';
+        newNoteBtn.style.display = 'block';
+        deleteAllBtn.style.display = 'none';
+        deleteSelectedBtn.style.display = 'none';
     }
+}
 
+function deleteAllLogs(){
+    // show modal
+    deleteAllModal.style.display = 'block';
 }

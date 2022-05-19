@@ -47,58 +47,48 @@ header>nav>ul>li:nth-of-type(2){
   color: white;
 }
 popup-modal{
-  -display: none;
+  display: none;
 }
 p{
   color: white;
 }
 footer{
-  position: fixed;
-  bottom: 0px;
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  height: 13%;
+  position: sticky;
   width: 100%;
-  background-color:#262628;
-}
-footer>nav>ul{
-  list-style-type: none;
+  bottom: 0;
+  background-color: #262628;
   display: flex;
-  position: relative;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 }
-footer>nav>ul>li>button{
-  border-radius: 10px;
-  border: 0px;
-  font-size: 24px;
-  color: white;
-  padding: 20px 20px 20px 20px;
-  display: flex;
-  margin-top: 9%;
-}
-footer>nav>ul>li[id=delete_all_btn]{
+footer>button:nth-of-type(1), footer>button:nth-of-type(2){
+  margin: 1em 0em;
+  border: none;
   display: none;
+  border-radius: 15px;
+  font-size: 1.25em;
+  padding: 10px 20px;
+  cursor: pointer;
 }
-footer>nav>ul>li[id=delete_all_btn]>button{
-  background-color:red;   
-  width: 100%;    
-  margin-left: -50%;      
+#delete-all-btn{
+  background-color: rgb(229 79 79);
+  color: white;   
 }
-footer>nav>ul>li[id=delete_btn]{
+#delete-selected-btn{
   display: none;
-  margin-left: 25%;
-}
-footer>nav>ul>li[id=delete_btn]>button{
   background-color:#b5b5b7;
 }
-footer>nav>ul>li[id=edit_icon] {
+footer>div{
+  text-align: center;
+}
+#new-note-btn{
+  width: 5em;
+  height: 5em;
+  background-color: #262628;
+  border: none;
   position: absolute;
   right: 0;
-  margin-right: 50px;
+}
+#log-count-display{
+  color: #ABB2B9;
 }

@@ -50,7 +50,7 @@ class popupModal extends HTMLElement {
     modalBackdrop.addEventListener('click', closePopupModal);
 
     function closePopupModal(){
-        modalBackdrop.style.display = 'none';
+        document.getElementById('delete-all-modal').style.display = 'none';
     }
   }
 }

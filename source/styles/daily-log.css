@@ -71,6 +71,7 @@
         resize: none;
         outline: none;
         border: none;
+        font-family: var(--font-sans);
         color: var(--stone);
         caret-color: var(--snow);
         background-color: var(--section-background);

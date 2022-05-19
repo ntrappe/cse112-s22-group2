@@ -84,6 +84,13 @@ h3 {
     font-weight: 400;
 }
 
+/* set size of right arrow icon on button */
+
+button > img {
+    width: 10px;
+    height: auto;
+}
+
 .wrapper {
     background-color: var(--section-background);
     border-top-left-radius: var(--rounded-rect);

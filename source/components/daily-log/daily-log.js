@@ -61,14 +61,19 @@ class DailyLog extends HTMLElement {
         dateContainer.appendChild(dateTitle);
         dateContainer.appendChild(dateBtn);
 
-        /* SECTION 2: trackers consists of title and button */
+        /* SECTION 2: trackers consists of title and button */  
         const trackerTitle = document.createElement('h3');
         const trackerBtn = document.createElement('button');
+        const trackerIcon = document.createElement('img');
+
+        /* SECTION 2: add attributes and text to heading */
         trackerTitle.textContent = TRACKERS;
-        trackerBtn.textContent = '>';
+        trackerIcon.setAttribute('src', './icons/arrow-icon.png');
+        trackerBtn.setAttribute ('id', 'tracker-button');
         trackers.setAttribute('id', 'tracker-container');
         trackerTitle.setAttribute('id', 'tracker-title');
         trackerBtn.setAttribute('class', 'arrow-button');
+        trackerBtn.appendChild(trackerIcon);
         trackers.appendChild(trackerTitle);
         trackers.appendChild(trackerBtn);
 

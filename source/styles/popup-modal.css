@@ -1,6 +1,6 @@
 #modal-backdrop {
     z-index: 1;
-    background-color: rgba(0, 0, 0, 80%);
+    background-color: rgba(0 0 0 / 80%);
     position: fixed;
     height: 100%;
     width: 100%;
@@ -33,7 +33,7 @@ p:first-of-type {
 p:nth-of-type(2) {
     color: grey;
     font-size: 1em;
-    margin: 0em 0em 1.75em;
+    margin: 0 0 1.75em;
 }
 
 #delete-all-btn {

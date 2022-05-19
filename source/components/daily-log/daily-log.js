@@ -74,8 +74,8 @@ class DailyLog extends HTMLElement {
         arrowIcon.setAttribute('class', 'fa-solid fa-angle-right');
         trackersBtn.setAttribute('class', 'arrow-btn');
         trackersBtn.appendChild(arrowIcon);
-        trackers.appendChild(trackersBtn);
         trackers.appendChild(trackersTitle);
+        trackers.appendChild(trackersBtn);
 
         
 

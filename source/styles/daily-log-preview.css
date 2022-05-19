@@ -10,3 +10,7 @@
 	/* space between sections */
 	margin-bottom: var(--section-distance);
 }
+
+link {
+	display: inline;
+}

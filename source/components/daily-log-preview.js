@@ -28,9 +28,9 @@ class DailyLogPreview extends HTMLElement {
 		const rightSideDiv = document.createElement("div"); // contains the trackers
 		const title = document.createElement("h2");
 		const preview = document.createElement("p");
-		const trackerIcon = document.createElement("svg");
-		const notesIcon = document.createElement("svg");
-		const journalIcon = document.createElement("svg");
+		const trackerIcon = document.createElement("link");
+		const notesIcon = document.createElement("link");
+		const journalIcon = document.createElement("link");
 
 		/* Defines the heirachy */
 		leftSideDiv.appendChild(title);
@@ -48,9 +48,19 @@ class DailyLogPreview extends HTMLElement {
 		dailyLogPreviewCSS.setAttribute("href", "styles/daily-log-preview.css");
 		shadow.appendChild(dailyLogPreviewCSS);
 
-		/* Adds the classnames to the created elements */
+		/* Adds classes to the created elements */
 		wrapper.setAttribute("class", DAILY_LOG_PREVIEW_WRAPPER_CLASS);
 		rightSideDiv.setAttribute("class", ICONS_WRAPPER_CLASS);
+
+		/* Adds SVGs */
+		trackerIcon.setAttribute("href", "images/tracker_icon.svg");
+		notesIcon.setAttribute("href", "images/notes_icon.svg");
+		journalIcon.setAttribute("href", "images/journal_icon.svg");
+		const icons = rightSideDiv.children;
+		for (let iconInd = 0; iconInd < icons.length; iconInd++) {
+			const icon = icons[iconInd];
+			icon.setAttribute("type", "image/svg+xml");
+		}
 
 		/* A function to fill in the components with data */
 		this.populateFields = function (

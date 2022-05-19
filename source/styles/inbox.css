@@ -11,8 +11,13 @@ header {
     position: sticky;
     top: 0;
     width: 100%;
-    background-color:#262628;
+    background-color: #262628;
     padding: 1em 0;
+}
+
+main > ul {
+    padding: 0;
+    list-style-type: none;
 }
 
 header > nav > ul {
@@ -22,12 +27,7 @@ header > nav > ul {
     list-style-type: none;
 }
 
-main > ul {
-    padding: 0;
-    list-style-type: none;
-}
-
-input[type=checkbox] {
+input[type="checkbox"] {
     display: none;
     float: left;
     margin: 0 4em 0 1em;
@@ -43,13 +43,13 @@ header > nav > ul > li > button {
     border: none;
     background: none;
     font-size: 1em;
-    color: #0A84FE;
+    color: #0A84fe;
     width: 4em;
 }
 
 a {
     text-decoration: none;
-    color: #0A84FE;
+    color: #0A84fe;
 }
 
 header > nav > ul > li:nth-of-type(2) {
@@ -74,7 +74,8 @@ footer {
     align-items: center;
 }
 
-footer > button:nth-of-type(1), footer > button:nth-of-type(2) {
+footer > button:nth-of-type(1), 
+footer > button:nth-of-type(2) {
     margin: 1em 0;
     border: none;
     display: none;
@@ -107,5 +108,5 @@ footer > div {
 }
 
 #log-count-display {
-    color: #ABB2B9;
+    color: #abb2b9;
 }

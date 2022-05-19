@@ -28,8 +28,12 @@
 
     
     button.arrow-btn {
-        font-size: 25px;
-        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 10px;
+        height: 20px;
+        fill: var(--granite);
     }
 
 
@@ -60,10 +64,16 @@
     #tracker-container {
         display: flex;
         justify-content: space-between;
+        align-items: center;
     }
 
     #journal-text {
         resize: none;
+        outline: none;
+        border: none;
+        color: var(--stone);
+        caret-color: var(--snow);
+        background-color: var(--section-background);
         margin-left: auto;
         margin-right: auto;
         width: 98%;

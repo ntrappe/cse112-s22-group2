@@ -1,18 +1,17 @@
-let editBtn = document.getElementById('edit-btn');
-let deleteAllBtn = document.getElementById('delete-all-btn');
-let deleteSelectedBtn = document.getElementById('delete-selected-btn');
-let newNoteBtn = document.getElementById('new-note-btn');
+const editBtn = document.getElementById('edit-btn');
+const deleteAllBtn = document.getElementById('delete-all-btn');
+const deleteSelectedBtn = document.getElementById('delete-selected-btn');
+const newNoteBtn = document.getElementById('new-note-btn');
 
-let checkboxes = document.querySelectorAll('input[type=checkbox]');
-let inboxInfo = document.getElementById('inbox-info');
+const checkboxes = document.querySelectorAll('input[type=checkbox]');
+const inboxInfo = document.getElementById('inbox-info');
 
-let deleteAllModal = document.getElementById('delete-all-modal');
-let deleteSelectedModal = document.getElementById('delete-selected-modal');
+const deleteAllModal = document.getElementById('delete-all-modal');
+const deleteSelectedModal = document.getElementById('delete-selected-modal');
 
-let logList = document.getElementById('log-list');
-let logNumber = logList.querySelectorAll('#log-list>section').length;
-let logCountDisplay = document.getElementById('log-count-display');
-
+const logList = document.getElementById('log-list');
+const logNumber = logList.querySelectorAll('#log-list>section').length;
+const logCountDisplay = document.getElementById('log-count-display');
 
 // display the number of logs
 logCountDisplay.innerText = `${logNumber} logs`;
@@ -25,13 +24,14 @@ deleteSelectedBtn.addEventListener('click', deleteSelectedLogs);
 /**
  * @name toggleCheckboxDisplay
  * @function
- * @description toggles the display of the delete checkboxes and updates the edit/cancel button accordingly
+ * @description toggles the display of the delete checkboxes and updates the edit/cancel
+ * button accordingly
  */
-function toggleCheckboxDisplay(){
+function toggleCheckboxDisplay() {
     // show checkboxes when edit is clicked and set text to cancel
-    if(editBtn.innerText == 'Edit'){
-        editBtn.innerText = 'Cancel'
-        checkboxes.forEach(function(checkbox){
+    if (editBtn.innerText === 'Edit') {
+        editBtn.innerText = 'Cancel';
+        checkboxes.forEach((checkbox) => {
             checkbox.checked = false;
             checkbox.style.display = 'inline-block';
         });
@@ -40,12 +40,9 @@ function toggleCheckboxDisplay(){
         newNoteBtn.style.display = 'none';
         deleteAllBtn.style.display = 'block';
         deleteSelectedBtn.style.display = 'block';
-        
-    }
-    // stop showing checkboxes when cancel is clicked and set text back to edit
-    else{
+    } else { // stop showing checkboxes when cancel is clicked and set text back to edit
         editBtn.innerText = 'Edit';
-        checkboxes.forEach(function(checkbox){
+        checkboxes.forEach((checkbox) => {
             checkbox.style.display = 'none';
         });
 
@@ -56,16 +53,16 @@ function toggleCheckboxDisplay(){
     }
 }
 
-function deleteAllLogs(){
+function deleteAllLogs() {
     // show modal
     deleteAllModal.style.display = 'block';
 }
 
-function deleteSelectedLogs(){
-    let numLogSelected = logList.querySelectorAll('input:checked').length;
-    if(numLogSelected > 0){
+function deleteSelectedLogs() {
+    const numLogSelected = logList.querySelectorAll('input:checked').length;
+    if (numLogSelected > 0) {
         // set the text according to the number of logs wanting to delete + display modal
-        deleteSelectedModal.shadowRoot.childNodes[1].firstChild.firstChild.innerText = `Do you want to delete ${numLogSelected} Daily Logs?`
+        deleteSelectedModal.shadowRoot.childNodes[1].firstChild.firstChild.innerText = `Do you want to delete ${numLogSelected} Daily Logs?`;
         deleteSelectedModal.style.display = 'block';
     }
 }

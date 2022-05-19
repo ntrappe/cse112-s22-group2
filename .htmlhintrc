@@ -9,5 +9,5 @@
 	"doctype-first": true,
 	"tagname-lowercase": true,
 	"attr-lowercase": true,
-	"space-tab-mixed-disabled": "tab"
+	"space-tab-mixed-disabled": "false"		
 }

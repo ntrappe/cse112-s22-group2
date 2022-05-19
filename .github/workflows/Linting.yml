@@ -25,8 +25,11 @@ jobs:
       # Run HTML Linters automatically
       - name: Run HTML Style and Format Linters 
         run: | 
-              npm i # Handle installation on virtual machine
-              npm run html_style_lint # Run linter tests and output results
-              npm run html_format_lint # Run linter tests and output results
+              npm i                     # Handle installation on virtual machine
+              npm run html_style_lint   # Run html style linter
+              npm run html_format_lint  # Run html format linter
+              npm run js_lint_test      # Run javascript linter
+              npm run css_lint_test     # Run css linter
+              npm run lint              # Runs html, css, and javascript linters
    
    

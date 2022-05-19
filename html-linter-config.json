@@ -3,8 +3,8 @@
     "./source/**/*.html"
   ],
   "indentation": {
-    "char": "tab",
-    "number": 1
+    "char": "space",
+    "number": 4
   },
   "attributes": {
     "quotes": "double",

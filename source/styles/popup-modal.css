@@ -1,48 +1,48 @@
-#modal-backdrop{
-  z-index: 1;
-  background-color: rgba(0,0,0,.8);
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  left: 0;
-  top: 0;
-  justify-content: center;
-  display: flex;
-  align-items: center;
+#modal-backdrop {
+    z-index: 1;
+    background-color: rgba(0,0,0,80%);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
 }
-#modal-container{
-  border-style: solid;
-  border-radius: 15px;
-  border-width: 5px;
-  padding: 1em;
-  background-color: #29292c;
+#modal-container {
+    border-style: solid;
+    border-radius: 15px;
+    border-width: 5px;
+    padding: 1em;
+    background-color: #29292c;
 }
-#buttons-container{
+#buttons-container {
   display: flex;
   justify-content: space-around;
 }
-p:first-of-type{
-  color: white;
-  font-size: 1.5em;
-  margin-bottom: .25em;
+p:first-of-type {
+    color: white;
+    font-size: 1.5em;
+    margin-bottom: .25em;
 }
-p:nth-of-type(2){
-  color: grey;
-  font-size: 1em;
-  margin: 0em 0em 1.75em;
+p:nth-of-type(2) {
+    color: grey;
+    font-size: 1em;
+    margin: 0em 0em 1.75em;
 }
-#delete-all-btn{
-  background-color: rgb(229 79 79);
-  color: white;
+#delete-all-btn {
+    background-color: rgb(229 79 79);
+    color: white;
 }
-#cancel-btn{
-  color: black;
-  background-color: white;
+#cancel-btn {
+    color: black;
+    background-color: white;
 }
-#buttons-container>button{
-  border: none;
-  border-radius: 15px;
-  font-size: 1.25em;
-  padding: 10px 20px;
-  cursor: pointer;
+#buttons-container>button {
+    border: none;
+    border-radius: 15px;
+    font-size: 1.25em;
+    padding: 10px 20px;
+    cursor: pointer;
 }

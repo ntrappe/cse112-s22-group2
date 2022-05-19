@@ -1,95 +1,93 @@
-body{
-  margin: 0em;
+body {
+    margin: 0em;
 }
-main{
-  padding: 8px;
-  background-color: black;
+main {
+    padding: 8px;
+    background-color: black;
 }
-header{
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color:#262628;
-  padding: 1em 0em;
+header {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    background-color:#262628;
+    padding: 1em 0em;
 }
-header>nav>ul{
-  display: flex;
-  justify-content: space-between;
+header>nav>ul {
+    display: flex;
+    justify-content: space-between;
+    padding: 0em 1em;
+    list-style-type: none;
 }
-header>nav>ul{
-  padding: 0em 1em;
-  list-style-type: none;
+main>ul {
+    padding: 0em;
+    list-style-type: none;
 }
-main>ul{
-  padding: 0em;
-  list-style-type: none;
+input[type=checkbox] {
+    display: none;
+    float: left;
+    margin: 0em 4em 0em 1em;
 }
-input[type=checkbox]{
-  display: none;
-  float: left;
-  margin: 0em 4em 0em 1em;
+header>nav>ul>li>button {
+    padding: 0em;
+    margin: 0em;
+    border: none;
+    background: none;
+    font-size: 1em;
+    color: #0A84FE;
+    width: 4em;
 }
-header>nav>ul>li>button{
-  padding: 0em;
-  margin: 0em;
-  border: none;
-  background: none;
-  font-size: 1em;
-  color: #0A84FE;
-  width: 4em;
+a {
+    text-decoration: none;
+    color: #0A84FE;
 }
-a{
-  text-decoration: none;
-  color: #0A84FE;
+header>nav>ul>li:nth-of-type(2) {
+    color: white;
 }
-header>nav>ul>li:nth-of-type(2){
-  color: white;
+popup-modal {
+    display: none;
 }
-popup-modal{
-  display: none;
+p {
+    color: white;
 }
-p{
-  color: white;
+footer {
+    position: sticky;
+    width: 100%;
+    bottom: 0;
+    background-color: #262628;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
-footer{
-  position: sticky;
-  width: 100%;
-  bottom: 0;
-  background-color: #262628;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+footer>button:nth-of-type(1), footer>button:nth-of-type(2) {
+    margin: 1em 0em;
+    border: none;
+    display: none;
+    border-radius: 15px;
+    font-size: 1.25em;
+    padding: 10px 20px;
 }
-footer>button:nth-of-type(1), footer>button:nth-of-type(2){
-  margin: 1em 0em;
-  border: none;
-  display: none;
-  border-radius: 15px;
-  font-size: 1.25em;
-  padding: 10px 20px;
+#delete-all-btn {
+    background-color: rgb(229 79 79);
+    color: white;   
 }
-#delete-all-btn{
-  background-color: rgb(229 79 79);
-  color: white;   
+#delete-selected-btn {
+    display: none;
+    background-color:#b5b5b7;
 }
-#delete-selected-btn{
-  display: none;
-  background-color:#b5b5b7;
+footer>div {
+    text-align: center;
 }
-footer>div{
-  text-align: center;
+#new-note-btn {
+    width: 4em;
+    height: 4em;
+    background-color: #262628;
+    border: none;
+    position: absolute;
+    right: 0;
 }
-#new-note-btn{
-  width: 4em;
-  height: 4em;
-  background-color: #262628;
-  border: none;
-  position: absolute;
-  right: 0;
+#log-count-display {
+    color: #ABB2B9;
 }
-#log-count-display{
-  color: #ABB2B9;
-}
-button{
-  cursor: pointer;
+button {
+    cursor: pointer;
 }

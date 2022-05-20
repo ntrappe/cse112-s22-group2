@@ -2,8 +2,6 @@
 const DAILY_LOG_PREVIEW_WRAPPER_CLASS = "daily-log-preview-wrapper";
 const TEXT_WRAPPER_CLASS = "text-container";
 const ICONS_WRAPPER_CLASS = "icon-container";
-const TRACKER_DONE_CLASS = "tracker-done";
-const TRACKER_NOT_DONE_CLASS = "tracker-not-done";
 const DAILY_LOG_TITLE = "Daily Log ";
 
 // Preview constants
@@ -121,11 +119,6 @@ class DailyLogPreview extends HTMLElement {
 			return textEntry.length > MAX_PREVIEW_LENGTH
 				? textEntry.substring(0, MAX_PREVIEW_LENGTH)
 				: textEntry;
-		};
-
-		/* A function to set the classes of tracker icons based on completion status */
-		this.getIconClass = function (isCompleted) {
-			return isCompleted ? TRACKER_DONE_CLASS : TRACKER_NOT_DONE_CLASS;
 		};
 	}
 }

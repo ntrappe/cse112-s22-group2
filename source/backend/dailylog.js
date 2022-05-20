@@ -31,18 +31,25 @@ class DailyLog extends HTMLElement {
     cancelBtn.setAttribute ('priority', 'high');
 
     cancelBtn.onclick = function(){
-      if(confirm("Would you like to delete the journal of " + dateFormated) == true){
-        deleteLog(dateFormated);
+      //let searchResult;
+      fetchLog(dateFormated);
+      if (searchResult == null){
+        console.error("there's nothing to delete");
+      }else{
+        if (confirm("Would you like to delete the journal of " + dateFormated) == true){
+          deleteLog(dateFormated);
+        }
+        searchResult = null;
       } 
     };
 
     saveBtn.onclick = function(){
-      getLog(dateFormated);
+      fetchLog(dateFormated);
       if( searchResult == null){
-        addLog ();
+        saveLog ();
         alert ("log added");
       }else{
-        addLog ();
+        saveLog ();
         alert ("log updated");
       }
       searchResult = null;
@@ -104,8 +111,10 @@ class DailyLog extends HTMLElement {
     let dateFormated = day + ', ' + month + ' ' + date.getDate() + ', ' + date.getFullYear()
   
 
-    /* add a log */
-    function addLog(){
+
+
+    /* save/update a log */
+    function saveLog(){
       let notes = notesInput.value;
       localStorage.setItem(dateFormated,notes);
     }
@@ -115,8 +124,24 @@ class DailyLog extends HTMLElement {
       localStorage.removeItem(givenDate);
     }
 
+    /* delete all log */
+    function deleteAll(){
+      let i;
+      for(i = 0; i < localStorage.length; i++){
+        localStorage.clear();
+      }
+    }
+
+    /* fetch all log */
+    function fetchAll(){
+      let i;
+      for (i = 0; i < localStorage.length; i++)   {
+          console.log(localStorage.key(i) + "=[" + localStorage.getItem(localStorage.key(i)) + "]");
+      }
+    }
+
     /* get log page given a specific date*/
-    function getLog (givenDate) {
+    function fetchLog (givenDate) {
       searchResult = localStorage.key(givenDate);
     }
 

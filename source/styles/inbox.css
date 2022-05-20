@@ -78,7 +78,6 @@ footer > button:nth-of-type(1),
 footer > button:nth-of-type(2) {
     margin: 1em 0;
     border: none;
-    display: none;
     border-radius: 15px;
     font-size: 1.25em;
     padding: 10px 20px;
@@ -87,6 +86,7 @@ footer > button:nth-of-type(2) {
 #delete-all-btn {
     background-color: rgb(229 79 79);
     color: white;
+    display: none;
 }
 
 #delete-selected-btn {

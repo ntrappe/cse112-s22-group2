@@ -1,13 +1,24 @@
+// Class name constants
 const DAILY_LOG_PREVIEW_WRAPPER_CLASS = "daily-log-preview-wrapper";
 const TEXT_WRAPPER_CLASS = "text-container";
 const ICONS_WRAPPER_CLASS = "icon-container";
 const TRACKER_DONE_CLASS = "tracker-done";
 const TRACKER_NOT_DONE_CLASS = "tracker-not-done";
 const DAILY_LOG_TITLE = "Daily Log ";
+
+// Preview constants
 const NO_PREVIEW_TEXT = "No preivew text available.";
 const MAX_PREVIEW_LENGTH = 75;
+
+// Icon constants
+const TRACKER_ICON = "./icons/tracker";
+const NOTES_ICON = "./icons/notes";
+const JOURNAL_ICON = "./icons/journal";
 const ON = "-icon-on.png";
 const OFF = "-icon-off.png";
+const NO_TRACKER_FILLED_OUT = "no trackers filled out";
+const NO_NOTES_FILLED_OUT = "no notes filled out";
+const NO_JOURNAL_FILLED_OUT = "no journal filled out";
 
 /**
  * @module DailyLogPreview
@@ -61,16 +72,15 @@ class DailyLogPreview extends HTMLElement {
 		rightSideDiv.setAttribute("class", ICONS_WRAPPER_CLASS);
 
 		/* By default set each icon to its png in off mode */
-		trackerIcon.setAttribute("src", "./icons/tracker-icon-off.png");
-		trackerIcon.setAttribute("alt", "no trackers filled out");
-		notesIcon.setAttribute("src", "./icons/notes-icon-off.png");
-		notesIcon.setAttribute("alt", "no notes filled out");
-		journalIcon.setAttribute("src", "./icons/journal-icon-off.png");
-		journalIcon.setAttribute("alt", "no journal filled out");
+		trackerIcon.setAttribute("src", `${TRACKER_ICON}${OFF}`);
+		trackerIcon.setAttribute("alt", NO_TRACKER_FILLED_OUT);
+		notesIcon.setAttribute("src", `${NOTES_ICON}${OFF}`);
+		notesIcon.setAttribute("alt", NO_NOTES_FILLED_OUT);
+		journalIcon.setAttribute("src", `${JOURNAL_ICON}${OFF}`);
+		journalIcon.setAttribute("alt", NO_JOURNAL_FILLED_OUT);
 		const icons = rightSideDiv.children;
 		for (let iconInd = 0; iconInd < icons.length; iconInd++) {
 			const icon = icons[iconInd];
-			// icon.setAttribute('type', 'image/svg+xml');
 			icon.setAttribute("class", "log-icon");
 		}
 
@@ -87,19 +97,19 @@ class DailyLogPreview extends HTMLElement {
 
 			/* depending on if item done, show icon as on or off by updating src */
 			if (didTrackers) {
-				trackerIcon.setAttribute("src", `./icons/tracker${ON}`);
+				trackerIcon.setAttribute("src", `${TRACKER_ICON}${ON}`);
 			} else {
-				trackerIcon.setAttribute("src", `./icons/tracker${OFF}`);
+				trackerIcon.setAttribute("src", `${TRACKER_ICON}${OFF}`);
 			}
 			if (didNotes) {
-				notesIcon.setAttribute("src", `./icons/notes${ON}`);
+				notesIcon.setAttribute("src", `${NOTES_ICON}${ON}`);
 			} else {
-				notesIcon.setAttribute("src", `./icons/notes${OFF}`);
+				notesIcon.setAttribute("src", `${NOTES_ICON}${OFF}`);
 			}
 			if (didJournal) {
-				journalIcon.setAttribute("src", `./icons/journal${ON}`);
+				journalIcon.setAttribute("src", `${JOURNAL_ICON}${ON}`);
 			} else {
-				journalIcon.setAttribute("src", `./icons/journal${OFF}`);
+				journalIcon.setAttribute("src", `${JOURNAL_ICON}${OFF}`);
 			}
 		};
 

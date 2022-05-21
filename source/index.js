@@ -10,7 +10,7 @@ const deleteAllModal = document.getElementById('delete-all-modal');
 const deleteSelectedModal = document.getElementById('delete-selected-modal');
 
 const logList = document.getElementById('log-list');
-const logNumber = logList.querySelectorAll('#log-list>section').length;
+const logNumber = logList.querySelectorAll('#log-list>li').length;
 const logCountDisplay = document.getElementById('log-count-display');
 
 // display the number of logs

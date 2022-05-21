@@ -23,8 +23,8 @@ class popupModal extends HTMLElement {
         modalBackdrop.setAttribute('id', 'modal-backdrop');
         modalContianer.setAttribute('id', 'modal-container');
         buttonsContianer.setAttribute('id', 'buttons-container');
-        deleteAllBtn.setAttribute('id', 'delete-all-btn');
-        cancelBtn.setAttribute('id', 'cancel-btn');
+        deleteAllBtn.setAttribute('id', 'modal-delete-all-btn');
+        cancelBtn.setAttribute('id', 'modal-cancel-btn');
 
         // set the inner text of the created elements
         confirmationText.innerText = 'Do you want to delete all daily logs?';

@@ -10,6 +10,7 @@ const deleteAllModal = document.getElementById('delete-all-modal');
 const deleteSelectedModal = document.getElementById('delete-selected-modal');
 
 const logList = document.getElementById('log-list');
+const logs = logList.querySelectorAll('#log-list>li');
 const logNumber = logList.querySelectorAll('#log-list>li').length;
 const logCountDisplay = document.getElementById('log-count-display');
 
@@ -20,6 +21,13 @@ logCountDisplay.innerText = `${logNumber} logs`;
 editBtn.addEventListener('click', toggleCheckboxDisplay);
 deleteAllBtn.addEventListener('click', deleteAllLogs);
 deleteSelectedBtn.addEventListener('click', deleteSelectedLogs);
+
+// When a log is clicked, check/uncheck its corresponding checkbox
+logs.forEach((log) => {
+    log.addEventListener('click', () => {
+        tickCheckbox(log.children[0]);
+    });
+});
 
 /**
  * @name toggleCheckboxDisplay
@@ -64,5 +72,14 @@ function deleteSelectedLogs() {
         // set the text according to the number of logs wanting to delete + display modal
         deleteSelectedModal.shadowRoot.childNodes[1].firstChild.firstChild.innerText = `Do you want to delete ${numLogSelected} Daily Logs?`;
         deleteSelectedModal.style.display = 'block';
+    }
+}
+
+function tickCheckbox(checkbox) {
+    // if the checkbox is checked
+    if (checkbox.checked) {
+        checkbox.checked = false;
+    } else {
+        checkbox.checked = true;
     }
 }

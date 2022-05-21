@@ -6,6 +6,7 @@ const TRACKERS = 'Trackers';
 const NOTES = 'Notes';
 const JOURNAL = 'Journal';
 const LOG_TITLE = 'New Daily Log';
+//import {createListElement} from './notes-script.js';
 
 class DailyLog extends HTMLElement {
     constructor() {
@@ -65,18 +66,14 @@ class DailyLog extends HTMLElement {
         trackers.setAttribute('id', 'tracker-container');
         const trackersTitle = document.createElement('h3');
         const trackersBtn = document.createElement('button');
-        //const arrowIcon = document.createElement('svg');
        
 
         /* add attributes and text to trackers section */
         trackersTitle.textContent = TRACKERS;
-        //trackersBtn.textContent = ">";
         trackersBtn.innerHTML = `<svg id = "arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
         <path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75
         0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg>`;
-        //arrowIcon.setAttribute('class', 'fa-solid fa-angle-right');
         trackersBtn.setAttribute('class', 'arrow-btn');
-        //trackersBtn.appendChild(arrowIcon);
         trackers.appendChild(trackersTitle);
         trackers.appendChild(trackersBtn);
 
@@ -84,12 +81,17 @@ class DailyLog extends HTMLElement {
 
         /* notes consist of title and input bullet text */
         const notesTitle = document.createElement('h3');
-        const notesInput = document.createElement('input');
+        const noteEntry = document.createElement('input');
+        const bulletList = document.createElement('ul');
         notesTitle.textContent = NOTES;
-        notesInput.textContent = 'Type in a note ...';
-        notesInput.setAttribute('id', 'note-text');
+        noteEntry.textContent = 'Type in a note ...';
+        noteEntry.setAttribute('id', 'note-entry');
+        noteEntry.setAttribute('type', 'text');
+        bulletList.setAttribute('id', 'bullet-list');
         notes.appendChild(notesTitle);
-        notes.appendChild(notesInput);
+        notes.appendChild(noteEntry);
+        notes.appendChild(bulletList);
+        
 
         const journalTitle = document.createElement('h3');
         const journalInput = document.createElement('textarea');

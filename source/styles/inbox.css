@@ -5,14 +5,14 @@ body {
 
 main {
     padding: 8px;
-    background-color: black;
+    background-color: var(--page-background-color);
 }
 
 header {
     position: sticky;
     top: 0;
     width: 100%;
-    background-color: #262628;
+    background-color: var(--header-footer-background);
     padding: 1em 0;
 }
 
@@ -29,9 +29,41 @@ header > nav > ul {
 }
 
 input[type="checkbox"] {
+    /* Remove default css */
+    -webkit-appearance: none;
+    appearance: none;
+
+    background-color: var(--page-background-color); 
+    font: inherit;
+    width: 1.25em;
+    height: 1.25em;
+    border: 0.15em solid var(--checkbox-stroke);
+    border-radius: 0.35em;
     display: none;
+    place-content: center;
     float: left;
     margin: 0 4em 0 1em;
+    cursor: pointer;
+}
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.75em;
+    height: 0.75em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--page-background-color);
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked {
+    border-color: var(--checkbox-fill);
+    background-color: var(--checkbox-fill);
+}
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
 }
 
 button {
@@ -44,17 +76,17 @@ header > nav > ul > li > button {
     border: none;
     background: none;
     font-size: 1em;
-    color: #0a84fe;
+    color: var(--header-button-color);
     width: 4em;
 }
 
 a {
     text-decoration: none;
-    color: #0a84fe;
+    color: var(--header-button-color);
 }
 
 header > nav > ul > li:nth-of-type(2) {
-    color: white;
+    color: var(--main-text-color);
 }
 
 popup-modal {
@@ -62,14 +94,14 @@ popup-modal {
 }
 
 p {
-    color: white;
+    color: var(--main-text-color);
 }
 
 footer {
     position: sticky;
     width: 100%;
     bottom: 0;
-    background-color: #262628;
+    background-color: var(--header-footer-background);
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -85,14 +117,14 @@ footer > button:nth-of-type(2) {
 }
 
 #delete-all-btn {
-    background-color: rgb(229 79 79);
-    color: white;
+    background-color: var(--delete-all-btn-color);
+    color: var(--delete-selected-btn-text-color);
     display: none;
 }
 
 #delete-selected-btn {
     display: none;
-    background-color: #b5b5b7;
+    background-color: var(--delete-selected-btn-color);
 }
 
 footer > div {
@@ -102,7 +134,7 @@ footer > div {
 #new-note-btn {
     width: 4em;
     height: 4em;
-    background-color: #262628;
+    background-color: var(--header-footer-background);
     border: none;
     position: absolute;
     right: 0;
@@ -110,11 +142,21 @@ footer > div {
 }
 
 #log-count-display {
-    color: #abb2b9;
+    color: var(--log-count-display-color);
 }
 button {
     cursor: pointer;
 }
 :root{
+    --log-count-display-color: #abb2b9;
+    --delete-selected-btn-text-color: white;
+    --delete-selected-btn-color: #b5b5b7;
+    --delete-all-btn-color: rgb(229 79 79);
+    --main-text-color: white;
+    --page-background-color: black;
+    --header-button-color: #0a84fe;
+    --header-footer-background: #262628;
+    --checkbox-fill: #69e36e;
+    --checkbox-stroke: #94929c;
     --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
 }

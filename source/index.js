@@ -46,7 +46,10 @@ function toggleCheckboxDisplay() {
         editBtn.innerText = 'Cancel';
         checkboxes.forEach((checkbox) => {
             checkbox.checked = false;
-            checkbox.style.display = 'inline-block';
+            checkbox.style.display = 'grid';
+        });
+        logs.forEach((log) => {
+            log.style.cursor = 'pointer';
         });
 
         inboxInfo.style.display = 'none';
@@ -57,6 +60,9 @@ function toggleCheckboxDisplay() {
         editBtn.innerText = 'Edit';
         checkboxes.forEach((checkbox) => {
             checkbox.style.display = 'none';
+        });
+        logs.forEach((log) => {
+            log.style.cursor = 'default';
         });
 
         inboxInfo.style.display = 'block';

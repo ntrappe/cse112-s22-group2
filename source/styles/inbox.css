@@ -1,5 +1,6 @@
 body {
     margin: 0em;
+    font-family: var(--font-sans);
 }
 main {
     padding: 8px;
@@ -84,10 +85,14 @@ footer>div {
     border: none;
     position: absolute;
     right: 0;
+    margin-left: 1em;
 }
 #log-count-display {
     color: #ABB2B9;
 }
 button {
     cursor: pointer;
+}
+:root{
+    --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
 }

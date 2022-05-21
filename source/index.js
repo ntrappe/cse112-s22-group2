@@ -24,8 +24,13 @@ deleteSelectedBtn.addEventListener('click', deleteSelectedLogs);
 
 // When a log is clicked, check/uncheck its corresponding checkbox
 logs.forEach((log) => {
-    log.addEventListener('click', () => {
-        tickCheckbox(log.children[0]);
+    // prevent clicking the input directly from triggering triggering the log click event
+    // otherwise clicking input directly will actually tick checkbox twice and not work
+    const checkbox = log.children[0];
+    checkbox.onclick = (e) => { e.stopPropagation(); };
+
+    log.addEventListener('click', (event) => {
+        tickCheckbox(checkbox);
     });
 });
 

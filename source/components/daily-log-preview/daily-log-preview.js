@@ -26,7 +26,6 @@ const NO_JOURNAL_FILLED_OUT = 'no journal filled out';
  * @example
  * <daily-log-preview></daily-log-preview>
  */
-
 class DailyLogPreview extends HTMLElement {
     /* Creates an HTML skeleton and defines the hierachy */
     constructor() {
@@ -82,7 +81,16 @@ class DailyLogPreview extends HTMLElement {
             icon.setAttribute('class', 'log-icon');
         }
 
-        /* A function to fill in the components with data */
+        /**
+         * @method populateFields
+         * Fills in a preview component with given data.
+         * Helper function for control.
+         * @param {String} dateOfEntry in form "mm/dd/yyyy"
+         * @param {String} textEntry
+         * @param {Boolean} didTrackers
+         * @param {Boolean} didNotes
+         * @param {Boolean} didJournal
+         */
         this.populateFields = (
             dateOfEntry,
             textEntry,
@@ -111,7 +119,13 @@ class DailyLogPreview extends HTMLElement {
             }
         };
 
-        /* A function to get the preview text */
+        /**
+         * @method getPreviewText
+         * Returns string of text displayed on preview.
+         * Will cut off beyond certain number of chars.
+         * @param {string} textEntry
+         * @returns string
+         */
         this.getPreviewText = (textEntry) => {
             if (!textEntry) {
                 return NO_PREVIEW_TEXT;

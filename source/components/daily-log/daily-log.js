@@ -93,7 +93,6 @@ class DailyLog extends HTMLElement {
         notesTitle.textContent = NOTES;
         notesInput.setAttribute('id', 'note-text');
         notes.appendChild(notesTitle);
-        notes.appendChild(notesInput);
 
         const journalTitle = document.createElement('h3');
         const journalInput = document.createElement('textarea');

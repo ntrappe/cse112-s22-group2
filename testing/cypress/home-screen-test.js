@@ -55,7 +55,10 @@ describe('Check all three sections', { includeShadowDom: true }, () => {
         cy.get('.arrow-button').should('exist');
     });
 
-    it('Check that arrow button(s) have >', () => {
-        cy.get('.arrow-button').contains('>');
+    it('Check that arrow button(s) have one i child with proper classes', () => {
+        cy.get('.arrow-button').first().children().should('have.length', 1);
+        cy.get('.arrow-button').first().children('i');
+        cy.get('.arrow-button').first().children('.fa-solid');
+        cy.get('.arrow-button').first().children('.fa-angle-right');
     });
 });

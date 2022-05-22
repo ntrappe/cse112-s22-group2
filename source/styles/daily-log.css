@@ -25,17 +25,20 @@
     button.control-btn[priority="high"] {
         color: var(--red);
     }
-
     
-    button.arrow-btn {
+    /* button.arrow-btn {
         display: flex;
         justify-content: center;
         align-items: center;
         width: 10px;
         height: 20px;
         fill: var(--granite);
-    }
+    } */
 
+    img.arrow-btn {
+        width: var(--arrow-size);
+        height: auto;
+    }
 
     /* holds "Date" label and the actual date */
    
@@ -44,6 +47,7 @@
     }
 
     #date-title {
+
         /* gap between Date label and date button */
         margin-right: var(--date-gap);
     }
@@ -53,10 +57,10 @@
         border-radius: var(--rounded-button);
         background-color: var(--button-blue);
         color: var(--snow);
-        height: 24px;
-        font-size: 14px;
+        height: 22px;
+        font-size: 12px;
         font-weight: 500;
-        margin-top: 12px;
+        margin-top: var(--vertically-center-date);
         padding-left: var(--button-text-pad);
         padding-right: var(--button-text-pad);
     }
@@ -72,6 +76,7 @@
         outline: none;
         border: none;
         font-family: var(--font-sans);
+        font-size: 14px;
         color: var(--stone);
         caret-color: var(--snow);
         background-color: var(--section-background);
@@ -82,8 +87,8 @@
         max-height: 100%;
     }
 
-
     section {
+        
         /* bottom of each section (except last) is horizontal line */
         border-bottom: var(--line-thickness) solid var(--line-grey);
 
@@ -102,7 +107,7 @@
 h2 {
     font-family: var(--font-sans);
     color: var(--snow);
-    font-size: 28px;
+    font-size: 25px;
     font-weight: 700;
 }
 
@@ -111,14 +116,13 @@ h2 {
 h3 {
     font-family: var(--font-sans);
     color: var(--snow);
-    font-size: 17px;
+    font-size: 15px;
     font-weight: 400;
 }
 
 #wrapper {
     background: var(--section-background);
-    border-top-left-radius: var(--rounded-rect);
-    border-top-right-radius: var(--rounded-rect);
+    border-radius: var(--rounded-rect);
 
     /* add space between edges of wrapper and internal contents */
     
@@ -133,7 +137,9 @@ h3 {
     --rounded-button: 5px;
     --line-thickness: 1px;
     --button-text-pad: 10px;
-    --date-gap: 20px;
+    --arrow-size: 10px;
+    --date-gap: 15px;
+    --vertically-center-date: 14px;
     --max-mobile-width: 500px;
     --midnight: #020c1b;
     --full-background: #000;
@@ -142,9 +148,9 @@ h3 {
     --header-height: 50px;
     --pad-screen-edge: 5px;
     --section-distance: 20px;
-    --section-pad: 5px;
-    --wrap-edge: 15px;
-    --wrap-top: 20px;
+    --section-pad: 2px;
+    --wrap-edge: 16px;
+    --wrap-top: 12px;
     --distance-to-header: 30px;
     --stone: #a6a3ae;
     --granite: #807f86;

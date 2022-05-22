@@ -14,10 +14,11 @@
         "import/extensions": 0,                                         // Allow .js in filenames
         "no-unused-vars": [0,{"argsIgnorePartern": "res|next|~err"}],   // Don't allow unused variables
         "no-var": 2,                                                    // Disallow the use of var (enforce let and const)
+        "max-len": ["error", { "code": 100, "comments": 150 }],         // Code must be 100 but comments have more length
         "indent": [2, 4],                                               // Enforce the use of 4-space indentation
         "semi": [2, "always"],                                          // Always use semi colons
         "spaced-comment": [2, "always"],                                // Force one space after // comment
-        "quotes": ["error", "double"],                                  // Enforce the use of double quotes around strings
+        "quotes": ["error", "single"],                                  // Enforce the use of single quotes around strings
         "space-infix-ops": ["error", { "int32Hint": false }],           // Ensure having spaces around operators
         "camelcase": ["error", {
             "properties": "always",
@@ -25,7 +26,13 @@
         }],                                                             // Ensure using camelcases for variables and methods
         "new-cap": ["error", {"newIsCap": true}],                       // Ensure all new operators to be called with uppercase-started function
         "no-plusplus": 0,
-        "no-console": 0
+        "no-console": 0,
+        "no-use-before-define": ["error", { 
+            "functions": false,
+            "classes": true,
+            "variables": true 
+        }],                                                             // ensures classes and variables are defined before use
+        "no-param-reassign": ["error", { "props": false }]              // allows parameter properties to be modified
         // "const-uppercase/const-uppercase": 2                         // For ensuring constant variables to be all uppercases
         // For ensuring uppercase-started class name, we need to use a plugin named "coffee"
         // https://github.com/helixbass/eslint-plugin-coffee/blob/master/docs/rules/capitalized-class-names.md

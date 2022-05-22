@@ -5,16 +5,16 @@ describe("Open Page", () => {
 });
 
 describe("Find Elements by id", { includeShadowDom: true }, () => {
-	it("Finds daily log container", () => {
-		cy.get("#daily-log");
+	it("Finds daily log nav", () => {
+		cy.get("#nav-daily-log");
 	});
-	it("Finds main text container", () => {
-		cy.get("#main-text-container");
+	it("Finds monthly log nav", () => {
+		cy.get("#nav-monthly-log");
 	});
 });
 
 describe("Find Elements by class", { includeShadowDom: true }, () => {
-	it("Finds elements with flexgrow class", () => {
-		cy.get(".flexgrow");
+	it("Finds elements with nav-text class", () => {
+		cy.get(".nav-text");
 	});
 });

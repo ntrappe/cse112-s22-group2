@@ -1,0 +1,63 @@
+@import "./home-screen.css";
+
+.daily-log-preview-wrapper {
+    display: flex;
+    background-color: var(--section-background);
+    justify-content: space-between;
+    border-radius: var(--rounded-rect);
+    min-height: var(--preview-height);
+
+    /* space between sections */
+    margin-bottom: var(--section-distance);
+
+    /* add space between edges of wrapper and internal contents */
+    
+    /* top | right | bottom | left */
+    padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
+    margin-left: var(--pad-screen-edge);
+    margin-right: var(--pad-screen-edge);
+}
+
+div.text-container {
+
+    /* space between text in nav section and button icon */
+    margin-right: 20px;
+}
+
+/* have icon container flex vertically and center vertically */
+
+div.icon-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* have icon images be set in size and have space below except last one */
+
+div.icon-container img {
+    width: var(--icon-size);
+    height: auto;
+    margin-bottom: var(--icon-space);
+}
+
+div.icon-container img:last-child {
+    margin-bottom: 0;
+}
+
+link {
+    display: inline;
+}
+
+:root {
+    --rounded-rect: 15px;
+    --rounded-button: 5px;
+    --header-height: 50px;
+    --pad-screen-edge: 15px;
+    --section-distance: 20px;
+    --section-pad: 5px;
+    --wrap-edge: 20px;
+    --wrap-top: 5px;
+    --icon-space: 5px;
+    --icon-size: 20px;
+    --preview-height: 90px;
+}

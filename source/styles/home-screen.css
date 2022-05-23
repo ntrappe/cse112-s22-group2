@@ -1,0 +1,113 @@
+@media only screen and (max-width: 500px) {
+    
+    header {
+        margin: 0;
+        width: 100%;
+        height: var(--header-height);
+        
+        /* to help align text vertically inside header */
+        padding-top: 10px;
+    }
+
+    div.nav-text {
+
+        /* space between text in nav section and button icon */
+        margin-right: 20px;
+    }
+}
+
+/* always have styling apply irrespective of mobile/desktop */
+
+button.arrow-button {
+    border: none;
+    background: none;
+    margin: 0;
+    padding: 0;
+    font-size: 25px;
+    font-weight: 200;
+    color: var(--stone);
+}
+
+/* flex box so left is text content + spaced away from right button */
+
+nav section {
+    display: flex;
+    background-color: var(--section-background);
+    justify-content: space-between;
+    
+    /* space between edge of section and internal content */
+    padding: 5px var(--pad-screen-edge) 5px var(--pad-screen-edge);
+    
+    /* space between sections */
+    margin-bottom: var(--section-distance);
+}
+
+header {
+    display: flex;
+    
+    /* center content horizontally */
+    justify-content: center;
+    background-color: var(--header-background);
+
+    /* flush with screen */
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--full-background);
+
+    /* make body flush with screen so header can be flush */
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
+}
+
+main {
+    margin-top: var(--distance-to-header);
+}
+
+/* h1 for header title (e.g. page name) */
+
+h1 {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--snow);
+}
+
+/* h2 for section title (e.g. Daily Logs) */
+
+h2 {
+    color: var(--snow);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+p {
+    color: var(--granite);
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* define color palette, fonts, & dimensions */
+
+:root {
+    --max-mobile-width: 500px;
+    --midnight: #020c1b;
+    --full-background: #000;
+    --section-background: #1c1c1e;
+    --header-background: #262628;
+    --header-height: 50px;
+    --pad-screen-edge: 20px;
+    --section-distance: 20px;
+    --distance-to-header: 30px;
+    --stone: #a6a3ae;
+    --granite: #807f86;
+    --snow: #fff;
+    --red: #ff7070;
+    --blue: #0a84fe;
+    --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+    --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
+}

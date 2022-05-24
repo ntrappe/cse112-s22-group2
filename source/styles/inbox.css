@@ -1,37 +1,82 @@
-body {
-    margin: 0 0 var(--footer-height) 0;
-    font-family: var(--font-sans);
-}
+@import "./home-screen.css";
 
-main {
-    padding: 8px;
-    margin: 0 !important;
-    background-color: var(--page-background-color);
-}
-
+/* ====== HEADER ====== */
 header {
+
+    /* header does not move when scrolling through logs */
     position: sticky;
     top: 0;
-    width: 100%;
     background-color: var(--header-footer-background);
-    padding: 1em 0;
+    padding: 0;  
+    /* padding: 1em 0; */
     display: block !important;
 }
 
+/* space header list horizontally and evenly */
+header ul {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 var(--home-edit-edge);
+    list-style-type: none;
+}
+
+/* width of all nav list elements same as largest one */
+header li {
+    width: var(--nav-max-width);
+}
+
+#edit-list-item {
+    text-align: right;
+}
+
+/* header edit button shifted to far right */
+#edit-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+}
+
+#edit-btn,
+#home-list-item a {
+    font-size: var(--home-edit-size);
+    color: var(--header-button-color);
+}
+
+/* '<' icon for home, add space between it and text */
+
+i.fa-angle-left {
+    margin-right: var(--home-icon-gap);
+}
+
+#inbox-list-item h1 {
+    font-size: var(--header-title-size);
+    text-align: center;
+    color: var(--snow);
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====== HEADER DONE ====== */
+
+/* body {
+    margin: 0 0 var(--footer-height) 0;
+    font-family: var(--font-sans);
+} */
+
+/* main {
+    padding: 8px;
+    margin: 0 !important;
+    background-color: var(--page-background-color);
+} */
+
+
 main > ul {
+    border: 2px solid yellow;
     padding: 0;
     list-style-type: none;
-}
-
-header > nav > ul {
-    display: flex;
-    justify-content: space-between;
-    padding: 0 1em;
-    list-style-type: none;
-}
-
-header > nav > ul > li:nth-of-type(2) {
-    color: var(--main-text-color);
 }
 
 #log-list > li {
@@ -82,16 +127,6 @@ button {
     cursor: pointer;
 }
 
-header > nav > ul > li > button {
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: none;
-    font-size: 1em;
-    color: var(--header-button-color);
-    width: 4em;
-}
-
 a {
     text-decoration: none;
     color: var(--header-button-color);
@@ -105,65 +140,94 @@ p {
     color: var(--main-text-color);
 }
 
+/* ====== FOOTER ====== */
 footer {
-    position: fixed;
     width: 100%;
     bottom: 0;
     background-color: var(--header-footer-background);
     display: flex;
-    justify-content: space-evenly;
     align-items: center;
+    padding-top: var(--footer-text-buffer);
+    padding-bottom: var(--footer-text-buffer);
+
+    /* always available to user so does not move on scroll */
+    position: fixed;
+    
+    /* flex pushes buttons apart */
+    justify-content: space-evenly;
 }
 
-footer > button:nth-of-type(1),
-footer > button:nth-of-type(2) {
-    margin: 1em 0;
+#delete-all-btn,
+#delete-selected-btn {
+    display: none;
+    color: var(--snow);
+    font-size: var(--home-edit-size);
     border: none;
-    border-radius: 15px;
-    font-size: 1.25em;
-    padding: 10px 20px;
+    border-radius: var(--button-radius);
+    padding: 7px 15px;
+    margin: 0;
 }
 
 #delete-all-btn {
-    background-color: var(--delete-all-btn-color);
-    color: var(--delete-selected-btn-text-color);
-    display: none;
+    background-color: var(--button-red);
 }
 
 #delete-selected-btn {
-    display: none;
-    background-color: var(--delete-selected-btn-color);
+    background-color: var(--dark-stone);
 }
 
-footer > div {
+#inbox-info p {
+    font-size: var(--home-edit-size);
+    margin: 0;
+    padding: 0;
     text-align: center;
 }
 
 #new-note-btn {
-    width: 4em;
-    height: 4em;
+    width: var(--new-note-icon-size);
+    height: var(--new-note-icon-size);
     background-color: var(--header-footer-background);
     border: none;
     position: absolute;
     right: 0;
-    margin-right: 1em;
+    margin-right: var(--new-note-icon-offset);
+}
+
+#new-note-icon {
+    width: var(--new-note-width);
+    height: auto;
+}
+
+#inbox-status {
+    color: var(--snow);
 }
 
 #log-count-display {
     color: var(--log-count-display-color);
 }
 
+/* ====== FOOTER DONE ====== */
+
 :root {
     --footer-height: 80px;
     --log-count-display-color: #abb2b9;
-    --delete-selected-btn-text-color: white;
-    --delete-selected-btn-color: #b5b5b7;
-    --delete-all-btn-color: rgb(229 79 79);
+    --button-red: rgb(229 79 79);
     --main-text-color: white;
     --page-background-color: black;
+    --home-edit-edge: 0.8em;
     --header-button-color: #0a84fe;
     --header-footer-background: #262628;
+    --header-title-size: 16px;
+    --footer-text-size: 16px;
+    --footer-text-buffer: 15px;
+    --new-note-icon-size: 3.5em;
+    --new-note-icon-offset: 0.8em;
+    --new-note-width: 2.3em;
+    --home-edit-size: 16px;
+    --home-icon-gap: 5px;
+    --nav-max-width: 90px;
+    --header-title-size: 18px;
     --checkbox-fill: #69e36e;
     --checkbox-stroke: #94929c;
-    --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
+    --button-radius: 15px;
 }

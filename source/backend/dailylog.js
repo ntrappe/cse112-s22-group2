@@ -119,6 +119,8 @@ class DailyLog extends HTMLElement {
       localStorage.setItem(dateFormated,notes);
     }
 
+    
+
     /* delete a log given date */
     function deleteLog (givenDate) {
       localStorage.removeItem(givenDate);

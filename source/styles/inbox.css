@@ -1,14 +1,14 @@
 @import "./home-screen.css";
 
 /* ====== HEADER ====== */
+
 header {
 
     /* header does not move when scrolling through logs */
     position: sticky;
     top: 0;
     background-color: var(--header-footer-background);
-    padding: 0;  
-    /* padding: 1em 0; */
+    padding: 0;      
     display: block !important;
 }
 
@@ -141,6 +141,7 @@ p {
 }
 
 /* ====== FOOTER ====== */
+
 footer {
     width: 100%;
     bottom: 0;
@@ -164,8 +165,11 @@ footer {
     font-size: var(--home-edit-size);
     border: none;
     border-radius: var(--button-radius);
+
+    /* space inside button and between them and footer to match height */
     padding: 7px 15px;
-    margin: 0;
+    margin-top: var(--footer-button-gap);
+    margin-bottom: var(--footer-button-gap);
 }
 
 #delete-all-btn {
@@ -217,17 +221,16 @@ footer {
     --home-edit-edge: 0.8em;
     --header-button-color: #0a84fe;
     --header-footer-background: #262628;
-    --header-title-size: 16px;
+    --header-title-size: 18px;
     --footer-text-size: 16px;
     --footer-text-buffer: 15px;
+    --footer-button-gap: 3px;
     --new-note-icon-size: 3.5em;
     --new-note-icon-offset: 0.8em;
     --new-note-width: 2.3em;
     --home-edit-size: 16px;
     --home-icon-gap: 5px;
     --nav-max-width: 90px;
-    --header-title-size: 18px;
     --checkbox-fill: #69e36e;
     --checkbox-stroke: #94929c;
-    --button-radius: 15px;
 }

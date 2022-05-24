@@ -1,3 +1,7 @@
+const EXIT_SUCESS = true;
+const EXIT_FAILURE = false;
+let myObject = [];
+
 function addLog(date, notes, journal){
     let dateSplitted = date.split(',');
     // Input validation for day of the week

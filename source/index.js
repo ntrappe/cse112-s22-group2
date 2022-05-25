@@ -81,7 +81,9 @@ function deleteSelectedLogs() {
     const numLogSelected = logList.querySelectorAll('input:checked').length;
     if (numLogSelected > 0) {
         // set the text according to the number of logs wanting to delete + display modal
-        deleteSelectedModal.shadowRoot.childNodes[1].firstChild.firstChild.innerText = `Do you want to delete ${numLogSelected} Daily Logs?`;
+        const deleteSelectedKids = deleteSelectedModal.shadowRoot.childNodes[1];
+        const confirmationMessage = deleteSelectedKids.firstChild.firstChild;
+        confirmationMessage.innerText = `Do you want to delete ${numLogSelected} Daily Logs?`;
         deleteSelectedModal.style.display = 'block';
     }
 }

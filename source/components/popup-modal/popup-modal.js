@@ -12,8 +12,8 @@ class popupModal extends HTMLElement {
 
         // create the elements which compose the custom element
         const modalBackdrop = document.createElement('div');
-        const modalContianer = document.createElement('div');
-        const buttonsContianer = document.createElement('div');
+        const modalContainer = document.createElement('div');
+        const buttonsContainer = document.createElement('div');
         const confirmationText = document.createElement('p');
         const warningText = document.createElement('p');
         const deleteAllBtn = document.createElement('button');
@@ -21,10 +21,12 @@ class popupModal extends HTMLElement {
 
         // set the attributes of the created elements
         modalBackdrop.setAttribute('id', 'modal-backdrop');
-        modalContianer.setAttribute('id', 'modal-container');
-        buttonsContianer.setAttribute('id', 'buttons-container');
+        modalContainer.setAttribute('id', 'modal-container');
+        buttonsContainer.setAttribute('id', 'buttons-container');
         deleteAllBtn.setAttribute('id', 'modal-delete-all-btn');
         cancelBtn.setAttribute('id', 'modal-cancel-btn');
+        confirmationText.setAttribute('id', 'confirmation-text');
+        warningText.setAttribute('id', 'warning-text');
 
         // set the inner text of the created elements
         confirmationText.innerText = 'Do you want to delete all daily logs?';
@@ -33,12 +35,12 @@ class popupModal extends HTMLElement {
         cancelBtn.innerText = 'Cancel';
 
         // append elements to container
-        buttonsContianer.appendChild(deleteAllBtn);
-        buttonsContianer.appendChild(cancelBtn);
-        modalContianer.appendChild(confirmationText);
-        modalContianer.appendChild(warningText);
-        modalContianer.appendChild(buttonsContianer);
-        modalBackdrop.appendChild(modalContianer);
+        buttonsContainer.appendChild(deleteAllBtn);
+        buttonsContainer.appendChild(cancelBtn);
+        modalContainer.appendChild(confirmationText);
+        modalContainer.appendChild(warningText);
+        modalContainer.appendChild(buttonsContainer);
+        modalBackdrop.appendChild(modalContainer);
 
         // append to the shadowroot
         shadow.appendChild(modalStyle);

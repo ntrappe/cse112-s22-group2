@@ -9,7 +9,9 @@ const data = [
     {
         dateOfEntry: '04/17/2022',
         textEntry:
-            'We are no strangers to love. You know the rules, and so do I. A full commitment\'s what I\'m thinking of, you wouldn\'t get this from any other guy',
+            'We are no strangers to love. You know the rules, and so do I.'
+            + 'A full commitment\'s what I\'m thinking of, you wouldn\'t get '
+            + 'this from any other guy',
         didTrackers: false,
         didNotes: true,
         didJournal: false,
@@ -38,6 +40,7 @@ data.forEach((dailyLog) => {
     const listItem = document.createElement('li');
     const checkbox = document.createElement('input');
     const dailyLogPreview = new DailyLogPreview();
+    dailyLogPreview.setAttribute('class', 'daily-log-preview');
     checkbox.setAttribute('type', 'checkbox');
     listItem.appendChild(checkbox);
     listItem.appendChild(dailyLogPreview);

@@ -8,11 +8,12 @@ header {
     position: sticky;
     top: 0;
     background-color: var(--header-footer-background);
-    padding: 0;      
+    padding: 0;
     display: block !important;
 }
 
 /* space header list horizontally and evenly */
+
 header ul {
     display: flex;
     align-items: baseline;
@@ -22,6 +23,7 @@ header ul {
 }
 
 /* width of all nav list elements same as largest one */
+
 header li {
     width: var(--nav-max-width);
 }
@@ -31,6 +33,7 @@ header li {
 }
 
 /* header edit button shifted to far right */
+
 #edit-btn {
     padding: 0;
     margin: 0;
@@ -42,6 +45,7 @@ header li {
 #home-list-item a {
     font-size: var(--home-edit-size);
     color: var(--header-button-color);
+    text-decoration: none;
 }
 
 /* '<' icon for home, add space between it and text */
@@ -81,6 +85,7 @@ main > ul {
 }
 
 input[type="checkbox"] {
+    
     /* Remove default css */
     appearance: none;
 
@@ -98,9 +103,9 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
-input[type="checkbox"]::before {
-    /* the checkmark in the checkbox (hidden until checked) */
+/* the checkmark in the checkbox (hidden until checked) */
 
+input[type="checkbox"]::before {
     content: "";
     width: 0.75em;
     height: 0.75em;
@@ -116,19 +121,14 @@ input[type="checkbox"]:checked {
     background-color: var(--checkbox-fill);
 }
 
-input[type="checkbox"]:checked::before {
-    /* checkmark visible on checked box */
+/* checkmark visible on checked box */
 
+input[type="checkbox"]:checked::before {
     transform: scale(1);
 }
 
 button {
     cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-    color: var(--header-button-color);
 }
 
 popup-modal {

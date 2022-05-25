@@ -1,9 +1,8 @@
 @import "./home-screen.css";
 
 #modal-backdrop {
-    border: 2px solid lime;
+    z-index: 1;
     background-color: rgba(0 0 0 / 60%);
-    /* filter: blur(10px); */
     position: fixed;
     height: 100%;
     width: 100%;
@@ -63,30 +62,6 @@
 #modal-cancel-btn {
     background-color: var(--dark-stone);
 }
-
-/* p:nth-of-type(2) {
-    color: grey;
-    font-size: 1em;
-    margin: 0 0 1.75em;
-} */
-
-/* #modal-delete-all-btn {
-    background-color: rgb(229 79 79);
-    color: white;
-}
-
-#modal-cancel-btn {
-    color: black;
-    background-color: white;
-} */
-
-/* #buttons-container > button {
-    border: none;
-    border-radius: 15px;
-    font-size: 1.25em;
-    padding: 10px 20px;
-    cursor: pointer;
-} */
 
 :root {
     --button-red: rgb(229 79 79);

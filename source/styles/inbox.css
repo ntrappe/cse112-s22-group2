@@ -61,20 +61,7 @@ i.fa-angle-left {
 
 /* ====== HEADER DONE ====== */
 
-/* body {
-    margin: 0 0 var(--footer-height) 0;
-    font-family: var(--font-sans);
-} */
-
-/* main {
-    padding: 8px;
-    margin: 0 !important;
-    background-color: var(--page-background-color);
-} */
-
-
 main > ul {
-    border: 2px solid yellow;
     padding: 0;
     list-style-type: none;
 }
@@ -82,28 +69,38 @@ main > ul {
 #log-list > li {
     display: flex;
     align-items: center;
+    margin: 0;
+    margin-bottom: var(--space-btw-logs);
+    margin-left: var(--log-edge-gap);
+    margin-right: var(--log-edge-gap);
+    padding: 0;
+}
+
+.daily-log-preview {
+    width: 100%;
 }
 
 input[type="checkbox"] {
-
     /* Remove default css */
     appearance: none;
 
     /* New Checkbox Style */
     background-color: var(--page-background-color);
     font: inherit;
-    width: 1.25em;
-    height: 1.25em;
-    border: 0.15em solid var(--checkbox-stroke);
-    border-radius: 0.35em;
+    width: var(--checkbox-width);
+    height: var(--checkbox-height);
+    border: 0.12em solid var(--checkbox-stroke);
+    border-radius: 5px;
     display: none;
     place-content: center;
+    margin-right: var(--log-checkbox-gap);
     float: left;
-    margin: 0 4em var(--section-distance) 1em;
     cursor: pointer;
 }
 
 input[type="checkbox"]::before {
+    /* the checkmark in the checkbox (hidden until checked) */
+
     content: "";
     width: 0.75em;
     height: 0.75em;
@@ -120,6 +117,8 @@ input[type="checkbox"]:checked {
 }
 
 input[type="checkbox"]:checked::before {
+    /* checkmark visible on checked box */
+
     transform: scale(1);
 }
 
@@ -221,7 +220,7 @@ footer {
     --home-edit-edge: 0.8em;
     --header-button-color: #0a84fe;
     --header-footer-background: #262628;
-    --header-title-size: 18px;
+    --header-title-size: 17px;
     --footer-text-size: 16px;
     --footer-text-buffer: 15px;
     --footer-button-gap: 3px;
@@ -231,6 +230,11 @@ footer {
     --home-edit-size: 16px;
     --home-icon-gap: 5px;
     --nav-max-width: 90px;
+    --log-edge-gap: 12px;
+    --log-checkbox-gap: 12px;
+    --space-btw-logs: 15px;
+    --checkbox-height: 1.25em;
+    --checkbox-width: 1.4em;
     --checkbox-fill: #69e36e;
     --checkbox-stroke: #94929c;
 }

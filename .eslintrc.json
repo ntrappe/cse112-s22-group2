@@ -33,7 +33,6 @@
             "variables": true 
         }],                                                             // ensures classes and variables are defined before use
         "no-param-reassign": ["error", { "props": false }]              // allows parameter properties to be modified
-
         // "const-uppercase/const-uppercase": 2                         // For ensuring constant variables to be all uppercases
         // For ensuring uppercase-started class name, we need to use a plugin named "coffee"
         // https://github.com/helixbass/eslint-plugin-coffee/blob/master/docs/rules/capitalized-class-names.md

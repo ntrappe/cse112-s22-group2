@@ -104,10 +104,13 @@ p {
     --section-distance: 20px;
     --distance-to-header: 30px;
     --stone: #a6a3ae;
+    --dark-stone: #7a7882;
     --granite: #807f86;
+    --pumice: #5b5a5f;
     --snow: #fff;
     --red: #ff7070;
     --blue: #0a84fe;
+    --button-radius: 15px;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
     --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
 }

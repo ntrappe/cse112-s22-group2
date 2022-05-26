@@ -1,0 +1,68 @@
+@import "./home-screen.css";
+
+#modal-backdrop {
+    z-index: 1;
+    background-color: rgba(0 0 0 / 60%);
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+#modal-container {
+    border-style: solid;
+    border-radius: var(--button-radius);
+    padding: 1.5em;
+    background-color: #29292c;
+    width: 60%;
+}
+
+#confirmation-text {
+    color: white;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+#warning-text {
+    color: var(--stone);
+    font-size: 14px;
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+}
+
+#modal-delete-all-btn,
+#modal-cancel-btn {
+    color: var(--snow);
+    font-size: var(--home-edit-size);
+    border: none;
+    border-radius: var(--button-radius);
+
+    /* space inside button and between them and footer to match height */
+    padding: 7px 15px;
+    margin: 0;
+    cursor: pointer;
+}
+
+#modal-delete-all-btn {
+    background-color: var(--button-red);
+}
+
+#modal-cancel-btn {
+    background-color: var(--dark-stone);
+}
+
+:root {
+    --button-red: rgb(229 79 79);
+}

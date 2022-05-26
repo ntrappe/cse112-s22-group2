@@ -7,15 +7,8 @@
     border-radius: var(--rounded-rect);
     min-height: var(--preview-height);
 
-    /* space between sections */
-    margin-bottom: var(--section-distance);
-
-    /* add space between edges of wrapper and internal contents */
-    
     /* top | right | bottom | left */
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
-    margin-left: var(--pad-screen-edge);
-    margin-right: var(--pad-screen-edge);
 }
 
 div.text-container {

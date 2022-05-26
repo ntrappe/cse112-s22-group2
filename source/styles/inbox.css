@@ -1,0 +1,241 @@
+@import "./home-screen.css";
+
+/* ====== HEADER ====== */
+
+header {
+
+    /* header does not move when scrolling through logs */
+    position: sticky;
+    top: 0;
+    background-color: var(--header-footer-background);
+    padding: 10px 0 0 !important;
+    height: var(--header-height);
+    display: block !important;
+}
+
+/* space header list horizontally and evenly */
+
+header ul {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 0 var(--home-edit-edge);
+    list-style-type: none;
+}
+
+/* width of all nav list elements same as largest one */
+
+header li {
+    width: var(--nav-max-width);
+}
+
+#edit-list-item {
+    text-align: right;
+}
+
+/* header edit button shifted to far right */
+
+#edit-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+}
+
+#edit-btn,
+#home-list-item a {
+    font-size: var(--home-edit-size);
+    color: var(--header-button-color);
+    text-decoration: none;
+}
+
+/* '<' icon for home, add space between it and text */
+
+i.fa-angle-left {
+    margin-right: var(--home-icon-gap);
+}
+
+#inbox-list-item h1 {
+    font-size: var(--header-title-size);
+    text-align: center;
+    color: var(--snow);
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+}
+
+/* ====== HEADER DONE ====== */
+
+main > ul {
+    padding: 0;
+    list-style-type: none;
+}
+
+#log-list > li {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-bottom: var(--space-btw-logs);
+    margin-left: var(--log-edge-gap);
+    margin-right: var(--log-edge-gap);
+    padding: 0;
+}
+
+.daily-log-preview {
+    width: 100%;
+}
+
+input[type="checkbox"] {
+    
+    /* Remove default css */
+    appearance: none;
+
+    /* New Checkbox Style */
+    background-color: var(--page-background-color);
+    font: inherit;
+    width: var(--checkbox-width);
+    height: var(--checkbox-height);
+    border: 0.12em solid var(--checkbox-stroke);
+    border-radius: 5px;
+    display: none;
+    place-content: center;
+    margin-right: var(--log-checkbox-gap);
+    float: left;
+    cursor: pointer;
+}
+
+/* the checkmark in the checkbox (hidden until checked) */
+
+input[type="checkbox"]::before {
+    content: "";
+    width: 0.75em;
+    height: 0.75em;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--page-background-color);
+    transform-origin: bottom left;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked {
+    border-color: var(--checkbox-fill);
+    background-color: var(--checkbox-fill);
+}
+
+/* checkmark visible on checked box */
+
+input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+button {
+    cursor: pointer;
+}
+
+popup-modal {
+    display: none;
+}
+
+p {
+    color: var(--main-text-color);
+}
+
+/* ====== FOOTER ====== */
+
+footer {
+    width: 100%;
+    bottom: 0;
+    background-color: var(--header-footer-background);
+    display: flex;
+    align-items: center;
+    padding-top: var(--footer-text-buffer);
+    padding-bottom: var(--footer-text-buffer);
+
+    /* always available to user so does not move on scroll */
+    position: fixed;
+    
+    /* flex pushes buttons apart */
+    justify-content: space-evenly;
+}
+
+#delete-all-btn,
+#delete-selected-btn {
+    display: none;
+    color: var(--snow);
+    font-size: var(--home-edit-size);
+    border: none;
+    border-radius: var(--button-radius);
+
+    /* space inside button and between them and footer to match height */
+    padding: 7px 15px;
+    margin-top: var(--footer-button-gap);
+    margin-bottom: var(--footer-button-gap);
+}
+
+#delete-all-btn {
+    background-color: var(--button-red);
+}
+
+#delete-selected-btn {
+    background-color: var(--dark-stone);
+}
+
+#inbox-info p {
+    font-size: var(--home-edit-size);
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+#new-note-btn {
+    width: var(--new-note-icon-size);
+    height: var(--new-note-icon-size);
+    background-color: var(--header-footer-background);
+    border: none;
+    position: absolute;
+    right: 0;
+    margin-right: var(--new-note-icon-offset);
+}
+
+#new-note-icon {
+    width: var(--new-note-width);
+    height: auto;
+}
+
+#inbox-status {
+    color: var(--snow);
+}
+
+#log-count-display {
+    color: var(--log-count-display-color);
+}
+
+/* ====== FOOTER DONE ====== */
+
+:root {
+    --footer-height: 80px;
+    --log-count-display-color: #abb2b9;
+    --button-red: rgb(229 79 79);
+    --main-text-color: white;
+    --page-background-color: black;
+    --home-edit-edge: 0.8em;
+    --header-button-color: #0a84fe;
+    --header-footer-background: #262628;
+    --header-title-size: 17px;
+    --footer-text-size: 16px;
+    --footer-text-buffer: 15px;
+    --footer-button-gap: 3px;
+    --new-note-icon-size: 3.5em;
+    --new-note-icon-offset: 0.8em;
+    --new-note-width: 2.3em;
+    --home-edit-size: 16px;
+    --home-icon-gap: 5px;
+    --nav-max-width: 90px;
+    --log-edge-gap: 12px;
+    --log-checkbox-gap: 12px;
+    --space-btw-logs: 15px;
+    --checkbox-height: 1.25em;
+    --checkbox-width: 1.4em;
+    --checkbox-fill: #69e36e;
+    --checkbox-stroke: #94929c;
+}

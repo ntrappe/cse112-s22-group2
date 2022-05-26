@@ -1,11 +1,12 @@
 // Class name constants
-const DAILY_LOG_PREVIEW_WRAPPER_CLASS = 'daily-log-preview-wrapper';
-const TEXT_WRAPPER_CLASS = 'text-container';
-const ICONS_WRAPPER_CLASS = 'icon-container';
-const DAILY_LOG_TITLE = 'Daily Log ';
+export const DAILY_LOG_PREVIEW_WRAPPER_CLASS = 'daily-log-preview-wrapper';
+export const TEXT_WRAPPER_CLASS = 'text-container';
+export const ICONS_WRAPPER_CLASS = 'icon-container';
+export const LOG_ICON_CLASS = 'log-icon';
+export const DAILY_LOG_TITLE = 'Daily Log ';
 
 // Preview constants
-const NO_PREVIEW_TEXT = 'No preivew text available.';
+export const NO_PREVIEW_TEXT = 'No preivew text available.';
 const MAX_PREVIEW_LENGTH = 75;
 
 // Icon constants
@@ -78,7 +79,7 @@ class DailyLogPreview extends HTMLElement {
         const icons = rightSideDiv.children;
         for (let iconInd = 0; iconInd < icons.length; iconInd++) {
             const icon = icons[iconInd];
-            icon.setAttribute('class', 'log-icon');
+            icon.setAttribute('class', LOG_ICON_CLASS);
         }
 
         /**

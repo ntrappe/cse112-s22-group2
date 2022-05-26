@@ -20,6 +20,7 @@
         background: none;
         color: var(--snow);
         border: none;
+        cursor: pointer;
     }
     
     button.control-btn[priority="high"] {

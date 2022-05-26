@@ -1,3 +1,10 @@
+/**
+ * @module inboxHelper
+ */
+
+const EXIT_FAILURE = 1;
+const EXIT_SUCCESS = 0;
+
 const editBtn = document.getElementById('edit-btn');
 const deleteAllBtn = document.getElementById('delete-all-btn');
 const deleteSelectedBtn = document.getElementById('delete-selected-btn');
@@ -96,3 +103,19 @@ function tickCheckbox(checkbox) {
         checkbox.checked = true;
     }
 }
+
+/* Helper functions for control */
+/**
+ * @method setNumLogs sets number of logs listed on inbox footer
+ * @param {Number} num [0, inf) whole number
+ * @return whether updated number of logs
+ */
+export function setNumLogs(num) {
+    if (num < 0) {
+        return EXIT_FAILURE;
+    } else {
+        logCountDisplay.innerText = `${num} logs`;
+        return EXIT_SUCCESS;
+    }
+}
+

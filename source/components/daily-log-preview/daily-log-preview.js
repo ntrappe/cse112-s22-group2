@@ -5,7 +5,7 @@ const ICONS_WRAPPER_CLASS = 'icon-container';
 const DAILY_LOG_TITLE = 'Daily Log ';
 
 // Preview constants
-const NO_PREVIEW_TEXT = 'No preivew text available.';
+const NO_PREVIEW_TEXT = 'No preview text available.';
 const MAX_PREVIEW_LENGTH = 75;
 
 // Icon constants

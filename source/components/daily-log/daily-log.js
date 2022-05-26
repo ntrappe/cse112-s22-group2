@@ -156,6 +156,14 @@ class DailyLog extends HTMLElement {
             journalInput.textContent = journalOfLog;
         };
 
+        this.getDate = () => {
+            return dateBtn.textContent;
+        }
+
+        this.getJournal = () => {
+            return journalInput.value;
+        }
+
         /**
          * @method setDefaultDate
          * Helper function to fetch current date and format
@@ -170,6 +178,24 @@ class DailyLog extends HTMLElement {
                 month: 'long',
             });
             dateBtn.textContent = `${day}, ${month} ${date.getDate()}, ${date.getFullYear()}`;
+        }
+
+        const cancelLogEvent = new CustomEvent('cancelLog', {
+            bubbles: true,      // event listenable outside of container
+            composed: true,
+        });
+
+        const saveLogEvent = new CustomEvent('saveLog', {
+            bubbles: true,      // event listenable outside of container
+            composed: true,
+        });
+
+        cancelBtn.onclick = () => {
+            shadow.dispatchEvent(cancelLogEvent);
+        }  
+
+        saveBtn.onclick = () => {
+            shadow.dispatchEvent(saveLogEvent);
         }
 
         /* call functions */

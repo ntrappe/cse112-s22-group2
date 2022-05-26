@@ -36,7 +36,7 @@ describe('Creates a daily log preview', { includeShadowDom: true }, () => {
         cy.get('#main').then(($el) => {
             ($el).append(dailyLogPreviewNormal);
             cy.get('daily-log-preview').should('exist');
-        })
+        });
     });
 });
 
@@ -54,7 +54,7 @@ describe('Checks for the scaffold of each preview wrapper', { includeShadowDom: 
         cy.get(`.${TEXT_WRAPPER_CLASS}`).first().children().should('have.length', 2);
         cy.get(`.${TEXT_WRAPPER_CLASS}`).first().children(`h2.${PREVIEW_TITLE_CLASS}`);
         cy.get(`.${TEXT_WRAPPER_CLASS}`).first().children(`p.${PREVIEW_PARAGRAPH_CLASS}`);
-    })
+    });
     it('should find 3 children with class log-icon under icons wrapper', () => {
         cy.get(`.${ICONS_WRAPPER_CLASS}`).first().children().should('have.length', 3);
         cy.get(`.${ICONS_WRAPPER_CLASS}`).first().children(`.${LOG_ICON_CLASS}`);
@@ -79,7 +79,7 @@ describe('Checks for content after populating the fields', { includeShadowDom: t
     it('preview should contain correct text', () => {
         cy.get(`.${PREVIEW_PARAGRAPH_CLASS}`).then(($el) => {
             expect($el.last()).to.contain(journalEntry);
-        })
+        });
     });
 });
 
@@ -102,6 +102,6 @@ describe('Creates another daily log preview', { includeShadowDom: true }, () => 
         cy.get(`.${PREVIEW_PARAGRAPH_CLASS}`).then(($el) => {
             expect($el.last()).to.contain(NO_PREVIEW_TEXT);
             cy.log($el.last());
-        })
+        });
     });
 });

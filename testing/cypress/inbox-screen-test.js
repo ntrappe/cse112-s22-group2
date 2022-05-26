@@ -2,6 +2,8 @@ import DailyLogPreview, {
     NO_PREVIEW_TEXT,
     DAILY_LOG_TITLE,
     DAILY_LOG_PREVIEW_WRAPPER_CLASS,
+    PREVIEW_TITLE_CLASS,
+    PREVIEW_PARAGRAPH_CLASS,
     TEXT_WRAPPER_CLASS, 
     ICONS_WRAPPER_CLASS,
     LOG_ICON_CLASS
@@ -61,7 +63,7 @@ describe('Checks for the scaffold of each preview wrapper', { includeShadowDom: 
 
 describe('Checks for content after populating the fields', { includeShadowDom: true }, () => {
     it('header should contain the text \'Daily Log \'', () => {
-        cy.get('h2').then(($el) => {
+        cy.get(`.${PREVIEW_TITLE_CLASS}`).then(($el) => {
             expect($el).to.contain(DAILY_LOG_TITLE);
         });
     });
@@ -70,12 +72,12 @@ describe('Checks for content after populating the fields', { includeShadowDom: t
     const journalEntry = 'Test journal entry';
     dailyLogPreviewNormal.populateFields(dateOfEntry, journalEntry, false, false, true);
     it('header should contain correct date', () => {
-        cy.get('h2').then(($el) => {
+        cy.get(`.${PREVIEW_TITLE_CLASS}`).then(($el) => {
             expect($el.last()).to.contain(dateOfEntry);
         });
     });
     it('preview should contain correct text', () => {
-        cy.get('p').then(($el) => {
+        cy.get(`.${PREVIEW_PARAGRAPH_CLASS}`).then(($el) => {
             expect($el.last()).to.contain(journalEntry);
         })
     });
@@ -97,7 +99,7 @@ describe('Creates another daily log preview', { includeShadowDom: true }, () => 
     const dateOfEntry = '05/25/2022';
     dailyLogPreviewNoJournal.populateFields(dateOfEntry, '', false, false, true);
     it('should fill in the default value for empty journals', () => {
-        cy.get('p').then(($el) => {
+        cy.get(`.${PREVIEW_PARAGRAPH_CLASS}`).then(($el) => {
             expect($el.last()).to.contain(NO_PREVIEW_TEXT);
             cy.log($el.last());
         })

@@ -3,6 +3,8 @@ export const DAILY_LOG_PREVIEW_WRAPPER_CLASS = 'daily-log-preview-wrapper';
 export const TEXT_WRAPPER_CLASS = 'text-container';
 export const ICONS_WRAPPER_CLASS = 'icon-container';
 export const LOG_ICON_CLASS = 'log-icon';
+export const PREVIEW_TITLE_CLASS = 'preview-title';
+export const PREVIEW_PARAGRAPH_CLASS = 'preview-paragraph';
 export const DAILY_LOG_TITLE = 'Daily Log ';
 
 // Preview constants
@@ -65,6 +67,8 @@ class DailyLogPreview extends HTMLElement {
         shadow.appendChild(dailyLogPreviewCSS);
 
         /* Adds classes to the created elements */
+        title.setAttribute('class', PREVIEW_TITLE_CLASS);
+        preview.setAttribute('class', PREVIEW_PARAGRAPH_CLASS);
         wrapper.setAttribute('class', DAILY_LOG_PREVIEW_WRAPPER_CLASS);
         leftSideDiv.setAttribute('class', TEXT_WRAPPER_CLASS);
         rightSideDiv.setAttribute('class', ICONS_WRAPPER_CLASS);

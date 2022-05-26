@@ -48,10 +48,15 @@ describe('Checks for the scaffold of each preview wrapper', { includeShadowDom: 
     it('should find a child of class icon-container under wrapper', () => {
         cy.get(`.${DAILY_LOG_PREVIEW_WRAPPER_CLASS}`).first().children(`.${ICONS_WRAPPER_CLASS}`);
     });
+    it('should find 2 children, one h2 and one p under text container', () => {
+        cy.get(`.${TEXT_WRAPPER_CLASS}`).first().children().should('have.length', 2);
+        cy.get(`.${TEXT_WRAPPER_CLASS}`).first().children('h2');
+        cy.get(`.${TEXT_WRAPPER_CLASS}`).first().children('p');
+    })
     it('should find 3 children with class log-icon under icons wrapper', () => {
         cy.get(`.${ICONS_WRAPPER_CLASS}`).first().children().should('have.length', 3);
         cy.get(`.${ICONS_WRAPPER_CLASS}`).first().children(`.${LOG_ICON_CLASS}`);
-    })
+    });
 })
 
 describe('Checks for content after populating the fields', { includeShadowDom: true }, () => {

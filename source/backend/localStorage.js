@@ -2,7 +2,7 @@ const EXIT_SUCESS = true;
 const EXIT_FAILURE = false;
 let myObject = [];
 
-function addLog(date, notes, journal){
+export function addLog(date, notes, journal){
     let dateSplitted = date.split(',');
     // Input validation for day of the week
     if (!(dateSplitted[0] == "Monday" || dateSplitted[0] == "Tuesday" || dateSplitted[0] == "Wednesday" || dateSplitted[0] == "Thursday" || dateSplitted[0] == "Friday" || dateSplitted[0] == "Saturday" || dateSplitted[0] == "Sunday")){
@@ -64,7 +64,7 @@ function addLog(date, notes, journal){
     return EXIT_SUCESS;
 }
 
-function updateLog(date){
+export function updateLog(date, notes, journal){
     let dateSplitted = date.split(',');
     console.log(dateSplitted);
 
@@ -95,8 +95,8 @@ function updateLog(date){
         return EXIT_FAILURE;
     }
 
-    let notes = document.getElementById('notes').value;
-    let journal = document.getElementById('journal').value;
+    //let notes = document.getElementById('notes').value;
+    //let journal = document.getElementById('journal').value;
 
     // Input validation for notes
     // Check whether it contains only strings
@@ -128,7 +128,7 @@ function updateLog(date){
     return EXIT_SUCESS;
 }
 
-function fetchLog(date){
+export function fetchLog(date){
     let dateSplitted = date.split(',');
     console.log(dateSplitted);
 
@@ -169,15 +169,15 @@ function fetchLog(date){
     }
 }
 
-function fetchAll(){
+export function fetchAll(){
     let searchResult = [];
     for(let i = 0; i < localStorage.length; i++){
         console.log("Log at " + localStorage.key(i) + ": " + localStorage.getItem(localStorage.key(i)));
-        searchResult.append(localStorage.getItem(localStorage.key(i)));
+        searchResult.push(localStorage.getItem(localStorage.key(i)));
     }
     return searchResult;
 }
 
-function deleteAll(){
+export function deleteAll(){
     localStorage.clear();
 }

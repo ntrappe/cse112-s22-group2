@@ -3,10 +3,13 @@
  */
 
 const DELETE_ALL = 'delete-all-modal';
+const EXIT_SUCCESS = 1;
+const EXIT_FAILURE = 0;
 
 import DailyLogPreview from '../daily-log-preview/daily-log-preview.js';
 import DailyLog from '../daily-log/daily-log.js';
-import {convertDate} from '../control/control-helpers.js';
+import { convertDate } from '../control/control-helpers.js';
+import { addLog, fetchAll } from '../../backend/storage.js';
 
 /* Sample code of how to render a custom component */
 const data = [
@@ -46,23 +49,23 @@ const editBtn = document.getElementById('edit-btn');
 let createNewLog = false;
 
 /* Use a loop to dynamically render the components */
-data.forEach((dailyLog) => {
-    const listItem = document.createElement('li');
-    const checkbox = document.createElement('input');
-    const dailyLogPreview = new DailyLogPreview();
-    dailyLogPreview.setAttribute('class', 'daily-log-preview');
-    checkbox.setAttribute('type', 'checkbox');
-    listItem.appendChild(checkbox);
-    listItem.appendChild(dailyLogPreview);
-    logList.appendChild(listItem);
-    dailyLogPreview.populateFields(
-        dailyLog.dateOfEntry,
-        dailyLog.textEntry,
-        dailyLog.didTrackers,
-        dailyLog.didNotes,
-        dailyLog.didJournal,
-    );
-});
+// data.forEach((dailyLog) => {
+//     const listItem = document.createElement('li');
+//     const checkbox = document.createElement('input');
+//     const dailyLogPreview = new DailyLogPreview();
+//     dailyLogPreview.setAttribute('class', 'daily-log-preview');
+//     checkbox.setAttribute('type', 'checkbox');
+//     listItem.appendChild(checkbox);
+//     listItem.appendChild(dailyLogPreview);
+//     logList.appendChild(listItem);
+//     dailyLogPreview.populateFields(
+//         dailyLog.dateOfEntry,
+//         dailyLog.textEntry,
+//         dailyLog.didTrackers,
+//         dailyLog.didNotes,
+//         dailyLog.didJournal,
+//     );
+// });
 
 /* Inbox Event Functions */
 /**
@@ -91,7 +94,6 @@ document.addEventListener('deleteConfirm', (event) => {
     }
 });
 
-
 newLogBtn.addEventListener('click', () => {
     if (!createNewLog) {
         editBtn.disabled = true;        // do not let users mess outside of log
@@ -104,74 +106,80 @@ newLogBtn.addEventListener('click', () => {
             main.removeChild(dailyLog);
             editBtn.disabled = false;
             createNewLog = false;
-            console.log('repopulate');
-            data.forEach((dailyLog) => {
-                const listItem = document.createElement('li');
-                const checkbox = document.createElement('input');
-                const dailyLogPreview = new DailyLogPreview();
-                dailyLogPreview.setAttribute('class', 'daily-log-preview');
-                checkbox.setAttribute('type', 'checkbox');
-                listItem.appendChild(checkbox);
-                listItem.appendChild(dailyLogPreview);
-                logList.appendChild(listItem);
-                dailyLogPreview.populateFields(
-                    dailyLog.dateOfEntry,
-                    dailyLog.textEntry,
-                    dailyLog.didTrackers,
-                    dailyLog.didNotes,
-                    dailyLog.didJournal,
-                );
-            });
+            populateInbox();
         });
 
         dailyLog.addEventListener('saveLog', () => {
             main.removeChild(dailyLog);
             editBtn.disabled = false;
             createNewLog = false;
-            const listItem = document.createElement('li');
-            const checkbox = document.createElement('input');
-            const dailyLogPreview = new DailyLogPreview();
-            dailyLogPreview.setAttribute('class', 'daily-log-preview');
-            checkbox.setAttribute('type', 'checkbox');
-            listItem.appendChild(checkbox);
-            listItem.appendChild(dailyLogPreview);
-            logList.appendChild(listItem);
-            dailyLogPreview.populateFields(
-                convertDate(dailyLog.getDate()),
-                dailyLog.getJournal(),
-                false,
-                false,
-                true,
-            );
-            data.forEach((dailyLog) => {
-                const listItem = document.createElement('li');
-                const checkbox = document.createElement('input');
-                const dailyLogPreview = new DailyLogPreview();
-                dailyLogPreview.setAttribute('class', 'daily-log-preview');
-                checkbox.setAttribute('type', 'checkbox');
-                listItem.appendChild(checkbox);
-                listItem.appendChild(dailyLogPreview);
-                logList.appendChild(listItem);
-                dailyLogPreview.populateFields(
-                    dailyLog.dateOfEntry,
-                    dailyLog.textEntry,
-                    dailyLog.didTrackers,
-                    dailyLog.didNotes,
-                    dailyLog.didJournal,
-                );
-            });
+            
+            addLog(dailyLog.getDate(), [], dailyLog.getJournal());
+            populateInbox();
         });
 
     }
 });
 
+/**
+ * Removes logs from the screen (NOT local storage)
+ */
 function removeAllLogs() {
     while (logList.lastElementChild) {
         logList.removeChild(logList.lastElementChild);
     }
 }
 
+/**
+ * Uses local storage to fetch contents of each log
+ * then populates inbox.html with each log preview
+ * @returns success or failure (if nothing to add)
+ */
+function populateInbox() {
+    const allStoredLogs = fetchAll();
+    
+    if (allStoredLogs.length === 0) {
+        console.log('No stored logs in local storage');
+        return EXIT_FAILURE;
+    }
 
+    allStoredLogs.forEach((dailyLog) => {
+        const dailyLogPreview = createDailyLogPreview();
+
+        dailyLogPreview.populateFields(
+            convertDate(dailyLog.date),
+            dailyLog.journal,
+            false,
+            false,
+            (dailyLog.journal.length == 0) ? false : true,
+        );
+    });
+
+    return EXIT_SUCCESS;
+}
+
+/**
+ * Does all the HTML dirty work in setting up a preview
+ * to be displayed on inbox.html (along w/ checkbox)
+ * @returns <daily-log-preview>
+ */
+function createDailyLogPreview() {
+    const listItem = document.createElement('li');
+    const checkbox = document.createElement('input');
+    const dailyLogPreview = new DailyLogPreview();
+    dailyLogPreview.setAttribute('class', 'daily-log-preview');
+    checkbox.setAttribute('type', 'checkbox');
+    listItem.appendChild(checkbox);
+    listItem.appendChild(dailyLogPreview);
+    logList.appendChild(listItem);
+
+    return dailyLogPreview;
+}
+
+localStorage.clear();
+addLog('Thursday, May 26, 2022', [], 'fuck this');
+addLog('Wednesday, May 25, 2022', [], 'muahahahhahahahahha');
+populateInbox();
 
 // function onload() {
 

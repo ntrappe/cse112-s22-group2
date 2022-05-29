@@ -56,14 +56,14 @@ class popupModal extends HTMLElement {
         }
 
         const deleteConfirmEvent = new CustomEvent('deleteConfirm', {
-            bubbles: true,      // event listenable outside of container
+            bubbles: true, // event listenable outside of container
             composed: true,
             detail: { modalType: () => elemID },
         });
 
         deleteAllBtn.onclick = () => {
             shadow.dispatchEvent(deleteConfirmEvent);
-        }
+        };
     }
 }
 customElements.define('popup-modal', popupModal);

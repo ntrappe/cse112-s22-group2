@@ -134,6 +134,25 @@ class DailyLogPreview extends HTMLElement {
                 ? textEntry.substring(0, MAX_PREVIEW_LENGTH)
                 : textEntry;
         };
+
+        /**
+         * Returns the date of preview {mm/dd/yyyy}
+         * @returns string {mm/dd/yyyy}
+         */
+        this.getDate = () => {
+            const titleText = (title.textContent).split(' ');
+            return titleText[2];
+        };
+
+        const openLogEvent = new CustomEvent('openLog', {
+            bubbles: true, // event listenable outside of container
+            composed: true,
+            detail: { date: () => this.getDate() },
+        });
+
+        this.onclick = () => {
+            shadow.dispatchEvent(openLogEvent);
+        };
     }
 }
 

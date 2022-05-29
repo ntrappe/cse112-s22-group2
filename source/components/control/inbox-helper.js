@@ -51,6 +51,8 @@ function toggleCheckboxDisplay() {
     // show checkboxes when edit is clicked and set text to cancel
     if (editBtn.innerText === 'Edit') {
         editBtn.innerText = 'Cancel';
+        editBtn.dispatchEvent(activeEditEvent); // tell control in edit mode
+
         checkboxes.forEach((checkbox) => {
             checkbox.checked = false;
             checkbox.style.display = 'grid';
@@ -65,6 +67,8 @@ function toggleCheckboxDisplay() {
         deleteSelectedBtn.style.display = 'block';
     } else { // stop showing checkboxes when cancel is clicked and set text back to edit
         editBtn.innerText = 'Edit';
+        editBtn.dispatchEvent(deactiveEditEvent); // tell control in edit mode
+
         checkboxes.forEach((checkbox) => {
             checkbox.style.display = 'none';
         });
@@ -110,12 +114,32 @@ function tickCheckbox(checkbox) {
  * @param {Number} num [0, inf) whole number
  * @return whether updated number of logs
  */
-export function setNumLogs(num) {
+function setNumLogs(num) {
     if (num < 0) {
         return EXIT_FAILURE;
-    } else {
-        logCountDisplay.innerText = `${num} logs`;
-        return EXIT_SUCCESS;
     }
+
+    logCountDisplay.innerText = `${num} logs`;
+    return EXIT_SUCCESS;
 }
 
+/* Events */
+/**
+ * When user clicks 'Edit', they are now in edit mode so
+ * let control know (so that other operations are suspended)
+ */
+const activeEditEvent = new CustomEvent('activeEdit', {
+    bubbles: true, // event listenable outside of container
+    composed: true,
+});
+
+/**
+ * When user clicks 'Cancel', they are NOT in edit mode
+ * so normal operations can resume
+ */
+const deactiveEditEvent = new CustomEvent('deactiveEdit', {
+    bubbles: true, // event listenable outside of container
+    composed: true,
+});
+
+export default setNumLogs;

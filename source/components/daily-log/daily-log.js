@@ -109,20 +109,7 @@ class DailyLog extends HTMLElement {
         wrapper.appendChild(notes);
         wrapper.appendChild(journal);
 
-        /* define functions */
-        /**
-         * @method auto_grow
-         * Journal textarea (input) expands as user types and the
-         * entire daily log also expands so users dont have to
-         * scroll within the textarea (no scroll bar within it)
-         * @param {Object} element journal input (textarea)
-         */
-        function autoGrow(element) {
-            element.style.height = 'auto';
-            wrapper.style.height = 'auto'; // expand too so no scroll bar
-            element.style.height = (element.scrollHeight) + PIXELS;
-        }
-
+        /* Setter functions */
         /**
          * @method defaultFields
          * Set all text to use placeholders or generic text on
@@ -156,12 +143,22 @@ class DailyLog extends HTMLElement {
             journalInput.textContent = journalOfLog;
         };
 
-        this.getDate = () => {
-            return dateBtn.textContent;
-        }
+        /* Getter functions */
+        this.getDate = () => dateBtn.textContent;
+        this.getJournal = () => journalInput.value;
 
-        this.getJournal = () => {
-            return journalInput.value;
+        /* Functions */
+        /**
+         * @method auto_grow
+         * Journal textarea (input) expands as user types and the
+         * entire daily log also expands so users dont have to
+         * scroll within the textarea (no scroll bar within it)
+         * @param {Object} element journal input (textarea)
+         */
+        function autoGrow(element) {
+            element.style.height = 'auto';
+            wrapper.style.height = 'auto'; // expand too so no scroll bar
+            element.style.height = (element.scrollHeight) + PIXELS;
         }
 
         /**
@@ -180,23 +177,24 @@ class DailyLog extends HTMLElement {
             dateBtn.textContent = `${day}, ${month} ${date.getDate()}, ${date.getFullYear()}`;
         }
 
+        /* Events */
         const cancelLogEvent = new CustomEvent('cancelLog', {
-            bubbles: true,      // event listenable outside of container
+            bubbles: true, // event listenable outside of container
             composed: true,
         });
 
         const saveLogEvent = new CustomEvent('saveLog', {
-            bubbles: true,      // event listenable outside of container
+            bubbles: true, // event listenable outside of container
             composed: true,
         });
 
         cancelBtn.onclick = () => {
             shadow.dispatchEvent(cancelLogEvent);
-        }  
+        };
 
         saveBtn.onclick = () => {
             shadow.dispatchEvent(saveLogEvent);
-        }
+        };
 
         /* call functions */
         this.defaultFields();

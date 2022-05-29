@@ -4,12 +4,40 @@ const WEEKDAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satur
 const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
     'August', 'September', 'October', 'November', 'December'];
 
-export function convertDate(date) {
-    const dateSplitted = date.split(', ');
-    console.log('control date: ' + dateSplitted);
-    const monthDay = dateSplitted[1].split(' ');
-    const month = MONTHS.indexOf(monthDay[0]);
-    return `${month}/${monthDay[1]}/${dateSplitted[2]}`;
+export function convertPreviewDate(date) {
+    if (date.includes('/')) {
+        /* {yyyy/mm/dd} > {mm/dd/yyyy} */
+        const dateSplitted = date.split('/'); // already padded
+        return `${dateSplitted[1]}/${dateSplitted[2]}/${dateSplitted[0]}`;
+    } else {
+        /* {weekday, month day, year} > {mm/dd/yyyy} */
+        const dateSplitted = date.split(', ');
+        const monthDay = dateSplitted[1].split(' ');
+        const dayStr = monthDay[1].padStart(2, '0'); // pad so {dd}
+        const monthNum = MONTHS.indexOf(monthDay[0]) + 1;
+        const monthStr = (`${monthNum}`).padStart(2, '0'); // pad so {mm}
+        return `${monthStr}/${dayStr}/${dateSplitted[2]}`;
+    }
 }
 
-console.log('convert: ' + convertDate('Wednesday, May 27, 2022'));
+/**
+ * Converts date (workday, month day, year) to a date that
+ * orders items in local storage from most to least recent
+ * @param {String} date
+ * @returns date as yyyy/mm/dd
+ */
+export function convertStorageDate(date) {
+    if (date.includes('/')) {
+        /* {mm/dd/yyyy} > {yyyy/mm/dd} */
+        const dateSplitted = date.split('/'); // already padded
+        return `${dateSplitted[2]}/${dateSplitted[0]}/${dateSplitted[1]}`;
+    } else {
+        /* {weekday, month day, year} > {yyyy/mm/dd} */
+        const dateSplitted = date.split(', ');
+        const monthDay = dateSplitted[1].split(' ');
+        const dayStr = monthDay[1].padStart(2, '0'); // pad so {dd}
+        const monthNum = MONTHS.indexOf(monthDay[0]) + 1;
+        const monthStr = (`${monthNum}`).padStart(2, '0'); // pad so {mm}
+        return `${dateSplitted[2]}/${monthStr}/${dayStr}`;
+    }
+}

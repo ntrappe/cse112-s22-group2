@@ -9,6 +9,7 @@
 
     /* top | right | bottom | left */
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
+    cursor: pointer;
 }
 
 div.text-container {

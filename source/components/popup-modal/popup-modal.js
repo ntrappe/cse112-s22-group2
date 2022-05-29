@@ -46,9 +46,12 @@ class popupModal extends HTMLElement {
         shadow.appendChild(modalStyle);
         shadow.appendChild(modalBackdrop);
 
+        // add event listeners to close the modal
         deleteAllBtn.addEventListener('click', closePopupModal);
         cancelBtn.addEventListener('click', closePopupModal);
         modalBackdrop.addEventListener('click', closePopupModal);
+        // otherwise clicking anywhere will close the modal
+        modalContainer.addEventListener('click', (e) => { e.stopPropagation(); });
 
         const elemID = this.id;
         function closePopupModal() {

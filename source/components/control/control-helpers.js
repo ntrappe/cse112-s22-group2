@@ -41,3 +41,19 @@ export function convertStorageDate(date) {
         return `${dateSplitted[2]}/${monthStr}/${dayStr}`;
     }
 }
+
+/**
+ * @method setDefaultDate
+ * Helper function to fetch current date and format
+ * to be "{day of week}, {month} {date}, {year}"
+ */
+export function setDefaultDate() {
+    const date = new Date();
+    const day = date.toLocaleDateString('en-US', { // english version of weekday
+        weekday: 'long',
+    });
+    const month = date.toLocaleDateString('en-US', {
+        month: 'long',
+    });
+    return `${day}, ${month} ${date.getDate()}, ${date.getFullYear()}`;
+}

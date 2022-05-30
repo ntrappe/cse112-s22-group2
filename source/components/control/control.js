@@ -4,7 +4,7 @@
 
 import DailyLogPreview from '../daily-log-preview/daily-log-preview.js';
 import DailyLog from '../daily-log/daily-log.js';
-import { convertPreviewDate } from './control-helpers.js';
+import { convertPreviewDate, setDefaultDate } from './control-helpers.js';
 import { addLog, deleteLog, deleteAll,
     fetchAll, fetchLog, updateLog } from '../../backend/storage.js';
 
@@ -55,25 +55,33 @@ document.addEventListener('deleteConfirm', (event) => {
     updateLogCount();
 });
 
+/**
+ * If user clicks new log button, then we will remove all previews
+ * from page and just show the full daily log. We first check to
+ * see if a log for today was created (if so, open that log) otherwise,
+ * creates a new default log.
+ */
 newLogBtn.addEventListener('click', () => {
-    if (!createNewLog) {
+    const today = convertPreviewDate(setDefaultDate());
+    const todayLog = fetchLog(today);
+
+    if (todayLog !== EXIT_FAILURE) { // we found a log
+        openFullLog(today);
+    } else { // no log for today
         editBtn.disabled = true; // do not let users mess outside of log
         removeAllLogs(); // clear out main
         const dailyLog = new DailyLog(); // create new daily log
         main.appendChild(dailyLog);
-        createNewLog = true;
 
         dailyLog.addEventListener('cancelLog', () => {
             main.removeChild(dailyLog); // remove full log
             editBtn.disabled = false; // allow edit
-            createNewLog = false; // new log for today NOT made
             populateInbox(); // add previews back
         });
 
         dailyLog.addEventListener('saveLog', () => {
             main.removeChild(dailyLog); // remove full log
             editBtn.disabled = false; // allow edit
-            createNewLog = false; // new log for today already made
             addLog(dailyLog.getDate(), [], dailyLog.getJournal());
             populateInbox(); // add previews back
         });

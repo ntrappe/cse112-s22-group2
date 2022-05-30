@@ -4,17 +4,17 @@ describe("Open Page", () => {
 	});
 });
 
-// describe("Find Elements by id", { includeShadowDom: true }, () => {
-// 	it("Finds daily log nav", () => {
-// 		cy.get("#nav-daily-log");
-// 	});
-// 	it("Finds monthly log nav", () => {
-// 		cy.get("#nav-monthly-log");
-// 	});
-// });
+describe("Find Elements by id", { includeShadowDom: true }, () => {
+	it("Finds daily log nav", () => {
+		cy.get("#nav-daily-log");
+	});
+	it("Finds monthly log nav", () => {
+		cy.get("#nav-monthly-log");
+	});
+});
 
-// describe("Find Elements by class", { includeShadowDom: true }, () => {
-// 	it("Finds elements with nav-text class", () => {
-// 		cy.get(".nav-text");
-// 	});
-// });
+describe("Find Elements by class", { includeShadowDom: true }, () => {
+	it("Finds elements with nav-text class", () => {
+		cy.get(".nav-text");
+	});
+});

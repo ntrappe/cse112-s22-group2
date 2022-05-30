@@ -1,3 +1,5 @@
+import { setDefaultDate } from '../control/control-helpers.js';
+
 const CANCEL = 'Cancel';
 const SAVE = 'Save';
 const DATE = 'Date: ';
@@ -5,7 +7,6 @@ const TRACKERS = 'Trackers';
 const NOTES = 'Notes';
 const JOURNAL = 'Journal';
 const JOURNAL_PLACEHOLDER = 'Click to start typing...';
-// const NOTES_PLACEHOLDER = 'Type in a note ...';
 const LOG_TITLE = 'New Daily Log';
 const PIXELS = 'px';
 
@@ -119,7 +120,7 @@ class DailyLog extends HTMLElement {
             // notesInput.textContent = NOTES_PLACEHOLDER;
             journalInput.setAttribute('placeholder', JOURNAL_PLACEHOLDER);
             console.log(journalInput.textContent);
-            setDefaultDate();
+            dateBtn.textContent = setDefaultDate();
         };
 
         /**
@@ -159,22 +160,6 @@ class DailyLog extends HTMLElement {
             element.style.height = 'auto';
             wrapper.style.height = 'auto'; // expand too so no scroll bar
             element.style.height = (element.scrollHeight) + PIXELS;
-        }
-
-        /**
-         * @method setDefaultDate
-         * Helper function to fetch current date and format
-         * to be "{day of week}, {month} {date}, {year}"
-         */
-        function setDefaultDate() {
-            const date = new Date();
-            const day = date.toLocaleDateString('en-US', { // english version of weekday
-                weekday: 'long',
-            });
-            const month = date.toLocaleDateString('en-US', {
-                month: 'long',
-            });
-            dateBtn.textContent = `${day}, ${month} ${date.getDate()}, ${date.getFullYear()}`;
         }
 
         /* Events */

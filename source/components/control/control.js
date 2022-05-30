@@ -17,6 +17,7 @@ const main = document.getElementById('main');
 const logList = document.getElementById('log-list');
 const newLogBtn = document.getElementById('new-note-btn');
 const editBtn = document.getElementById('edit-btn');
+const logCount = document.getElementById('log-count-display');
 
 /* global states */
 let createNewLog = false;
@@ -51,6 +52,7 @@ document.addEventListener('deleteConfirm', (event) => {
             }
         });
     }
+    updateLogCount();
 });
 
 newLogBtn.addEventListener('click', () => {
@@ -91,6 +93,7 @@ editBtn.addEventListener('deactiveEdit', () => {
 document.addEventListener('openLog', (event) => {
     // if user is editing, do NOT open the full daily log
     if (!activeEditing) {
+        createNewLog = false; // log should say 'daily log'
         openFullLog(event.detail.date());
     }
 });
@@ -132,6 +135,7 @@ function populateInbox() {
     });
 
     // update # of logs
+    updateLogCount();
 
     return EXIT_SUCCESS;
 }
@@ -154,6 +158,12 @@ function createDailyLogPreview() {
     return dailyLogPreview;
 }
 
+/**
+ * Helper function: creates HTML of daily log
+ * Called when user clicks new log button/existing log
+ * @param {String} date
+ * @returns <daily-log> created
+ */
 function createDailyLog(date) {
     const dailyLog = new DailyLog(); // create new daily log
     main.appendChild(dailyLog);
@@ -168,6 +178,12 @@ function createDailyLog(date) {
     return dailyLog;
 }
 
+/**
+ * Helper function: removes whatever is on screen
+ * to just display a full daily log
+ * Called when user clicks on specific daily preview
+ * @param {String} date from preview
+ */
 function openFullLog(date) {
     editBtn.disabled = true; // do not let users mess outside of log
     removeAllLogs(); // clear out main
@@ -186,6 +202,16 @@ function openFullLog(date) {
         updateLog(dailyLog.getDate(), [], dailyLog.getJournal()); // save changes
         populateInbox(); // add previews (with changes)
     });
+}
+
+/**
+ * Helper function: updates display of number of logs
+ * in footer to reflect state of system
+ * Called whenever we add/delete logs
+ */
+function updateLogCount() {
+    const numLogs = logList.querySelectorAll('#log-list>li').length;
+    logCount.innerText = `${numLogs} logs`;
 }
 
 // on load, add all previews to inbox

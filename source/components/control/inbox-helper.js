@@ -2,8 +2,8 @@
  * @module inboxHelper
  */
 
-const EXIT_FAILURE = 1;
-const EXIT_SUCCESS = 0;
+const EXIT_SUCCESS = 1;
+const EXIT_FAILURE = 0;
 
 const editBtn = document.getElementById('edit-btn');
 const deleteAllBtn = document.getElementById('delete-all-btn');
@@ -108,21 +108,6 @@ function tickCheckbox(checkbox) {
     }
 }
 
-/* Helper functions for control */
-/**
- * @method setNumLogs sets number of logs listed on inbox footer
- * @param {Number} num [0, inf) whole number
- * @return whether updated number of logs
- */
-function setNumLogs(num) {
-    if (num < 0) {
-        return EXIT_FAILURE;
-    }
-
-    logCountDisplay.innerText = `${num} logs`;
-    return EXIT_SUCCESS;
-}
-
 /* Events */
 /**
  * When user clicks 'Edit', they are now in edit mode so
@@ -141,5 +126,3 @@ const deactiveEditEvent = new CustomEvent('deactiveEdit', {
     bubbles: true, // event listenable outside of container
     composed: true,
 });
-
-export default setNumLogs;

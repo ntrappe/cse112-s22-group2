@@ -38,7 +38,7 @@ function validateDate(date, fetch) {
 
         /* Input validation for day of the week */
         if (WEEKDAYS.indexOf((dateSplitted[0])) === NOT_FOUND) {
-            console.log(`Invalid Day of the Week passed: ${dateSplitted[0]}`);
+            console.error(`Invalid Day of the Week passed: ${dateSplitted[0]}`);
             return EXIT_FAILURE;
         }
 
@@ -48,13 +48,13 @@ function validateDate(date, fetch) {
         monthAndDay = monthAndDay.split(' ');
 
         if (MONTHS.indexOf(monthAndDay[0]) === NOT_FOUND) {
-            console.log(`Invalid month passed: ${monthAndDay[0]}`);
+            console.error(`Invalid month passed: ${monthAndDay[0]}`);
             return EXIT_FAILURE;
         }
 
         if (parseInt(monthAndDay[1], DECIMAL) < MIN_DATE
         || MAX_DATE < parseInt(monthAndDay[1], DECIMAL)) {
-            console.log(`Invalid day passed: ${monthAndDay[1]}`);
+            console.error(`Invalid day passed: ${monthAndDay[1]}`);
             return EXIT_FAILURE;
         }
     /**
@@ -71,21 +71,21 @@ function validateDate(date, fetch) {
         // check that month within reasonable range
         if (parseInt(month, DECIMAL) < MIN_MONTH
         || parseInt(month, DECIMAL) > MAX_MONTH) {
-            console.log(`Invalid month passed: ${month}`);
+            console.error(`Invalid month passed: ${month}`);
             return EXIT_FAILURE;
         }
 
         // check that date within reasonable range
         if (parseInt(day, DECIMAL) < MIN_DATE
         || parseInt(day, DECIMAL) > MAX_DATE) {
-            console.log(`Invalid day passed: ${day}`);
+            console.error(`Invalid day passed: ${day}`);
             return EXIT_FAILURE;
         }
 
         // Input validation for year
         // Note that it just checks whether the input is number
         if (Number.isNaN(parseInt(year, DECIMAL))) {
-            console.log(`Invalid year passed: ${year}`);
+            console.error(`Invalid year passed: ${year}`);
             return EXIT_FAILURE;
         }
     }
@@ -112,19 +112,19 @@ export function addLog(date, notes, journal) {
     // Input validation for notes: check if contains only strings
     for (let i = 0; i < notes.length; i++) {
         if (typeof (notes[i]) !== 'string') {
-            console.log('Notes must contain only strings.');
+            console.error('Notes must contain only strings.');
             return EXIT_FAILURE;
         }
     }
 
     // Input validation for journal: check if a string
     if (typeof (journal) !== 'string') {
-        console.log('Journal must be string.');
+        console.error('Journal must be string.');
         return EXIT_FAILURE;
     }
 
     if (localStorage.getItem(date) !== null) {
-        console.log('There already exists a log having the same date');
+        console.error('There already exists a log having the same date');
         return EXIT_FAILURE;
     }
 
@@ -201,7 +201,7 @@ export function fetchLog(date) {
 
     const searchResult = localStorage.getItem(convertStorageDate(date));
     if (searchResult === null) {
-        console.log(`No log found with the date: ${date}`);
+        console.error(`No log found with the date: ${date}`);
         return EXIT_FAILURE;
     }
 
@@ -237,7 +237,7 @@ export function deleteLog(date) {
     const storageDate = convertStorageDate(date);
     const searchResult = localStorage.getItem(storageDate);
     if (searchResult === null) {
-        console.log(`No log found with the date: ${date}`);
+        console.error(`No log found with the date: ${date}`);
         return EXIT_FAILURE;
     }
     localStorage.removeItem(storageDate);

@@ -1,0 +1,67 @@
+#modal-container {
+    border-style: solid;
+    border-radius: var(--button-radius);
+    padding: 1.5em;
+    background-image: linear-gradient(var(--container-background-color-start), var(--container-background-color-end));
+    position: fixed;
+    width: 60%;
+    height: 100%;
+}
+
+#image-container {
+    background-color: var(--image-container-background-color);
+    border: solid var(--image-container-background-color) 1px;
+    border-radius: 50%;
+    height: 50vw;
+    width: 50vw;
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#instruction-text {
+    text-align: center;
+}
+
+button {
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    width: 65px;
+    height: 65px;
+    background-color: var(--button-background-color);
+    border: none;
+    cursor: pointer;
+}
+
+button > img {
+    width: 30px;
+    height: auto;
+}
+
+#back-btn > img {
+    transform: rotate(180deg);
+}
+
+#image-container > img {
+    width: 50%;
+    height: 50%;
+}
+
+h1,
+p {
+    color: var(--header-text-color);
+}
+
+emoji {
+    font-size: 15em;
+}

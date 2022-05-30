@@ -1,0 +1,14 @@
+@import "./inbox.css";
+
+tracker-modal {
+    display: flex;
+    justify-content: center;
+}
+
+:root {
+    --image-container-background-color: black;
+    --container-background-color-start: rgb(49 49 52);
+    --container-background-color-end: rgb(28 28 30);
+    --button-background-color: rgb(91 90 95);
+    --header-text-color: white;
+}

@@ -32,7 +32,7 @@
     text-align: center;
 }
 
-button {
+#buttons-container > button {
     border-radius: 50%;
     margin: 0;
     padding: 0;
@@ -41,11 +41,6 @@ button {
     background-color: var(--button-background-color);
     border: none;
     cursor: pointer;
-}
-
-button > img {
-    width: 30px;
-    height: auto;
 }
 
 #back-btn > img {
@@ -57,11 +52,31 @@ button > img {
     height: 50%;
 }
 
+#buttons-container > button > img {
+    width: 30px;
+    height: auto;
+}
+
 h1,
 p {
     color: var(--header-text-color);
 }
 
 emoji {
-    font-size: 15em;
+    font-size: 35vw;
+}
+
+emoji-picker {
+    display: none;
+    margin: 0 auto;
+    width: 50vw;
+    max-width: 400px;
+    max-height: 400px;
+}
+
+@media screen and (min-width: 800px) {
+    
+    emoji {
+        font-size: 280px;
+    }
 }

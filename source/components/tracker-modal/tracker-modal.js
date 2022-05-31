@@ -11,15 +11,18 @@ class trackerModal extends HTMLElement {
 
         // set the style for the shadow DOM elements
         const modalStyle = document.createElement('link');
+        const emojiPickerStyle = document.createElement('link');
         modalStyle.setAttribute('rel', 'stylesheet');
         modalStyle.setAttribute('href', './styles/tracker-modal.css');
+        emojiPickerStyle.setAttribute('rel', 'stylesheet');
+        emojiPickerStyle.setAttribute('href', './styles/emoji-picker.css');
 
         // create the elements which compose the custom element
-        // const modalBackdrop = document.createElement('div'); need?
         const modalContainer = document.createElement('section');
         const questionHeader = document.createElement('h1');
         const imageContainer = document.createElement('div');
         const emoji = document.createElement('emoji');
+        const emojiPicker = document.createElement('emoji-picker');
         const instructionsText = document.createElement('p');
         const buttonsContainer = document.createElement('div');
         const backBtn = document.createElement('button');
@@ -28,7 +31,6 @@ class trackerModal extends HTMLElement {
         const forwardBtnImage = document.createElement('img');
 
         // set the attributes of the created elements
-        // modalBackdrop.setAttribute('id', 'modal-backdrop');
         modalContainer.setAttribute('id', 'modal-container');
         questionHeader.setAttribute('id', 'question-header');
         imageContainer.setAttribute('id', 'image-container');
@@ -57,19 +59,36 @@ class trackerModal extends HTMLElement {
         imageContainer.appendChild(emoji);
         modalContainer.appendChild(questionHeader);
         modalContainer.appendChild(imageContainer);
+        modalContainer.appendChild(emojiPicker);
         modalContainer.appendChild(instructionsText);
         modalContainer.appendChild(buttonsContainer);
-        // modalBackdrop.appendChild(modalContainer);
 
         // append to the shadowroot
         shadow.appendChild(modalStyle);
         shadow.appendChild(modalContainer);
 
-        // modalContainer.addEventListener('click', closePopupModal);
+        emojiPicker.shadowRoot.appendChild(emojiPickerStyle);
 
-        const elemID = this.id;
-        function closePopupModal() {
-            document.getElementById(`${elemID}`).style.display = 'none';
+        emojiPicker.addEventListener('emoji-click', (event) => {
+            console.log(event.detail);
+            emoji.innerHTML = event.detail.unicode;
+            showEmoji();
+        });
+        imageContainer.addEventListener('click', showEmojiPicker);
+
+        function showEmojiPicker() {
+            emojiPicker.style.display = 'flex';
+            imageContainer.style.display = 'none';
+            instructionsText.style.visibility = 'hidden';
+            emojiPicker.shadowRoot.children[1].children[1].children[0].children[0].value = '';
+            emojiPicker.shadowRoot.children[1].children[1].children[0].children[0]
+                .dispatchEvent(new Event('input'));
+        }
+
+        function showEmoji() {
+            emojiPicker.style.display = 'none';
+            imageContainer.style.display = 'flex';
+            instructionsText.style.visibility = 'unset';
         }
     }
 }

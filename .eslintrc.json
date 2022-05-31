@@ -27,10 +27,17 @@
         "new-cap": ["error", {"newIsCap": true}],                       // Ensure all new operators to be called with uppercase-started function
         "no-plusplus": 0,
         "no-console": 0,
+        "no-else-return": 0,
+        "object-shorthand": 0,
+        "prefer-template": 1,
+        "object-curly-newline": ["error", {
+            "ImportDeclaration": "never",
+            "ExportDeclaration": "never"
+        }],
         "no-use-before-define": ["error", { 
             "functions": false,
             "classes": true,
-            "variables": true 
+            "variables": false                                          // so applies to custom events
         }],                                                             // ensures classes and variables are defined before use
         "no-param-reassign": ["error", { "props": false }]              // allows parameter properties to be modified
         // "const-uppercase/const-uppercase": 2                         // For ensuring constant variables to be all uppercases

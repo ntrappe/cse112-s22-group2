@@ -1,10 +1,14 @@
+/**
+ * @module inboxHelper
+ */
+
+const EXIT_SUCCESS = 1;
+const EXIT_FAILURE = 0;
+
 const editBtn = document.getElementById('edit-btn');
 const deleteAllBtn = document.getElementById('delete-all-btn');
 const deleteSelectedBtn = document.getElementById('delete-selected-btn');
 const newNoteBtn = document.getElementById('new-note-btn');
-
-const checkboxes = document.querySelectorAll('input[type=checkbox]');
-const inboxInfo = document.getElementById('inbox-info');
 
 const deleteAllModal = document.getElementById('delete-all-modal');
 const deleteSelectedModal = document.getElementById('delete-selected-modal');
@@ -41,10 +45,18 @@ logs.forEach((log) => {
  * button accordingly
  */
 function toggleCheckboxDisplay() {
+    /* must re-query select each time event listener triggered bc control
+     * creates a new set of checkboxes every time we open and close a log */
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    const inboxInfo = document.getElementById('inbox-info');
+
     // show checkboxes when edit is clicked and set text to cancel
     if (editBtn.innerText === 'Edit') {
         editBtn.innerText = 'Cancel';
+        editBtn.dispatchEvent(activeEditEvent); // tell control in edit mode
+
         checkboxes.forEach((checkbox) => {
+            console.log('SET CHECKBOXES');
             checkbox.checked = false;
             checkbox.style.display = 'grid';
         });
@@ -58,8 +70,11 @@ function toggleCheckboxDisplay() {
         deleteSelectedBtn.style.display = 'block';
     } else { // stop showing checkboxes when cancel is clicked and set text back to edit
         editBtn.innerText = 'Edit';
+        editBtn.dispatchEvent(deactiveEditEvent); // tell control in edit mode
+
         checkboxes.forEach((checkbox) => {
             checkbox.style.display = 'none';
+            console.log('REMOVE CHECKBOXES');
         });
         logs.forEach((log) => {
             log.style.cursor = 'default';
@@ -96,3 +111,22 @@ function tickCheckbox(checkbox) {
         checkbox.checked = true;
     }
 }
+
+/* Events */
+/**
+ * When user clicks 'Edit', they are now in edit mode so
+ * let control know (so that other operations are suspended)
+ */
+const activeEditEvent = new CustomEvent('activeEdit', {
+    bubbles: true, // event listenable outside of container
+    composed: true,
+});
+
+/**
+ * When user clicks 'Cancel', they are NOT in edit mode
+ * so normal operations can resume
+ */
+const deactiveEditEvent = new CustomEvent('deactiveEdit', {
+    bubbles: true, // event listenable outside of container
+    composed: true,
+});

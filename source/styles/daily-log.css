@@ -1,106 +1,108 @@
 @import "./home-screen.css";
 
-@media only screen and (max-width: 500px) {
+/* @media only screen and (max-width: 500px) { */
 
-    div.nav-text {
+div.nav-text {
 
-        /* space between text in nav section and button icon */
-        margin-right: 20px;
-    }
-
-    div.control-container {
-        display: flex;
-        justify-content: space-between;
-        background-color: var(--section-background);
-        padding-top: var(--section-pad);
-        padding-bottom: var(--section-pad);
-    }
-
-    button.control-btn {
-        background: none;
-        color: var(--snow);
-        border: none;
-    }
-    
-    button.control-btn[priority="high"] {
-        color: var(--red);
-    }
-    
-    /* button.arrow-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 10px;
-        height: 20px;
-        fill: var(--granite);
-    } */
-
-    img.arrow-btn {
-        width: var(--arrow-size);
-        height: auto;
-    }
-
-    /* holds "Date" label and the actual date */
-   
-    #date-container {
-        display: flex;
-    }
-
-    #date-title {
-
-        /* gap between Date label and date button */
-        margin-right: var(--date-gap);
-    }
-
-    #date-button {
-        border: none;
-        border-radius: var(--rounded-button);
-        background-color: var(--button-blue);
-        color: var(--snow);
-        height: 22px;
-        font-size: 12px;
-        font-weight: 500;
-        margin-top: var(--vertically-center-date);
-        padding-left: var(--button-text-pad);
-        padding-right: var(--button-text-pad);
-    }
-
-    #tracker-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    #journal-text {
-        resize: none;
-        outline: none;
-        border: none;
-        font-family: var(--font-sans);
-        font-size: 14px;
-        color: var(--stone);
-        caret-color: var(--snow);
-        background-color: var(--section-background);
-        margin-left: auto;
-        margin-right: auto;
-        width: 98%;
-        min-height: 50%;
-        max-height: 100%;
-    }
-
-    section {
-        
-        /* bottom of each section (except last) is horizontal line */
-        border-bottom: var(--line-thickness) solid var(--line-grey);
-
-        /* space between sections */
-        padding-top: var(--section-pad);
-        padding-bottom: var(--section-pad);
-    }
-
-    section:last-child {
-        border: none;
-    }
+    /* space between text in nav section and button icon */
+    margin-right: 20px;
 }
+
+div.control-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--section-background);
+    padding-top: var(--section-pad);
+    padding-bottom: var(--section-pad);
+}
+
+button.control-btn {
+    background: none;
+    color: var(--snow);
+    border: none;
+    cursor: pointer;
+}
+
+button.control-btn[priority="high"] {
+    color: var(--red);
+}
+
+/* button.arrow-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10px;
+    height: 20px;
+    fill: var(--granite);
+} */
+
+img.arrow-btn {
+    width: var(--arrow-size);
+    height: auto;
+}
+
+/* holds "Date" label and the actual date */
+
+#date-container {
+    display: flex;
+}
+
+#date-title {
+
+    /* gap between Date label and date button */
+    margin-right: var(--date-gap);
+}
+
+#date-button {
+    border: none;
+    border-radius: var(--rounded-button);
+    background-color: var(--button-blue);
+    color: var(--snow);
+    height: 22px;
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: var(--vertically-center-date);
+    padding-left: var(--button-text-pad);
+    padding-right: var(--button-text-pad);
+}
+
+#tracker-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#journal-text {
+    resize: none;
+    outline: none;
+    border: none;
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: var(--stone);
+    caret-color: var(--snow);
+    background-color: var(--section-background);
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
+    min-height: 50%;
+    max-height: 100%;
+}
+
+section {
+    
+    /* bottom of each section (except last) is horizontal line */
+    border-bottom: var(--line-thickness) solid var(--line-grey);
+
+    /* space between sections */
+    padding-top: var(--section-pad);
+    padding-bottom: var(--section-pad);
+}
+
+section:last-child {
+    border: none;
+}
+
+/* } */
 
 /* h2 for log title (BIG) */
 

@@ -1,3 +1,5 @@
+import { setDefaultDate } from '../control/control-helpers.js';
+
 const CANCEL = 'Cancel';
 const SAVE = 'Save';
 const DATE = 'Date: ';
@@ -5,7 +7,6 @@ const TRACKERS = 'Trackers';
 const NOTES = 'Notes';
 const JOURNAL = 'Journal';
 const JOURNAL_PLACEHOLDER = 'Click to start typing...';
-// const NOTES_PLACEHOLDER = 'Type in a note ...';
 const LOG_TITLE = 'New Daily Log';
 const PIXELS = 'px';
 
@@ -109,20 +110,7 @@ class DailyLog extends HTMLElement {
         wrapper.appendChild(notes);
         wrapper.appendChild(journal);
 
-        /* define functions */
-        /**
-         * @method auto_grow
-         * Journal textarea (input) expands as user types and the
-         * entire daily log also expands so users dont have to
-         * scroll within the textarea (no scroll bar within it)
-         * @param {Object} element journal input (textarea)
-         */
-        function autoGrow(element) {
-            element.style.height = 'auto';
-            wrapper.style.height = 'auto'; // expand too so no scroll bar
-            element.style.height = (element.scrollHeight) + PIXELS;
-        }
-
+        /* Setter functions */
         /**
          * @method defaultFields
          * Set all text to use placeholders or generic text on
@@ -132,7 +120,7 @@ class DailyLog extends HTMLElement {
             // notesInput.textContent = NOTES_PLACEHOLDER;
             journalInput.setAttribute('placeholder', JOURNAL_PLACEHOLDER);
             console.log(journalInput.textContent);
-            setDefaultDate();
+            dateBtn.textContent = setDefaultDate();
         };
 
         /**
@@ -156,21 +144,42 @@ class DailyLog extends HTMLElement {
             journalInput.textContent = journalOfLog;
         };
 
+        /* Getter functions */
+        this.getDate = () => dateBtn.textContent;
+        this.getJournal = () => journalInput.value;
+
+        /* Functions */
         /**
-         * @method setDefaultDate
-         * Helper function to fetch current date and format
-         * to be "{day of week}, {month} {date}, {year}"
+         * @method auto_grow
+         * Journal textarea (input) expands as user types and the
+         * entire daily log also expands so users dont have to
+         * scroll within the textarea (no scroll bar within it)
+         * @param {Object} element journal input (textarea)
          */
-        function setDefaultDate() {
-            const date = new Date();
-            const day = date.toLocaleDateString('en-US', { // english version of weekday
-                weekday: 'long',
-            });
-            const month = date.toLocaleDateString('en-US', {
-                month: 'long',
-            });
-            dateBtn.textContent = `${day}, ${month} ${date.getDate()}, ${date.getFullYear()}`;
+        function autoGrow(element) {
+            element.style.height = 'auto';
+            wrapper.style.height = 'auto'; // expand too so no scroll bar
+            element.style.height = (element.scrollHeight) + PIXELS;
         }
+
+        /* Events */
+        const cancelLogEvent = new CustomEvent('cancelLog', {
+            bubbles: true, // event listenable outside of container
+            composed: true,
+        });
+
+        const saveLogEvent = new CustomEvent('saveLog', {
+            bubbles: true, // event listenable outside of container
+            composed: true,
+        });
+
+        cancelBtn.onclick = () => {
+            shadow.dispatchEvent(cancelLogEvent);
+        };
+
+        saveBtn.onclick = () => {
+            shadow.dispatchEvent(saveLogEvent);
+        };
 
         /* call functions */
         this.defaultFields();

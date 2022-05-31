@@ -10,7 +10,9 @@
         <title>JOT</title>
         <!--add styles and import fonts-->
         <script src="https://kit.fontawesome.com/4ddc51dc35.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="./styles/home-screen.css">
         <link rel="stylesheet" href="./styles/inbox.css"/>
+        <link rel="stylesheet" href="./styles/daily-log.css">
         <link rel="stylesheet" href="./styles/daily-log-preview.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"> 
@@ -45,8 +47,9 @@
             <popup-modal id="delete-all-modal"></popup-modal>
             <popup-modal id="delete-selected-modal"></popup-modal>
         </main>
-        <script type="module" src="./add-component.js"></script>
-        <script defer src="index.js"></script>
+        <!-- <script type="module" src="./add-component.js"></script> -->
+        <script type="module" src="./components/control/control.js"></script>
+        <script type="module" defer src="./components/control/inbox-helper.js"></script>
         <footer>
             <button id="delete-all-btn" type="button">Delete All</button>
             <button id="delete-selected-btn" type="button">Delete Selected</button>

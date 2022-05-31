@@ -68,20 +68,20 @@ newLogBtn.addEventListener('click', () => {
     if (todayLog !== EXIT_FAILURE) { // we found a log
         openFullLog(today);
     } else { // no log for today
-        editBtn.disabled = true; // do not let users mess outside of log
+        // editBtn.disabled = true; // do not let users mess outside of log
         removeAllLogs(); // clear out main
         const dailyLog = new DailyLog(); // create new daily log
         main.appendChild(dailyLog);
 
         dailyLog.addEventListener('cancelLog', () => {
             main.removeChild(dailyLog); // remove full log
-            editBtn.disabled = false; // allow edit
+            // editBtn.disabled = false; // allow edit
             populateInbox(); // add previews back
         });
 
         dailyLog.addEventListener('saveLog', () => {
             main.removeChild(dailyLog); // remove full log
-            editBtn.disabled = false; // allow edit
+            // editBtn.disabled = false; // allow edit
             addLog(dailyLog.getDate(), [], dailyLog.getJournal());
             populateInbox(); // add previews back
         });
@@ -91,11 +91,13 @@ newLogBtn.addEventListener('click', () => {
 editBtn.addEventListener('activeEdit', () => {
     // if user clicks edit button, now in edit mode
     activeEditing = true;
+    console.log('USER CLICKED EDIT');
 });
 
 editBtn.addEventListener('deactiveEdit', () => {
     // if user clicks cancel button, now NOT in edit mode
     activeEditing = false;
+    console.log('USER CLICKED CANCEL');
 });
 
 document.addEventListener('openLog', (event) => {
@@ -159,6 +161,7 @@ function createDailyLogPreview() {
     const dailyLogPreview = new DailyLogPreview();
     dailyLogPreview.setAttribute('class', 'daily-log-preview');
     checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('class', 'checkbox');
     listItem.appendChild(checkbox);
     listItem.appendChild(dailyLogPreview);
     logList.appendChild(listItem);
@@ -193,20 +196,20 @@ function createDailyLog(date) {
  * @param {String} date from preview
  */
 function openFullLog(date) {
-    editBtn.disabled = true; // do not let users mess outside of log
+    // editBtn.disabled = true; // do not let users mess outside of log
     removeAllLogs(); // clear out main
     const dailyLog = createDailyLog(date);
 
     // on cancel, reset inbox (populate with whatever we have)
     dailyLog.addEventListener('cancelLog', () => {
         main.removeChild(dailyLog); // remove full daily log from screen
-        editBtn.disabled = false; // users can edit inbox again
+        // editBtn.disabled = false; // users can edit inbox again
         populateInbox(); // add previews
     });
 
     dailyLog.addEventListener('saveLog', () => {
         main.removeChild(dailyLog); // remove full daily log from screen
-        editBtn.disabled = false; // users can edit inbox again
+        // editBtn.disabled = false; // users can edit inbox again
         updateLog(dailyLog.getDate(), [], dailyLog.getJournal()); // save changes
         populateInbox(); // add previews (with changes)
     });

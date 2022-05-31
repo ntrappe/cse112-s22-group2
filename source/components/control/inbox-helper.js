@@ -10,9 +10,6 @@ const deleteAllBtn = document.getElementById('delete-all-btn');
 const deleteSelectedBtn = document.getElementById('delete-selected-btn');
 const newNoteBtn = document.getElementById('new-note-btn');
 
-const checkboxes = document.querySelectorAll('input[type=checkbox]');
-const inboxInfo = document.getElementById('inbox-info');
-
 const deleteAllModal = document.getElementById('delete-all-modal');
 const deleteSelectedModal = document.getElementById('delete-selected-modal');
 
@@ -48,12 +45,18 @@ logs.forEach((log) => {
  * button accordingly
  */
 function toggleCheckboxDisplay() {
+    /* must re-query select each time event listener triggered bc control
+     * creates a new set of checkboxes every time we open and close a log */
+    const checkboxes = document.querySelectorAll('input[type=checkbox]');
+    const inboxInfo = document.getElementById('inbox-info');
+
     // show checkboxes when edit is clicked and set text to cancel
     if (editBtn.innerText === 'Edit') {
         editBtn.innerText = 'Cancel';
         editBtn.dispatchEvent(activeEditEvent); // tell control in edit mode
 
         checkboxes.forEach((checkbox) => {
+            console.log('SET CHECKBOXES');
             checkbox.checked = false;
             checkbox.style.display = 'grid';
         });
@@ -71,6 +74,7 @@ function toggleCheckboxDisplay() {
 
         checkboxes.forEach((checkbox) => {
             checkbox.style.display = 'none';
+            console.log('REMOVE CHECKBOXES');
         });
         logs.forEach((log) => {
             log.style.cursor = 'default';

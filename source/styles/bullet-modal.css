@@ -1,0 +1,94 @@
+@import "./home-screen.css";
+
+#wrapper {
+    display: none;
+    background-color: rgba(0 0 0 / 60%);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+#modal-container {
+    display: flex;
+    flex-direction: column;
+    border: 2px solid blue;
+    align-items: center;
+    /* top | right | bottom | left */
+    /* margin: 200px 30px 60px 200px; */
+    height: 100%;
+    width: 100%;
+    
+}
+#options-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 15px;
+    margin-left: 30px;
+    padding: 0;
+    background-color: #29292c;
+    top: 50%;
+    width: 200px;
+    border: 2px solid yellow;
+}
+
+
+#display-entry {
+    display: flex;
+    margin-left: 35px;
+    margin-bottom: 20px;
+    /* width: auto; */
+    border: 2px solid red;
+}
+
+#display-text {
+    color: white;
+}
+
+.bullet-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 10px;
+    height: 20px;
+    padding-right: 20px;
+}
+
+#display-bullet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: auto;
+    color: white;
+}
+.bullet-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: inherit;
+    font-size: 16px;
+    padding-left: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin: 0px;
+    width: 100%;
+    /* bottom of each section (except last) is horizontal line */
+    border: none;
+    border-bottom: var(--line-thickness) solid var(--line-grey);
+}
+
+.bullet-btn:last-child {
+    border: none;
+}
+
+.bullet-btn:focus {
+    background-color: blue;
+    outline: none;
+}

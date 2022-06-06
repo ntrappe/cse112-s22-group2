@@ -1,6 +1,7 @@
 @import "./inbox.css";
 
-tracker-modal {
+tracker-modal,
+water-modal {
     display: flex;
     justify-content: center;
 }

@@ -1,0 +1,91 @@
+#modal-container {
+    border-style: solid;
+    border-radius: var(--button-radius);
+    padding: 1.5em;
+    background-image: linear-gradient(var(--container-background-color-start), var(--container-background-color-end));
+    position: fixed;
+    width: 60%;
+    height: 100%;
+}
+  
+#image-container {
+    background-color: var(--image-container-background-color);
+    border: solid var(--image-container-background-color) 1px;
+    border-radius: 50%;
+    height: 50vw;
+    width: 50vw;
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0 auto;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#gradient-container {
+    background: -webkit-linear-gradient(rgb(157 242 91), rgb(67 151 249));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+  
+#buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+  
+#instruction-text {
+    text-align: center;
+}
+
+#water-metric-text {
+    text-align: center;
+    font-size: 5em;
+    margin: 0;
+}
+  
+#buttons-container > button {
+    border-radius: 50%;
+    margin: 0;
+    padding: 0;
+    width: 65px;
+    height: 65px;
+    background-color: var(--button-background-color);
+    border: none;
+    cursor: pointer;
+}
+  
+#back-btn > img {
+    transform: rotate(180deg);
+}
+  
+#image-container > img {
+    width: 50%;
+    height: 50%;
+}
+  
+#buttons-container > button > img {
+    width: 30px;
+    height: auto;
+}
+  
+h1,
+p {
+    color: var(--header-text-color);
+}
+
+input {
+    border: none;
+    width: 100%;
+    background: none;
+    font-size: 5em;
+    text-align: center;
+}
+
+input::after {
+    content: " oz";
+}

@@ -16,7 +16,6 @@
     display: flex;
     flex-direction: column;
     border: 2px solid blue;
-    align-items: center;
     /* top | right | bottom | left */
     /* margin: 200px 30px 60px 200px; */
     height: 100%;
@@ -36,6 +35,7 @@
     width: 200px;
     border: 2px solid yellow;
 }
+
 
 
 #display-entry {

@@ -29,7 +29,7 @@ export var click = function(e) {
 };
 
 export var start = function(e) {
-    var target = e.target;
+    var target = e.currentTarget;
     //console.log(target);
     if (e.type === "click" && e.button !== 0) {
         return;

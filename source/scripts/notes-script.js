@@ -35,7 +35,10 @@ function deleteEntry(event) {
   var prevListElement = this.parentNode.previousElementSibling;
   //console.log(prevNoteEntry);
   if (!this.value && event.key === "Backspace") {
-    //if it is the last item in list and there is
+    console.log('prevlistelementID');
+    console.log(prevListElement.id);
+    //console.log('nextlistelementID');
+    //console.log(nextListElement.id);
     console.log(currentEntries.size);
     var entryToDelete = this;
     currentEntries.delete(entryToDelete);
@@ -44,9 +47,11 @@ function deleteEntry(event) {
     //if it is the last entry in the list, and there is an entry above it, autofocus to line above on delete
     if (nextListElement == null && prevListElement != null && currentEntries.size != 0) {
       //focus on text area
+      console.log(prevListElement.id);
       console.log(prevListElement.childNodes[1]);
       prevListElement.childNodes[1].focus();
-    } else {
+    } 
+    else if (nextListElement == null && prevListElement.id == 'notes-placeholder') {
       document.querySelector('daily-log').shadowRoot.getElementById('notes-placeholder').style.display = 'block';
     }
   }
@@ -70,76 +75,89 @@ export function launchBulletModal(currentBullet) {
     /* update most recent bullet entry */
     mostRecentBullet = currentBullet;
     //console.log('hello');
-    console.log('mostRecentBullet');
+    console.log('mostRecentBullet = current target');
+    console.log(currentBullet);
     console.log(mostRecentBullet);
     /* Get bullet modal and display bullet and entry from shadow DOM */
     var bulletModal = document.querySelector('bullet-modal').shadowRoot;
     var displayBullet = document.querySelector('bullet-modal').shadowRoot.getElementById('display-bullet');
     var displayText = document.querySelector('bullet-modal').shadowRoot.getElementById('display-text');
     //console.log(JSON.stringify(currentBullet));
-    console.log('mostRecentBulletParent');
-    console.log(mostRecentBullet.parentNode);
+    // console.log('mostRecentBulletParent');
+    // console.log(mostRecentBullet.parentNode);
+    // var isCheckbox = (currentBullet.type == 'checkbox');
+    // console.log(isCheckbox);
     /* Get current bullet type */
     //if (mostRecentBullet.)
-    var bulletType = currentBullet.parentNode.getAttribute('bullet-type');
+    // var bulletType = '';
+    // if (isCheckbox == true) {
+    //   bulletType = 'checkbox-bullet';
+    // } else {
+      var bulletType = currentBullet.parentNode.getAttribute('bullet-type');
+      var entryText = currentBullet.nextSibling.value;
+    // }
     console.log(bulletType);
     /* Get text of current entry (currentBullet.nextSibling = textarea)*/
-    if (bulletType != 'checkbox-bullet') {
-      var entryText = currentBullet.nextSibling.value;
-    }
+    //var entryText = currentBullet.nextSibling.value;
     //var entryText = currentBullet.nextSibling.value;
     /* Remove old display bullet and set display entry to selected bullet and text */
-    //console.log(displayBullet);
-    if (displayBullet.hasChildNodes() === 'True') {
+    console.log('displayBulletChildren');
+    if (displayBullet.hasChildNodes() == true) {
+      console.log('hello');
       displayBullet.removeChild(displayBullet.childNodes[0]);
     };
     displayBullet.appendChild(currentBullet.cloneNode());
     displayText.innerHTML = entryText;
-    //console.log(displayText);
-    //mostRecentBullet = bullet;
-    //console.log(currentBullet);
-    //console.log(mostRecentBullet);
-    // var selectedEntry = this;
-    // var entryText = this.firstChild.value;
-    //set value of list element
-    //bulletModal.getElementById('bullet-entry').replaceWith(selectedEntry.value);
-    //currentBullet = selectedEntry;
-    //console.log(selectedEntry);
-  // console.log(val);
-    //currentBullet.innerHTML = selectedEntry;
-    //bulletModal.getElementById('selected-entry').textContent = 'x' + entryText;
+
     bulletModal.getElementById('wrapper').style.display = 'block';
     if (bulletType == 'default-bullet') {
-      bulletModal.getElementById('default-bullet-btn').focus();
+      bulletModal.getElementById('default-bullet-btn').style.background = 'blue';
       //console.log('hello');
     }
     if (bulletType == 'important-bullet') {
-      bulletModal.getElementById('important-bullet-btn').focus();
+      //bulletModal.getElementById('important-bullet-btn').focus();
+      bulletModal.getElementById('important-bullet-btn').style.background = 'blue';
     }
     if (bulletType == 'checkbox-bullet') {
-      bulletModal.getElementById('checkbox-bullet-btn').focus();
+      //bulletModal.getElementById('checkbox-bullet-btn').focus();
+      bulletModal.getElementById('checkbox-bullet-btn').style.background = 'blue';
     }
     if (bulletType == 'event-bullet') {
-      bulletModal.getElementById('event-bullet-btn').focus();
+      bulletModal.getElementById('event-bullet-btn').style.background = 'blue';
+      //bulletModal.getElementById('event-bullet-btn').focus();
     }
 }
 
 export function changeBullet(event) {
   var bulletModal = document.querySelector('bullet-modal').shadowRoot;
+  /** Get bullet type of current bullet */
+  var bulletType = mostRecentBullet.parentNode.getAttribute('bullet-type');
+  console.log('buttons');
+  var bulletBtns = bulletModal.querySelectorAll('.bullet-btn');
+  console.log(bulletBtns);
   var newBulletNode = null;
+  console.log('event target');
+  console.log(event.target.id);
+  console.log('mostRecentBullet');
   console.log(mostRecentBullet.parentNode);
   console.log(mostRecentBullet.childNodes[0]);
-  if (event.target.id == 'default-bullet-btn') {
+  //event.target.style.color = 'blue';
+  //get rid of blue
+  bulletBtns.forEach((button) => {
+    button.style.background = 'inherit';
+  });
+
+  if (event.target.id == 'default-bullet-btn' && bulletType != 'default-bullet') {
     mostRecentBullet.parentNode.setAttribute('bullet-type', 'default-bullet');
     //console.log(mostRecentBullet);
     newBulletNode = document.createTextNode(DEFAULTBULLET);
   }
-  if (event.target.id == 'important-bullet-btn') {
+  if (event.target.id == 'important-bullet-btn' && bulletType != 'important-bullet') {
     mostRecentBullet.parentNode.setAttribute('bullet-type', 'important-bullet');
     //console.log(mostRecentBullet);
     newBulletNode = document.createTextNode(IMPORTANTBULLET);
   }
-  if (event.target.id == 'checkbox-bullet-btn') {
+  if (event.target.id == 'checkbox-bullet-btn' && bulletType != 'checkbox-bullet') {
     console.log('checkbox parent');
     console.log(mostRecentBullet.parentNode);
     mostRecentBullet.parentNode.setAttribute('bullet-type', 'checkbox-bullet');
@@ -148,17 +166,20 @@ export function changeBullet(event) {
     newBulletNode = checkbox;
     //console.log(mostRecentBullet);
   }
-  if (event.target.id == 'event-bullet-btn') {
+  if (event.target.id == 'event-bullet-btn' && bulletType != 'event-bullet') {
     mostRecentBullet.parentNode.setAttribute('bullet-type', 'event-bullet');
     newBulletNode = document.createTextNode(EVENTBULLET);
     //console.log(mostRecentBullet);
   }
-  console.log(mostRecentBullet.childNodes[0]);
-  mostRecentBullet.removeChild(mostRecentBullet.childNodes[0]);
-  mostRecentBullet.appendChild(newBulletNode);
+  if (newBulletNode != null) {
+    mostRecentBullet.removeChild(mostRecentBullet.childNodes[0]);
+    mostRecentBullet.appendChild(newBulletNode.cloneNode());
+  }
+  event.target.style.background = 'blue';
   setTimeout(() => {
     bulletModal.getElementById('wrapper').style.display = 'none';
   }, 180);
+
   //bulletModal.getElementById('wrapper').style.display = 'none';
   console.log(mostRecentBullet.childNodes[0]);
   //console.log(mostRecentBullet);

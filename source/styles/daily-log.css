@@ -101,8 +101,8 @@
         padding-left: 22px;
     }
     #note-entry {
-        flex-grow: 2;
         display: block;
+        outline: none;
         resize: none;
         border: none;
         box-sizing: border-box;
@@ -110,31 +110,30 @@
         color: var(--stone);
         caret-color: var(--snow);
         background-color: var(--section-background);
-        margin-left: 1em;
-        padding: 0 0.5em 0 0.5em;
         width: 98%;
         min-height: 25%;
         max-height: 100%;
     }
 
-    #list-element :not(textarea) {
-        -webkit-touch-callout: none !important; /* iOS Safari */
-        -webkit-user-select: none !important; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
-            -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+     /* Keep constant distance between last list element and section divider */
+    #list-element:last-child{
+        margin-bottom: 14px;
     }
 
     #list-element {
         display: flex;
          /* top | right | bottom | left */
-        padding: 5px 1em 5px 1em;
+        margin: 2px 0.5em 2px 0.5em;
     }
 
     #bullet-container {
-        width:auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 20px;
+        height: 20px;
+        padding: 2px;
     }
 
 }
@@ -168,6 +167,16 @@ h3 {
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
     margin-left: var(--pad-screen-edge);
     margin-right: var(--pad-screen-edge);
+}
+
+#list-element :not(textarea) {
+    -webkit-touch-callout: none !important; /* iOS Safari */
+    -webkit-user-select: none !important; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
 }
 
 :root {

@@ -56,6 +56,12 @@ class BulletModal extends HTMLElement {
         checkBoxBtn.setAttribute('id', 'checkbox-bullet-btn');
         eventBulletBtn.setAttribute('id', 'event-bullet-btn');
 
+        /* initialize state of all bullets to 'off' */
+        defaultBulletBtn.setAttribute('state', 'off');
+        importantBulletBtn.setAttribute('state', 'off');
+        checkBoxBtn.setAttribute('state', 'off');
+        eventBulletBtn.setAttribute('state', 'off');
+
         /* add bullet buttons to same class */
         defaultBulletBtn.setAttribute('class', 'bullet-btn');
         importantBulletBtn.setAttribute('class', 'bullet-btn');

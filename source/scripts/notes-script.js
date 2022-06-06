@@ -78,24 +78,23 @@ export function launchBulletModal(currentBullet) {
     console.log('mostRecentBullet = current target');
     console.log(currentBullet);
     console.log(mostRecentBullet);
+    console.log('current bullet child', currentBullet.childNodes[0])
     /* Get bullet modal and display bullet and entry from shadow DOM */
     var bulletModal = document.querySelector('bullet-modal').shadowRoot;
     var displayBullet = document.querySelector('bullet-modal').shadowRoot.getElementById('display-bullet');
     var displayText = document.querySelector('bullet-modal').shadowRoot.getElementById('display-text');
-    //console.log(JSON.stringify(currentBullet));
-    // console.log('mostRecentBulletParent');
-    // console.log(mostRecentBullet.parentNode);
-    // var isCheckbox = (currentBullet.type == 'checkbox');
-    // console.log(isCheckbox);
-    /* Get current bullet type */
-    //if (mostRecentBullet.)
-    // var bulletType = '';
-    // if (isCheckbox == true) {
-    //   bulletType = 'checkbox-bullet';
-    // } else {
-      var bulletType = currentBullet.parentNode.getAttribute('bullet-type');
-      var entryText = currentBullet.nextSibling.value;
-    // }
+   
+    var bulletType = currentBullet.parentNode.getAttribute('bullet-type');
+    var entryText = currentBullet.nextSibling.value;
+
+    /** If entry text is longer than 25 chars, only display the first 25 chars followed
+     *  by ellipses
+     */
+    if (entryText.length > 25) {
+      entryText = entryText.substring(0,25) + ' ...';
+    }
+   
+  
     console.log(bulletType);
     /* Get text of current entry (currentBullet.nextSibling = textarea)*/
     //var entryText = currentBullet.nextSibling.value;
@@ -106,24 +105,30 @@ export function launchBulletModal(currentBullet) {
       console.log('hello');
       displayBullet.removeChild(displayBullet.childNodes[0]);
     };
-    displayBullet.appendChild(currentBullet.cloneNode());
+    displayBullet.appendChild(currentBullet.childNodes[0].cloneNode());
     displayText.innerHTML = entryText;
+
 
     bulletModal.getElementById('wrapper').style.display = 'block';
     if (bulletType == 'default-bullet') {
-      bulletModal.getElementById('default-bullet-btn').style.background = 'blue';
+      // bulletModal.getElementById('default-bullet-btn').style.background = 'blue';
+      bulletModal.getElementById('default-bullet-btn').setAttribute('state', 'on');
       //console.log('hello');
     }
+    
     if (bulletType == 'important-bullet') {
+      bulletModal.getElementById('important-bullet-btn').setAttribute('state', 'on');
       //bulletModal.getElementById('important-bullet-btn').focus();
-      bulletModal.getElementById('important-bullet-btn').style.background = 'blue';
+      // bulletModal.getElementById('important-bullet-btn').style.background = 'blue';
     }
     if (bulletType == 'checkbox-bullet') {
+      bulletModal.getElementById('checkbox-bullet-btn').setAttribute('state', 'on');
       //bulletModal.getElementById('checkbox-bullet-btn').focus();
-      bulletModal.getElementById('checkbox-bullet-btn').style.background = 'blue';
+      // bulletModal.getElementById('checkbox-bullet-btn').style.background = 'blue';
     }
     if (bulletType == 'event-bullet') {
-      bulletModal.getElementById('event-bullet-btn').style.background = 'blue';
+      bulletModal.getElementById('event-bullet-btn').setAttribute('state', 'on');
+      // bulletModal.getElementById('event-bullet-btn').style.background = 'blue';
       //bulletModal.getElementById('event-bullet-btn').focus();
     }
 }
@@ -144,7 +149,7 @@ export function changeBullet(event) {
   //event.target.style.color = 'blue';
   //get rid of blue
   bulletBtns.forEach((button) => {
-    button.style.background = 'inherit';
+    button.setAttribute('state', 'off')
   });
 
   if (event.target.id == 'default-bullet-btn' && bulletType != 'default-bullet') {
@@ -175,10 +180,14 @@ export function changeBullet(event) {
     mostRecentBullet.removeChild(mostRecentBullet.childNodes[0]);
     mostRecentBullet.appendChild(newBulletNode.cloneNode());
   }
-  event.target.style.background = 'blue';
+  //event.target.style.background = 'blue';
+  var currButton = event.target;
+  currButton.setAttribute('state', 'on');
+  console.log(event.target.style.background);
   setTimeout(() => {
+    currButton.setAttribute('state', 'off');
     bulletModal.getElementById('wrapper').style.display = 'none';
-  }, 180);
+  }, 200, currButton);
 
   //bulletModal.getElementById('wrapper').style.display = 'none';
   console.log(mostRecentBullet.childNodes[0]);

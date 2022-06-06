@@ -13,41 +13,47 @@
 }
 
 #modal-container {
-    display: flex;
-    flex-direction: column;
-    border: 2px solid blue;
-    /* top | right | bottom | left */
-    /* margin: 200px 30px 60px 200px; */
-    height: 100%;
-    width: 100%;
-    
-}
-#options-container {
     position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+}
+
+#options-container {
+    /* position: absolute; */
     display: flex;
     flex-direction: column;
     overflow: hidden;
     border-radius: 15px;
-    margin-left: 30px;
     padding: 0;
     background-color: #29292c;
-    top: 50%;
-    width: 200px;
-    border: 2px solid yellow;
+    width: 100%;
 }
-
-
 
 #display-entry {
     display: flex;
-    margin-left: 35px;
-    margin-bottom: 20px;
-    /* width: auto; */
-    border: 2px solid red;
+    margin: 0 0 10px 0;
 }
 
 #display-text {
     color: white;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+}
+
+#display-bullet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    color: white;
+    padding: 0;
+    margin: 0;
+    padding-right: 5px;
 }
 
 .bullet-icon {
@@ -57,38 +63,41 @@
     text-align: center;
     width: 10px;
     height: 20px;
-    padding-right: 20px;
+    margin-left: 20px;
 }
 
-#display-bullet {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: auto;
-    height: auto;
-    color: white;
-}
 .bullet-btn {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: inherit;
     font-size: 16px;
-    padding-left: 15px;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    margin: 0px;
-    width: 100%;
+    /* top | right | bottom | left */
+    padding: 10px 15px 10px 15px;
     /* bottom of each section (except last) is horizontal line */
     border: none;
-    border-bottom: var(--line-thickness) solid var(--line-grey);
+    border-bottom: 1px solid var(--line-grey);
 }
 
 .bullet-btn:last-child {
     border: none;
 }
 
-.bullet-btn:focus {
-    background-color: blue;
-    outline: none;
+.bullet-btn[state='off'] {
+    background-color: inherit;
+}
+
+.bullet-btn[state='on'] {
+    background-color: #0a84fe;
+}
+
+p,
+button,
+span {
+    color: white;
+}
+
+:root {
+    --line-grey: #7b8695;
+    --highlight-blue: #0a84fe;
 }

@@ -28,11 +28,6 @@ class BulletModal extends HTMLElement {
         displayEntry.setAttribute('id', 'display-entry');
         bullet.setAttribute('id', 'display-bullet');
         entry.setAttribute('id','display-text');
-        //const selectedEntry = document.createElement('div');
-        //const bulletEntry = document.createElement('li');
-        //selectedEntry.setAttribute('id', 'bullet-entry');
-        //selectedEntry.appendChild(bulletEntry);
-        //selectedEntry.textContent = 'hi';
         displayEntry.appendChild(bullet);
         displayEntry.appendChild(entry);
 
@@ -75,7 +70,6 @@ class BulletModal extends HTMLElement {
         importantBullet.textContent = IMPORTANTBULLET;
         const eventBullet = document.createElement('span');
         eventBullet.textContent = EVENTBULLET;
-        /* checkbox needs to have input element to be checked/unchecked */
         const checkBox = document.createElement('span');
         checkBox.textContent = '☑';
         defaultBullet.setAttribute('class', 'bullet-icon');
@@ -104,13 +98,6 @@ class BulletModal extends HTMLElement {
          wrapper.appendChild(modalContainer);
 
          /* add event listeners */
-
-         /* close modal if user clicks outside of modal */
-        // wrapper.onclick = function(event) {
-        //     if (event.target == wrapper) {
-        //       wrapper.style.display = "none";
-        //     }
-        // }
         defaultBulletBtn.addEventListener('click', changeBullet);
         importantBulletBtn.addEventListener('click', changeBullet);
         checkBoxBtn.addEventListener('click', changeBullet);
@@ -121,5 +108,5 @@ class BulletModal extends HTMLElement {
         shadow.appendChild(wrapper);
     }
 }
-
+/* Custom HTML element can be used as <bullet-modal></bullet-modal> */
 customElements.define('bullet-modal', BulletModal);

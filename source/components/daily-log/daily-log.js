@@ -1,5 +1,4 @@
-//import { fas } from '@fortawesome/free-solid-svg-icons'
-import { createListElement, notesClick } from "/source/scripts/notes-script.js";
+import { notesClick } from "/source/scripts/notes-script.js";
 import { ARROWICON } from "../icons.js";
 const CANCEL = 'Cancel';
 const SAVE = 'Save';
@@ -8,10 +7,10 @@ const TRACKERS = 'Trackers';
 const NOTES = 'Notes';
 const JOURNAL = 'Journal';
 const LOG_TITLE = 'New Daily Log';
-/* keep track of current note entries */
-//export var currentEntries = new Array();
+/** dictionary to keep track of current note entries 
+* currentEntries[entry] = entry.value
+*/
 export var currentEntries = new Map();
-//import {createListElement} from './notes-script.js';
 
 class DailyLog extends HTMLElement {
     constructor() {
@@ -81,19 +80,19 @@ class DailyLog extends HTMLElement {
         trackers.appendChild(trackersTitle);
         trackers.appendChild(trackersBtn);
 
-        /* notes consist of title and input bullet text */
+        /* notes consist of title and placeholder */
         notes.setAttribute('id', 'notes-container');
         const notesTitle = document.createElement('h3');
-        //const bulletList = document.createElement('ul');
         const notesPlaceholder = document.createElement('p');
         notesPlaceholder.textContent = 'Click to add a note...';
         notesPlaceholder.setAttribute('id', 'notes-placeholder');
         notesTitle.textContent = NOTES;
-        //bulletList.setAttribute('id', 'bullet-list');
         notes.appendChild(notesTitle);
         notes.appendChild(notesPlaceholder);
-        //notes.appendChild(bulletList);
+
+        /* When user clicks placeholder, it should create a new bullet */
         notesPlaceholder.addEventListener("click", notesClick);
+
         /* journal consists of placeholder and input area */
         journal.setAttribute('id', 'journal-container');
         const journalTitle = document.createElement('h3');
@@ -101,11 +100,13 @@ class DailyLog extends HTMLElement {
         journalTitle.textContent = JOURNAL;
         journalInput.setAttribute('id', 'journal-text');
         journalInput.setAttribute('placeholder', "Click to start typing...");
-        journalInput.oninput = function() {auto_grow(this)};
         journal.appendChild(journalTitle);
         journal.appendChild(journalInput);
-    
 
+        /* on input, journal text area should dynamically grow */
+        journalInput.oninput = function() {auto_grow(this)};
+    
+        /* Append elements to wrapper and wrapper and style to shadow DOM */
         shadow.appendChild(dailyLogStyle);
         shadow.appendChild(wrapper);
         wrapper.appendChild(controlsContainer);
@@ -114,10 +115,6 @@ class DailyLog extends HTMLElement {
         wrapper.appendChild(notes);
         wrapper.appendChild(journal);
 
-        // function auto_grow(element) {
-        //     element.style.height = 'auto';
-        //     element.style.height = (element.scrollHeight)+"px";
-        // }
 
         /* set the date to default to today */
         function setDefaultDate() {
@@ -135,11 +132,18 @@ class DailyLog extends HTMLElement {
     }
 }
 
+/* Custom HTML element can be used as <daily-log></daily-log> */
 customElements.define('daily-log', DailyLog);
+
+/**
+ * @function auto_grow
+ * Auto grows an input element dynamically with text
+ * Helper function for control.
+ * @param {Element} element to grow
+ */
 
 export function auto_grow(element) {
     element.style.height = 'auto';
-    //top right bottom left
     element.style.height = (element.scrollHeight)+"px";
 }
 export default DailyLog;

@@ -43,6 +43,7 @@
     margin: 0;
 }
 
+/* align and center bullet in container */
 #display-bullet {
     display: flex;
     justify-content: center;

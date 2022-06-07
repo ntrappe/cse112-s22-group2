@@ -1,5 +1,5 @@
 import { changeBullet } from "/source/scripts/notes-script.js";
-import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET } from "./icons.js";
+import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET, CHECKBOXBULLET } from "./icons.js";
 class BulletModal extends HTMLElement {
     constructor() {
         super();
@@ -71,7 +71,7 @@ class BulletModal extends HTMLElement {
         const eventBullet = document.createElement('span');
         eventBullet.textContent = EVENTBULLET;
         const checkBox = document.createElement('span');
-        checkBox.textContent = '☑';
+        checkBox.textContent = CHECKBOXBULLET;
         defaultBullet.setAttribute('class', 'bullet-icon');
         importantBullet.setAttribute('class', 'bullet-icon');
         checkBox.setAttribute('class', 'bullet-icon');

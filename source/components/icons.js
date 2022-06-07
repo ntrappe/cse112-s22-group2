@@ -2,3 +2,4 @@ export const ARROWICON = '<svg xmlns="http://www.w3.org/2000/svg" style = "width
 export const DEFAULTBULLET = '•';
 export const IMPORTANTBULLET = '﹡';
 export const EVENTBULLET = '○';
+export const CHECKBOXBULLET = '☑';

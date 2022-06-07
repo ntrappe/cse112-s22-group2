@@ -31,8 +31,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 10px;
-        height: 20px;
+        background-color: transparent;
+        border: none;
         fill: var(--granite);
     }
 

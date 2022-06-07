@@ -1,7 +1,7 @@
 {
     "video": false,
     "fixturesFolder": false,
-    "integrationFolder": "./source/Testing/cypress",
+    "integrationFolder": "./testing/cypress",
     "pluginsFile": false,
     "screenshotOnRunFailure": false,
     "supportFile": false

@@ -18,7 +18,7 @@
 
 /* always have styling apply irrespective of mobile/desktop */
 
-button.arrow-btn {
+button.arrow-button {
     border: none;
     background: none;
     margin: 0;
@@ -48,10 +48,21 @@ header {
     /* center content horizontally */
     justify-content: center;
     background-color: var(--header-background);
+
+    /* flush with screen */
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
 }
 
 body {
+    font-family: var(--font-sans);
     background-color: var(--full-background);
+
+    /* make body flush with screen so header can be flush */
+    width: 100%;
+    margin-left: 0;
+    margin-top: 0;
 }
 
 main {
@@ -61,21 +72,20 @@ main {
 /* h1 for header title (e.g. page name) */
 
 h1 {
-    font-family: var(--font-sans);
     font-size: 16px;
     font-weight: 900;
     color: var(--snow);
 }
 
+/* h2 for section title (e.g. Daily Logs) */
+
 h2 {
-    font-family: var(--font-sans);
     color: var(--snow);
     font-size: 16px;
     font-weight: 600;
 }
 
 p {
-    font-family: var(--font-sans);
     color: var(--granite);
     font-size: 14px;
     font-weight: 400;
@@ -94,8 +104,13 @@ p {
     --section-distance: 20px;
     --distance-to-header: 30px;
     --stone: #a6a3ae;
+    --dark-stone: #7a7882;
     --granite: #807f86;
+    --pumice: #5b5a5f;
     --snow: #fff;
+    --red: #ff7070;
+    --blue: #0a84fe;
+    --button-radius: 15px;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
     --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
 }

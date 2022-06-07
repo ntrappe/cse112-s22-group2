@@ -40,8 +40,7 @@
         ]
     },
     "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^6.1.1",
-        "eslint-config-airbnb": "^19.0.4",
-        "ts-jest": "^27.0.2"
+        "ts-jest": "^27.0.2",
+        "eslint-config-airbnb": "^19.0.4"
     }
 }

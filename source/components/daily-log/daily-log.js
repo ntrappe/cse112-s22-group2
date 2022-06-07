@@ -1,5 +1,6 @@
 import { notesClick } from "/source/scripts/notes-script.js";
-import { ARROWICON } from "../icons.js";
+import { ARROWICON } from "/source/components/icons.js";
+import { setDefaultDate } from '../control/control-helpers.js';
 const CANCEL = 'Cancel';
 const SAVE = 'Save';
 const DATE = 'Date: ';
@@ -7,12 +8,22 @@ const TRACKERS = 'Trackers';
 const NOTES = 'Notes';
 const JOURNAL = 'Journal';
 const LOG_TITLE = 'New Daily Log';
+const JOURNAL_PLACEHOLDER = 'Click to start typing...';
+export const PIXELS = 'px';
 /** dictionary to keep track of current note entries 
 * currentEntries[entry] = entry.value
 * Needs to be var so it can be updated globally
 */
 export var currentEntries = new Map();
 
+/**
+ * @module DailyLogPreview
+ * Class that renders a full daily log
+ * @extends HTMLElement
+ *
+ * @example
+ * <daily-log></daily-log>
+ */
 class DailyLog extends HTMLElement {
     constructor() {
         super();
@@ -23,6 +34,7 @@ class DailyLog extends HTMLElement {
         /* wrap all the content in one */
         const wrapper = document.createElement('div');
         wrapper.setAttribute('id', 'wrapper');
+        wrapper.style.height = 'auto'; //auto expand wrapper so no scroll
 
 
         const dailyLogStyle = document.createElement('link');
@@ -35,12 +47,12 @@ class DailyLog extends HTMLElement {
         const saveBtn = document.createElement('button');
 
         /* add attributes and text to control buttons */
+        cancelBtn.textContent = CANCEL;
+        saveBtn.textContent = SAVE;
         controlsContainer.setAttribute('class', 'control-container');
         cancelBtn.setAttribute('class', 'control-btn');
         cancelBtn.setAttribute('priority', 'high');
         saveBtn.setAttribute('class', 'control-btn');
-        cancelBtn.textContent = CANCEL;
-        saveBtn.textContent = SAVE;
         controlsContainer.appendChild(cancelBtn);
         controlsContainer.appendChild(saveBtn);
 
@@ -51,18 +63,17 @@ class DailyLog extends HTMLElement {
         const journal = document.createElement('section');
 
         /* heading consists of log name and date */
-        heading.setAttribute('id', 'heading-container');
         const title = document.createElement('h2');
         const dateContainer = document.createElement('div');
         const dateTitle = document.createElement('h3');
         const dateBtn = document.createElement('button');
 
         /* add attributes and text to heading */
+        title.textContent = LOG_TITLE;
+        dateTitle.textContent = DATE;
         dateContainer.setAttribute('id', 'date-container');
         dateBtn.setAttribute('id', 'date-button');
         dateTitle.setAttribute('id', 'date-title');
-        title.textContent = LOG_TITLE;
-        dateTitle.textContent = DATE;
         heading.appendChild(title);
         heading.appendChild(dateContainer);
         dateContainer.appendChild(dateTitle);
@@ -100,12 +111,12 @@ class DailyLog extends HTMLElement {
         const journalInput = document.createElement('textarea');
         journalTitle.textContent = JOURNAL;
         journalInput.setAttribute('id', 'journal-text');
-        journalInput.setAttribute('placeholder', "Click to start typing...");
+        journalInput.setAttribute('placeholder', JOURNAL_PLACEHOLDER);
         journal.appendChild(journalTitle);
         journal.appendChild(journalInput);
 
         /* on input, journal text area should dynamically grow */
-        journalInput.oninput = function() {auto_grow(this)};
+        journalInput.oninput = function() {autoGrow(this)};
     
         /* Append elements to wrapper and wrapper and style to shadow DOM */
         shadow.appendChild(dailyLogStyle);
@@ -116,35 +127,82 @@ class DailyLog extends HTMLElement {
         wrapper.appendChild(notes);
         wrapper.appendChild(journal);
 
+        /* Setter functions */
+        /**
+         * @method defaultFields
+         * Set all text to use placeholders or generic text on
+         * creation of a new daily log.
+         */
+        this.defaultFields = () => {
+            // notesInput.textContent = NOTES_PLACEHOLDER;
+            journalInput.setAttribute('placeholder', JOURNAL_PLACEHOLDER);
+            console.log(journalInput.textContent);
+            dateBtn.textContent = setDefaultDate();
+        };
 
-        /* set the date to default to today */
-        function setDefaultDate() {
-            const date = new Date();
-            const day = date.toLocaleDateString('en-US', { // english version of weekday
-                weekday: 'long',
-            });
-            const month = date.toLocaleDateString('en-US', {
-                month: 'long',
-            });
-            dateBtn.textContent = `${day}, ${month} ${date.getDate()}, ${date.getFullYear()}`;
-        }
+        /**
+         * @method populateFields
+         * Fills in daily log component with given data.
+         * Helper function for control.
+         * @param {String} titleOfLog likely "Daily Log"
+         * @param {String} dateOfLog in form "{day of week}, {month} {date}, {year}"
+         * @param {Object} notesOfLog in form [String, ... String]
+         * @param {String} journalOfLog
+         */
+        this.populateFields = (
+            titleOfLog,
+            dateOfLog,
+            notesOfLog,
+            journalOfLog,
+        ) => {
+            title.textContent = titleOfLog;
+            dateBtn.textContent = dateOfLog;
+            // ignore notesOfLog for now because not set up
+            journalInput.textContent = journalOfLog;
+        };
 
-        setDefaultDate();
+        /* Getter functions */
+        this.getDate = () => dateBtn.textContent;
+        this.getJournal = () => journalInput.value;
+
+        /* Events */
+        const cancelLogEvent = new CustomEvent('cancelLog', {
+            bubbles: true, // event listenable outside of container
+            composed: true,
+        });
+
+        const saveLogEvent = new CustomEvent('saveLog', {
+            bubbles: true, // event listenable outside of container
+            composed: true,
+        });
+
+        cancelBtn.onclick = () => {
+            shadow.dispatchEvent(cancelLogEvent);
+        };
+
+        saveBtn.onclick = () => {
+            shadow.dispatchEvent(saveLogEvent);
+        };
+
+        /* call functions */
+        this.defaultFields();
+        journalInput.oninput = function () {
+            autoGrow(this);
+        };
     }
 }
 
-/* Custom HTML element can be used as <daily-log></daily-log> */
-customElements.define('daily-log', DailyLog);
-
 /**
- * @function auto_grow
- * Auto grows an input element dynamically with text
- * Helper function for control.
- * @param {Element} element to grow
+ * @method autoGrow
+ * Journal textarea (input) expands as user types and the
+ * entire daily log also expands so users dont have to
+ * scroll within the textarea (no scroll bar within it)
+ * @param {Object} element journal input (textarea)
  */
-
-export function auto_grow(element) {
+export function autoGrow(element) {
     element.style.height = 'auto';
-    element.style.height = (element.scrollHeight)+"px";
+    element.style.height = (element.scrollHeight) + PIXELS;
 }
+
+customElements.define('daily-log', DailyLog);
 export default DailyLog;

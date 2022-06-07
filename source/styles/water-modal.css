@@ -85,7 +85,3 @@ input {
     font-size: 5em;
     text-align: center;
 }
-
-input::after {
-    content: " oz";
-}

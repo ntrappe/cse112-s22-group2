@@ -59,7 +59,7 @@ class trackerModal extends HTMLElement {
         imageContainer.appendChild(emoji);
         modalContainer.appendChild(questionHeader);
         modalContainer.appendChild(imageContainer);
-        modalContainer.appendChild(emojiPicker);
+        imageContainer.appendChild(emojiPicker);
         modalContainer.appendChild(instructionsText);
         modalContainer.appendChild(buttonsContainer);
 
@@ -75,10 +75,12 @@ class trackerModal extends HTMLElement {
             showEmoji();
         });
         imageContainer.addEventListener('click', showEmojiPicker);
+        forwardBtn.addEventListener('click', nextTracker);
+        // emo
 
         function showEmojiPicker() {
             emojiPicker.style.display = 'flex';
-            imageContainer.style.display = 'none';
+            // imageContainer.style.display = 'none';
             instructionsText.style.visibility = 'hidden';
             emojiPicker.shadowRoot.children[1].children[1].children[0].children[0].value = '';
             emojiPicker.shadowRoot.children[1].children[1].children[0].children[0]
@@ -89,6 +91,22 @@ class trackerModal extends HTMLElement {
             emojiPicker.style.display = 'none';
             imageContainer.style.display = 'flex';
             instructionsText.style.visibility = 'unset';
+        }
+
+        function nextTracker(trackerName) {
+            if (emojiPicker.style.display !== 'none') {
+                return;
+            }
+
+            if (trackerName === 'sleep') {
+                const input = document.createElement('input');
+                input.setAttribute('min', '0');
+                input.setAttribute('min', '0');
+                // imageContainer.
+            }
+            imageContainer.removeChild(emoji);
+            modalContainer.removeChild(emojiPicker);
+            imageContainer.removeEventListener('click', showEmojiPicker);
         }
     }
 }

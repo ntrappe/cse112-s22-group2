@@ -9,6 +9,7 @@ const JOURNAL = 'Journal';
 const LOG_TITLE = 'New Daily Log';
 /** dictionary to keep track of current note entries 
 * currentEntries[entry] = entry.value
+* Needs to be var so it can be updated globally
 */
 export var currentEntries = new Map();
 

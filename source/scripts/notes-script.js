@@ -15,15 +15,15 @@ var mostRecentBullet = null;
 
 function enterKeyPressed(event) {
   //check if entry is the only one in the list
-  var nextNoteEntry = this.parentNode.nextElementSibling;
-  console.log(nextNoteEntry);
+  const nextNoteEntry = this.parentNode.nextElementSibling;
   if (event.key === 'Enter') {
+    console.log(this.getAttribute('new'));
     event.preventDefault();
     if (this.getAttribute('new') == 'true' && this.value) {
         currentEntries.set(this, this.value);
         this.setAttribute('new', 'false');  
         createListElement();
-    } else if (this.getAttribute('new') == 'false' && nextNoteEntry == null) {
+    } else if (this.getAttribute('new') == 'false' && nextNoteEntry == null && this.value) {
         updateCurrentEntry(this);
         createListElement();
     } else {
@@ -42,24 +42,18 @@ function enterKeyPressed(event) {
  */
 
 function deleteEntry(event) {
-  var nextListElement= this.parentNode.nextElementSibling;
-  var prevListElement = this.parentNode.previousElementSibling;
+  const nextListElement= this.parentNode.nextElementSibling;
+  const prevListElement = this.parentNode.previousElementSibling;
   if (!this.value && event.key === "Backspace") {
-    console.log('prevlistelementID');
-    console.log(prevListElement.id);
-    console.log(currentEntries.size);
-    var entryToDelete = this;
+    const entryToDelete = this;
     currentEntries.delete(entryToDelete);
     this.parentNode.remove();
-    console.log(currentEntries.size);
     
     /** if it is the last entry in the list, and there is an entry above it
      * autofocus to line above on delete
      */
     if (nextListElement == null && prevListElement != null && currentEntries.size != 0) {
       //focus on text area
-      console.log(prevListElement.id);
-      console.log(prevListElement.childNodes[1]);
       prevListElement.childNodes[1].focus();
     } 
     else if (nextListElement == null && prevListElement.id == 'notes-placeholder') {
@@ -84,7 +78,7 @@ function updateCurrentEntry(noteEntry) {
  */
 
 export function notesClick() {
-  var notesPlaceholder = document.querySelector('daily-log').shadowRoot.getElementById('notes-placeholder');
+  const notesPlaceholder = document.querySelector('daily-log').shadowRoot.getElementById('notes-placeholder');
   if (currentEntries.size == 0) {
     notesPlaceholder.style.display = 'none';
     createListElement();
@@ -101,19 +95,15 @@ export function notesClick() {
 export function launchBulletModal(currentBullet) {
     /* update most recent bullet entry */
     mostRecentBullet = currentBullet;
-    console.log('mostRecentBullet = current target');
-    console.log(currentBullet);
-    console.log(mostRecentBullet);
-    console.log('current bullet child', currentBullet.childNodes[0])
 
     /* Get bullet modal and display bullet and entry from shadow DOM */
-    var bulletModal = document.querySelector('bullet-modal').shadowRoot;
-    var displayBullet = document.querySelector('bullet-modal').shadowRoot.getElementById('display-bullet');
-    var displayText = document.querySelector('bullet-modal').shadowRoot.getElementById('display-text');
+    const bulletModal = document.querySelector('bullet-modal').shadowRoot;
+    const displayBullet = document.querySelector('bullet-modal').shadowRoot.getElementById('display-bullet');
+    const displayText = document.querySelector('bullet-modal').shadowRoot.getElementById('display-text');
 
    /* Get bullet type and entry text to display */
-    var bulletType = currentBullet.parentNode.getAttribute('bullet-type');
-    var entryText = currentBullet.nextSibling.value;
+    const bulletType = currentBullet.parentNode.getAttribute('bullet-type');
+    const entryText = currentBullet.nextSibling.value;
 
     /** If entry text is longer than 25 chars, only display the first 25 chars followed
      *  by ellipses
@@ -124,7 +114,6 @@ export function launchBulletModal(currentBullet) {
 
     /* Remove old display bullet and set display entry to selected bullet and text */
     if (displayBullet.hasChildNodes() == true) {
-      console.log('hello');
       displayBullet.removeChild(displayBullet.childNodes[0]);
     };
     displayBullet.appendChild(currentBullet.childNodes[0].cloneNode());
@@ -153,19 +142,15 @@ export function launchBulletModal(currentBullet) {
  */
 
 export function changeBullet(event) {
-  var bulletModal = document.querySelector('bullet-modal').shadowRoot;
+  const bulletModal = document.querySelector('bullet-modal').shadowRoot;
 
   /** Get bullet type of current bullet */
-  var bulletType = mostRecentBullet.parentNode.getAttribute('bullet-type');
-  console.log('buttons');
-  var bulletBtns = bulletModal.querySelectorAll('.bullet-btn');
-  console.log(bulletBtns);
+  const bulletType = mostRecentBullet.parentNode.getAttribute('bullet-type');
+
+  /** Get bullet option buttons */
+ 
+  const bulletBtns = bulletModal.querySelectorAll('.bullet-btn');
   var newBulletNode = null;
-  console.log('event target');
-  console.log(event.target.id);
-  console.log('mostRecentBullet');
-  console.log(mostRecentBullet.parentNode);
-  console.log(mostRecentBullet.childNodes[0]);
 
   /** Turn buttons off */
   bulletBtns.forEach((button) => {
@@ -181,8 +166,6 @@ export function changeBullet(event) {
     newBulletNode = document.createTextNode(IMPORTANTBULLET);
   }
   if (event.target.id == 'checkbox-bullet-btn' && bulletType != 'checkbox-bullet') {
-    console.log('checkbox parent');
-    console.log(mostRecentBullet.parentNode);
     mostRecentBullet.parentNode.setAttribute('bullet-type', 'checkbox-bullet');
     const checkbox = document.createElement('input');
     checkbox.setAttribute('type','checkbox');
@@ -197,7 +180,7 @@ export function changeBullet(event) {
     mostRecentBullet.appendChild(newBulletNode.cloneNode());
   }
   /** Highlight button on click */
-  var currButton = event.target;
+  const currButton = event.target;
   currButton.setAttribute('state', 'on');
 
   /** Automatically close modal 200ms after user selects a bullet */
@@ -214,14 +197,14 @@ export function changeBullet(event) {
 
 export function createListElement() {
   /* Get notes section container from Shadow DOM */
-  var notesContainer = document.querySelector('daily-log').shadowRoot.getElementById('notes-container');
+  const notesContainer = document.querySelector('daily-log').shadowRoot.getElementById('notes-container');
 
   /** List element structure: <span><span></span><input></input></span>
   * Span element holds bullet container and input area for note entry
   */
-  var listElement = document.createElement('span');
-  var bulletContainer = document.createElement('span');
-  var noteEntry = document.createElement('textarea');
+  const listElement = document.createElement('span');
+  const bulletContainer = document.createElement('span');
+  const noteEntry = document.createElement('textarea');
 
   /* Set attributes for styling */
   listElement.setAttribute('id', 'list-element');
@@ -229,7 +212,7 @@ export function createListElement() {
   noteEntry.setAttribute('id', 'note-entry');
 
   /* Add default bullet text node to entry */
-  var defaultBullet =  document.createTextNode(DEFAULTBULLET);
+  const defaultBullet =  document.createTextNode(DEFAULTBULLET);
   bulletContainer.appendChild(defaultBullet);
 
   /* Set 'bullet-type' attribute for this list element */

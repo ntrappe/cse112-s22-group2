@@ -102,7 +102,7 @@ export function launchBulletModal(currentBullet) {
 
    /* Get bullet type and entry text to display */
     const bulletType = currentBullet.parentNode.getAttribute('bullet-type');
-    const entryText = currentBullet.nextSibling.value;
+    let entryText = currentBullet.nextSibling.value;
 
     /** If entry text is longer than 25 chars, only display the first 25 chars followed
      *  by ellipses

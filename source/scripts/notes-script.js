@@ -1,4 +1,4 @@
-import { currentEntries, auto_grow } from "../components/daily-log/daily-log.js";
+import { currentEntries, autoGrow } from "../components/daily-log/daily-log.js";
 import { cancel, click, start } from "./long-press.js";
 import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET } from "../components/icons.js";
 /* global variable to keep track of the most recently changed bullet */
@@ -17,7 +17,6 @@ function enterKeyPressed(event) {
   //check if entry is the only one in the list
   const nextNoteEntry = this.parentNode.nextElementSibling;
   if (event.key === 'Enter') {
-    console.log(this.getAttribute('new'));
     event.preventDefault();
     if (this.getAttribute('new') == 'true' && this.value) {
         currentEntries.set(this, this.value);
@@ -222,7 +221,7 @@ export function createListElement() {
    * Note entry 'new' attribute should be set to true since it is a new entry
    */
   noteEntry.setAttribute('rows', '1');
-  noteEntry.oninput = function() {auto_grow(this)};
+  noteEntry.oninput = function() {autoGrow(this)};
   noteEntry.setAttribute('new','true');
 
   /* Append children to List Element */

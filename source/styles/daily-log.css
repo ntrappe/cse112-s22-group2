@@ -1,144 +1,158 @@
 @import "./home-screen.css";
-@import "../components/icons.js";
 
-@media only screen and (max-width: 500px) {
+/* ==== DAILY LOG HEADING ==== */
+div.nav-text {
+    /* space between text in nav section and button icon */
+    margin-right: 20px;
+}
 
-    div.nav-text {
-        /* space between text in nav section and button icon */
-        margin-right: 20px;
-    }
+div.control-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--section-background);
+}
 
-    div.control-container {
-        display: flex;
-        justify-content: space-between;
-        background-color: var(--section-background);
-        padding-top: var(--section-pad);
-        padding-bottom: var(--section-pad);
-    }
+button.control-btn {
+    background: none;
+    color: var(--snow);
+    border: none;
+    font-size: var(--log-text-size);
+    margin: 0;
 
-    button.control-btn {
-        background: none;
-        color: var(--snow);
-        border: none;
-    }
+    /* top | right | bottom | left */
+    padding: 5px 0 2px 0;
+}
+
+button.control-btn[priority="high"] {
+    color: var(--red);
+}
+
+button.arrow-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+    fill: var(--granite);
+}
+
+/* holds "Date" label and the actual date */
+#date-container {
+    display: flex;
+    align-items: baseline;
+}
+
+#date-title {
+    /* gap between Date label and date button */
+    margin-right: var(--date-gap);
+}
+
+/* ==== DAILY LOG HEADING DONE ==== */
+
+#date-button {
+    border: none;
+    border-radius: var(--rounded-button);
+    background-color: var(--button-blue);
+    color: var(--snow);
+    height: 24px;
+    font-size: var(--log-text-size);
+    font-weight: 500;
+    padding-left: var(--button-text-pad);
+    padding-right: var(--button-text-pad);
+}
+
+#tracker-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* notes and journal placeholder and text same size and color */
+
+#journal-text,
+#notes-placeholder,
+#note-entry,
+::placeholder {
+    font-family: var(--font-sans);
+    color: var(--stone);
+    font-size: var(--log-text-size);
+    opacity: 1;
+}
+
+#journal-text {
+    resize: none;
+    outline: none;
+    border: none;
+    caret-color: var(--snow);
+    background-color: var(--section-background);
+    margin-left: auto;
+    margin-right: auto;
+    width: 98%;
+    min-height: 50%;
+    max-height: 100%;
+}
+
+section {
+    /* bottom of each section (except last) is horizontal line */
+    border-bottom: var(--line-thickness) solid var(--line-grey);
+
+    /* space between sections */
+    padding-top: var(--section-pad);
+    padding-bottom: var(--section-pad);
+}
+
+section:last-child {
+    border: none;
+}
+
+#bullet-list {
+    list-style-type: none;
+    padding-left: 22px;
+}
+
+#note-entry {
+    display: block;
+    outline: none;
+    resize: none;
+    border: none;
+    box-sizing: border-box;
+    caret-color: var(--snow);
+    background-color: var(--section-background);
+    width: 98%;
+    height: 100%;
+    /* min-height: 25%;
+    max-height: 100%; */
+    border: 1px solid orange;
+}
+
+/* container for span bullet and text */
+#list-element {
+    display: flex;
+    align-items: center;
     
-    button.control-btn[priority="high"] {
-        color: var(--red);
-    }
+    /* top | right | bottom | left */
+    margin: 2px 0.5em 2px 0;
+    border: 1px solid red;
+}
 
-    
-    button.arrow-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: transparent;
-        border: none;
-        fill: var(--granite);
-    }
+/* Keep constant distance between last list element and section divider */
+#list-element:last-child {
+    margin-bottom: 14px;
+}
 
-    /* holds "Date" label and the actual date */
-    #date-container {
-        display: flex;
-    }
-
-    #date-title {
-        /* gap between Date label and date button */
-        margin-right: var(--date-gap);
-    }
-
-    #date-button {
-        border: none;
-        border-radius: var(--rounded-button);
-        background-color: var(--button-blue);
-        color: var(--snow);
-        height: 24px;
-        font-size: 14px;
-        font-weight: 500;
-        margin-top: 12px;
-        padding-left: var(--button-text-pad);
-        padding-right: var(--button-text-pad);
-    }
-
-    #tracker-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    #journal-text {
-        resize: none;
-        outline: none;
-        border: none;
-        font-family: var(--font-sans);
-        color: var(--stone);
-        caret-color: var(--snow);
-        background-color: var(--section-background);
-        margin-left: auto;
-        margin-right: auto;
-        width: 98%;
-        min-height: 50%;
-        max-height: 100%;
-    }
-
-    section {
-        /* bottom of each section (except last) is horizontal line */
-        border-bottom: var(--line-thickness) solid var(--line-grey);
-
-        /* space between sections */
-        padding-top: var(--section-pad);
-        padding-bottom: var(--section-pad);
-    }
-
-    section:last-child {
-        border: none;
-    }
-
-    #bullet-list {
-        list-style-type: none;
-        padding-left: 22px;
-    }
-
-    #note-entry {
-        display: block;
-        outline: none;
-        resize: none;
-        border: none;
-        box-sizing: border-box;
-        font-family: var(--font-sans);
-        color: var(--stone);
-        caret-color: var(--snow);
-        background-color: var(--section-background);
-        width: 98%;
-        min-height: 25%;
-        max-height: 100%;
-    }
-
-     /* Keep constant distance between last list element and section divider */
-    #list-element:last-child {
-        margin-bottom: 14px;
-    }
-
-    #list-element {
-        display: flex;
-         /* top | right | bottom | left */
-        margin: 2px 0.5em 2px 0.5em;
-    }
-
-    /* align and center bullet in container */
-    #bullet-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        width: 20px;
-        height: 20px;
-        padding: 2px;
-        color: var(--stone);
-    }
+/* align and center the bullet point */
+#bullet-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--bullet-text-gap);
+    color: var(--snow);
+    height: 20px;
+    width: 20px;
 }
 
 /* h2 for log title (BIG) */
-
 h2 {
     font-family: var(--font-sans);
     color: var(--snow);
@@ -147,7 +161,6 @@ h2 {
 }
 
 /* h3 for section titles (e.g. Notes) */
-
 h3 {
     font-family: var(--font-sans);
     color: var(--snow);
@@ -161,11 +174,64 @@ h3 {
     border-top-right-radius: var(--rounded-rect);
 
     /* add space between edges of wrapper and internal contents */
-    
     /* top | right | bottom | left */
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
     margin-left: var(--pad-screen-edge);
     margin-right: var(--pad-screen-edge);
+}
+
+/* ===== same across browsers ===== */
+
+/* event '◦' SAME */
+#list-element[bullet-type="event-bullet"] > #bullet-container {
+    color: var(--purple);
+    font-size: 32px;
+    padding-bottom: 2px;
+}
+
+/* ===== normalizing text/size across browsers ===== */
+
+/* Firefox */
+@supports (-moz-appearance: none) {
+    
+    /* force height/width of bullet pt container */
+    #bullet-container {
+        /* actually 24 x 24 when rendered */
+        width: 20px;
+        height: 16px;
+    }
+
+    /* default '.' bullet sized up */
+    #list-element[bullet-type="default-bullet"] > #bullet-container {
+        color: rgb(121, 241, 163);
+        font-size: 45px;
+        padding-bottom: 6px;
+    }
+
+    /* important '*' sized down */
+    #list-element[bullet-type="important-bullet"] > #bullet-container {
+        color: var(--red);
+        font-size: 30px;
+        padding-bottom: 2px;
+    }
+}
+
+/* Safari/Chrome */
+@supports (not (-moz-appearance: none)) {
+
+    /* force height/width of bullet pt container */
+    #bullet-container {
+        /* actually 24 x 24 when rendered */
+        width: 22px;
+        height: 17px;
+    }
+
+    /* default '.' sized down */
+    #list-element[bullet-type="default-bullet"] > #bullet-container {
+        color: rgb(121, 241, 163);
+        font-size: 28px;
+        padding-bottom: 5px;
+    }
 }
 
 #list-element :not(textarea) {
@@ -173,17 +239,19 @@ h3 {
     -webkit-user-select: none !important; /* Safari */
     -khtml-user-select: none; /* Konqueror HTML */
     -moz-user-select: none; /* Old versions of Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                supported by Chrome, Edge, Opera and Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version for Chrome/Firefox */
 }
+
+/* ===== end normalizing ===== */
 
 :root {
     --rounded-rect: 15px;
     --rounded-button: 5px;
     --line-thickness: 1px;
     --button-text-pad: 10px;
-    --date-gap: 20px;
+    --log-text-size: 16px;
+    --date-gap: 15px;
     --max-mobile-width: 500px;
     --midnight: #020c1b;
     --full-background: #000;
@@ -194,13 +262,17 @@ h3 {
     --section-distance: 20px;
     --section-pad: 5px;
     --wrap-edge: 15px;
-    --wrap-top: 20px;
+    --wrap-top: 15px;
     --distance-to-header: 30px;
+    --bullet-text-gap: 2px;
+    --bullet-center: 5px;
     --stone: #a6a3ae;
     --granite: #807f86;
     --line-grey: #3d3c41;
     --snow: #fff;
     --red: #ff7070;
+    --green: rgb(121, 241, 163);
+    --purple: rgb(199, 174, 255);
     --blue: #0a84fe;
     --button-blue: #53a1d9;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;

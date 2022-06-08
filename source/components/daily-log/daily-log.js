@@ -1,6 +1,7 @@
-import { notesClick } from "/source/scripts/notes-script.js";
-import { ARROWICON } from "/source/components/icons.js";
+import { notesClick } from './notes-script.js';
+import { ARROWICON } from './bullet-helper.js';
 import { setDefaultDate } from '../control/control-helpers.js';
+
 const CANCEL = 'Cancel';
 const SAVE = 'Save';
 const DATE = 'Date: ';
@@ -103,7 +104,7 @@ class DailyLog extends HTMLElement {
         notes.appendChild(notesPlaceholder);
 
         /* When user clicks placeholder, it should create a new bullet */
-        notesPlaceholder.addEventListener("click", notesClick);
+        notesPlaceholder.addEventListener('click', notesClick);
 
         /* journal consists of placeholder and input area */
         journal.setAttribute('id', 'journal-container');
@@ -144,8 +145,8 @@ class DailyLog extends HTMLElement {
          * @method populateFields
          * Fills in daily log component with given data.
          * Helper function for control.
-         * @param {String} titleOfLog likely "Daily Log"
-         * @param {String} dateOfLog in form "{day of week}, {month} {date}, {year}"
+         * @param {String} titleOfLog likely 'Daily Log'
+         * @param {String} dateOfLog in form '{day of week}, {month} {date}, {year}'
          * @param {Object} notesOfLog in form [String, ... String]
          * @param {String} journalOfLog
          */

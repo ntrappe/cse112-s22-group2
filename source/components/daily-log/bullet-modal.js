@@ -1,5 +1,6 @@
-import { changeBullet } from "/source/scripts/notes-script.js";
-import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET, CHECKBOXBULLET } from "./icons.js";
+import { changeBullet } from './notes-script.js';
+import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET, CHECKBOXBULLET } from './bullet-helper.js';
+
 class BulletModal extends HTMLElement {
     constructor() {
         super();
@@ -20,7 +21,6 @@ class BulletModal extends HTMLElement {
         const modalContainer = document.createElement('div');
         modalContainer.setAttribute('id', 'modal-container');
         
-
         /* create list element to show current text of selected bullet entry */
         const displayEntry = document.createElement('span');
         const bullet = document.createElement('span');

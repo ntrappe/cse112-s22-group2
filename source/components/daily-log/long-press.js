@@ -1,4 +1,4 @@
-import { launchBulletModal } from "/source/scripts/notes-script.js";
+import { launchBulletModal } from './notes-script.js';
 export var longpress = false;
 export var presstimer = null;
 export var longtarget = null;
@@ -37,6 +37,7 @@ export var start = function(e) {
     
     presstimer = setTimeout(function() {
         launchBulletModal(target);
+        console.log('got a long press!');
         longpress = true;
     }, 1000, target);
     return false;

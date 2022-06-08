@@ -1,6 +1,7 @@
-import { currentEntries, autoGrow } from "../components/daily-log/daily-log.js";
-import { cancel, click, start } from "./long-press.js";
-import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET } from "../components/icons.js";
+import { currentEntries, autoGrow } from './daily-log.js';
+import { cancel, click, start } from './long-press.js';
+import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET } from './bullet-helper.js';
+
 /* global variable to keep track of the most recently changed bullet */
 var mostRecentBullet = null;
 
@@ -12,7 +13,6 @@ var mostRecentBullet = null;
  * Helper function for control.
  * @param {Event} event keyup
  */
-
 function enterKeyPressed(event) {
   //check if entry is the only one in the list
   const nextNoteEntry = this.parentNode.nextElementSibling;
@@ -39,11 +39,10 @@ function enterKeyPressed(event) {
  * Helper function for control.
  * @param {Event} event keydown
  */
-
 function deleteEntry(event) {
   const nextListElement= this.parentNode.nextElementSibling;
   const prevListElement = this.parentNode.previousElementSibling;
-  if (!this.value && event.key === "Backspace") {
+  if (!this.value && event.key === 'Backspace') {
     const entryToDelete = this;
     currentEntries.delete(entryToDelete);
     this.parentNode.remove();
@@ -66,7 +65,6 @@ function deleteEntry(event) {
  * Updates value of entry in currentEntries.
  * @param {Element} noteEntry the entry to update
  */
-
 function updateCurrentEntry(noteEntry) {
   currentEntries.set(noteEntry, noteEntry.value);
 }
@@ -75,7 +73,6 @@ function updateCurrentEntry(noteEntry) {
  * @function notesClick
  * Hides the notes placeholder and creates a new bullet.
  */
-
 export function notesClick() {
   const notesPlaceholder = document.querySelector('daily-log').shadowRoot.getElementById('notes-placeholder');
   if (currentEntries.size == 0) {
@@ -90,7 +87,6 @@ export function notesClick() {
  * and launches bullet modal with a display of this selected list element
  * @param {Element} currentBullet the bullet that triggered this event handler
  */
-
 export function launchBulletModal(currentBullet) {
     /* update most recent bullet entry */
     mostRecentBullet = currentBullet;
@@ -116,6 +112,7 @@ export function launchBulletModal(currentBullet) {
       displayBullet.removeChild(displayBullet.childNodes[0]);
     };
     displayBullet.appendChild(currentBullet.childNodes[0].cloneNode());
+    displayBullet.setAttribute('bullet-type', bulletType);
     displayText.innerHTML = entryText;
 
     /* Make modal visible and toggle button corresponding to selected bullet */
@@ -139,7 +136,6 @@ export function launchBulletModal(currentBullet) {
  * Changes the bullet type to selected bullet and auto closes modal
  * @param {Event} event the button event that corresponds to the bullet to change to
  */
-
 export function changeBullet(event) {
   const bulletModal = document.querySelector('bullet-modal').shadowRoot;
 
@@ -239,13 +235,13 @@ export function createListElement() {
   });
 
   /* Add longpress event listeners to List Element to launch bullet modal */
-  bulletContainer.addEventListener("mousedown", start);
-  bulletContainer.addEventListener("touchstart", start);
-  bulletContainer.addEventListener("click", click);
-  bulletContainer.addEventListener("mouseout", cancel);
-  bulletContainer.addEventListener("touchend", cancel);
-  bulletContainer.addEventListener("touchleave", cancel);
-  bulletContainer.addEventListener("touchcancel", cancel);
+  bulletContainer.addEventListener('mousedown', start);
+  bulletContainer.addEventListener('touchstart', start);
+  bulletContainer.addEventListener('click', click);
+  bulletContainer.addEventListener('mouseout', cancel);
+  bulletContainer.addEventListener('touchend', cancel);
+  bulletContainer.addEventListener('touchleave', cancel);
+  bulletContainer.addEventListener('touchcancel', cancel);
   bulletContainer.oncontextmenu = (e) => {
     e.preventDefault();
   }

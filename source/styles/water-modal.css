@@ -86,3 +86,19 @@ input {
     font-size: 5em;
     text-align: center;
 }
+
+@media screen and (max-width: 500px) {
+    
+    #gradient-container > input,
+    #gradient-container > p {
+        font-size: 4em;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    
+    #gradient-container > input,
+    #gradient-container > p {
+        font-size: 3em;
+    }
+}

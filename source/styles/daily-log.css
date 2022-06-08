@@ -190,6 +190,7 @@ h3 {
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
     margin-left: var(--pad-screen-edge);
     margin-right: var(--pad-screen-edge);
+    padding-bottom: 100px;
 }
 
 /* ===== same across browsers ===== */

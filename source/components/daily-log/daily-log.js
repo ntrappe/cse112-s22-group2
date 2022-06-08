@@ -1,4 +1,4 @@
-import { notesClick } from './notes-script.js';
+import { notesClick, populateListElement } from './notes-script.js';
 import { ARROWICON } from './bullet-helper.js';
 import { setDefaultDate } from '../control/control-helpers.js';
 
@@ -17,7 +17,7 @@ export const PIXELS = 'px';
  * currentEntries[entry] = entry.value
  * 'Let' so can be updated globally
  */
-export const currentEntries = new Map();
+// export var currentEntries = new Map();
 
 /**
  * @module DailyLogPreview
@@ -159,12 +159,51 @@ class DailyLog extends HTMLElement {
             title.textContent = titleOfLog;
             dateBtn.textContent = dateOfLog;
             // ignore notesOfLog for now because not set up
+            if (notesOfLog === null) {
+                console.log('NOT populating notes bc null');
+            } else {
+                /**
+                 * Iterate through each item in the notes array which is an
+                 * object with the bullet style + notes content + call
+                 * helper function to create a bullet + add to notes
+                 */
+                for (let i = 0; i < notesOfLog.length; i++) {
+                    const savedNote = JSON.parse(notesOfLog[i]);
+                    populateListElement(savedNote.bulletStyle, savedNote.noteContent);
+                }
+            }
             journalInput.textContent = journalOfLog;
         };
 
         /* Getter functions */
         this.getDate = () => dateBtn.textContent;
         this.getJournal = () => journalInput.value;
+        this.getNotes = () => {
+            const bulletList = notes.childNodes; // list of notes
+            const notesArr = []; // will hold content of each note
+            let j = 0;
+
+            /**
+             * If children of the list is 2 that represents the placeholder + title
+             * so no notes were recorded. If more than that, iterate through each
+             * bullet continer object to grab content + bullet style + save in array.
+             */
+            if (bulletList.length > 2) {
+                for (let i = 2; i < bulletList.length; i++) {
+                    const bulletType = bulletList[i]; // container for bullet and text
+                    const noteEntry = bulletType.childNodes[1]; // kids are (0) bullet & (1) entry 
+                    const saveNote = { // note object to store in arr
+                        bulletStyle: bulletType.getAttribute('bullet-type'),
+                        noteContent: noteEntry.value,
+                    };
+                    notesArr[j++] = JSON.stringify(saveNote);
+                }
+                return notesArr;
+            } else {
+                console.log('no bullet points, just placeholder');
+                return null;
+            }
+        }
 
         /* Events */
         const cancelLogEvent = new CustomEvent('cancelLog', {

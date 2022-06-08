@@ -4,7 +4,7 @@ export let longpress = false;
 export let presstimer = null;
 export const longtarget = null;
 
-export const cancel = (e) => {
+export const cancel = function (e) {
     if (presstimer !== null) {
         clearTimeout(presstimer);
         presstimer = null;
@@ -12,7 +12,7 @@ export const cancel = (e) => {
     this.classList.remove('longpress');
 };
 
-export const click = (e) => {
+export const click = function (e) {
     if (presstimer !== null) {
         clearTimeout(presstimer);
         presstimer = null;
@@ -27,7 +27,7 @@ export const click = (e) => {
     return true;
 };
 
-export const start = (e) => {
+export const start = function (e) {
     const target = e.currentTarget;
 
     if (e.type === 'click' && e.button !== 0) {

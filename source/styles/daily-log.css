@@ -22,7 +22,7 @@ button.control-btn {
     margin: 0;
 
     /* top | right | bottom | left */
-    padding: 5px 0 2px;
+    padding: 10px 0 2px;
 }
 
 button.control-btn[priority="high"] {
@@ -258,7 +258,7 @@ h3 {
     --line-thickness: 1px;
     --button-text-pad: 10px;
     --log-text-size: 16px;
-    --date-gap: 15px;
+    --date-gap: 10px;
     --max-mobile-width: 500px;
     --midnight: #020c1b;
     --full-background: #000;

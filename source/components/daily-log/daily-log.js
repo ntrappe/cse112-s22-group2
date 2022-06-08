@@ -191,7 +191,7 @@ class DailyLog extends HTMLElement {
             if (bulletList.length > 2) {
                 for (let i = 2; i < bulletList.length; i++) {
                     const bulletType = bulletList[i]; // container for bullet and text
-                    const noteEntry = bulletType.childNodes[1]; // kids are (0) bullet & (1) entry 
+                    const noteEntry = bulletType.childNodes[1]; // kids are (0) bullet & (1) entry
                     const saveNote = { // note object to store in arr
                         bulletStyle: bulletType.getAttribute('bullet-type'),
                         noteContent: noteEntry.value,
@@ -203,7 +203,7 @@ class DailyLog extends HTMLElement {
                 console.log('no bullet points, just placeholder');
                 return null;
             }
-        }
+        };
 
         /* Events */
         const cancelLogEvent = new CustomEvent('cancelLog', {

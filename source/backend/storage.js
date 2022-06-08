@@ -118,7 +118,7 @@ export function addLog(date, notes, journal) {
             }
         }
     }
-    
+
     // Input validation for journal: check if a string
     if (typeof (journal) !== 'string') {
         console.error('Journal must be string.');

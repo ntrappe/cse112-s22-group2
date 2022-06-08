@@ -268,8 +268,8 @@ export function createListElement() {
  * Yes this is a very redundant function. (TODO: rely on above fxn).
  * Will repopulate the list of bullet points from local storage
  * by creating a bullet point, adding content, and setting bullet style.
- * @param {*} style 
- * @param {*} text 
+ * @param {String} style (type of bullet like default)
+ * @param {String} text (content user typed)
  */
 export function populateListElement(style, text) {
     /* Get notes section container from Shadow DOM */
@@ -291,23 +291,18 @@ export function populateListElement(style, text) {
     /* Add default bullet text node to entry */
     let bulletPoint = null;
 
-    switch (style) {
-        case 'default-bullet':
-            bulletPoint = document.createTextNode(DEFAULTBULLET);
-            break;
-        case 'important-bullet':
-            bulletPoint = document.createTextNode(IMPORTANTBULLET);
-            break;
-        case 'event-bullet':
-            bulletPoint = document.createTextNode(EVENTBULLET);
-            break;
-        case 'checkbox-bullet':
-            const checkbox = document.createElement('input');
-            checkbox.setAttribute('type', 'checkbox');
-            bulletPoint = checkbox
-            break;
+    if (style === 'important-bullet') {
+        bulletPoint = document.createTextNode(IMPORTANTBULLET);
+    } else if (style === 'event-bullet') {
+        bulletPoint = document.createTextNode(EVENTBULLET);
+    } else if (style === 'checkbox-bullet') {
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        bulletPoint = checkbox;
+    } else {
+        bulletPoint = document.createTextNode(DEFAULTBULLET);
     }
-    
+
     /* Set 'bullet-type' attribute for this list element */
     bulletContainer.appendChild(bulletPoint);
     listElement.setAttribute('bullet-type', style);

@@ -94,9 +94,211 @@
     
 
     
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+<h4 class="name" id="currentEntries"><span class="type-signature">(constant) </span>currentEntries<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    dictionary to keep track of current note entries
+currentEntries[entry] = entry.value
+'Let' so can be updated globally
+</div>
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_daily-log.js.html">components/daily-log/daily-log.js</a>, <a href="components_daily-log_daily-log.js.html#line20">line 20</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+        
+    
 
     
         <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="changeBulletChangesthebullettypetoselectedbulletandautoclosesmodal"><span class="type-signature"></span>changeBullet
+Changes the bullet type to selected bullet and auto closes modal<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the button event that corresponds to the bullet to change to</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_notes-script.js.html">components/daily-log/notes-script.js</a>, <a href="components_daily-log_notes-script.js.html#line136">line 136</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         
             
@@ -252,6 +454,718 @@ orders items in local storage from most to least recent
     
 
     
+    <h4 class="name" id="createListElementCreatesanewnoteentryelementandappendsittotheNotessection"><span class="type-signature"></span>createListElement
+Creates a new note entry element and appends it to the Notes section<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_notes-script.js.html">components/daily-log/notes-script.js</a>, <a href="components_daily-log_notes-script.js.html#line191">line 191</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteEntryDeletesabulletiftheuserpressesbackspaceonanemptybulletanddeletesentryfromcurrentEntries.Helperfunctionforcontrol."><span class="type-signature"></span>deleteEntry
+Deletes a bullet if the user presses backspace on an empty bullet
+and deletes entry from currentEntries.
+Helper function for control.<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">keydown</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_notes-script.js.html">components/daily-log/notes-script.js</a>, <a href="components_daily-log_notes-script.js.html#line37">line 37</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="deleteEntryUpdatesvalueofentryincurrentEntries."><span class="type-signature"></span>deleteEntry
+Updates value of entry in currentEntries.<span class="signature">(noteEntry)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>noteEntry</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the entry to update</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_notes-script.js.html">components/daily-log/notes-script.js</a>, <a href="components_daily-log_notes-script.js.html#line65">line 65</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="enterKeyPressedCreatesanewbulletonthenextlineiftheuserpressesenterandaddscurrententrytocurrentEntries,orifanexistingbulletiseditedthenitupdatestheentryincurrentEntriesHelperfunctionforcontrol."><span class="type-signature"></span>enterKeyPressed
+Creates a new bullet on the next line if the user presses enter and adds
+current entry to currentEntries, or if an existing bullet is edited then
+it updates the entry in currentEntries
+Helper function for control.<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>event</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Event</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">keyup</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_notes-script.js.html">components/daily-log/notes-script.js</a>, <a href="components_daily-log_notes-script.js.html#line8">line 8</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="launchBulletModalUpdatesmostrecentbulletwiththebulletthattriggeredthiseventhandlerandlaunchesbulletmodalwithadisplayofthisselectedlistelement"><span class="type-signature"></span>launchBulletModal
+Updates most recent bullet with the bullet that triggered this event handler
+and launches bullet modal with a display of this selected list element<span class="signature">(currentBullet)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>currentBullet</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">Element</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">the bullet that triggered this event handler</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_notes-script.js.html">components/daily-log/notes-script.js</a>, <a href="components_daily-log_notes-script.js.html#line86">line 86</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="notesClickHidesthenotesplaceholderandcreatesanewbullet."><span class="type-signature"></span>notesClick
+Hides the notes placeholder and creates a new bullet.<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_daily-log_notes-script.js.html">components/daily-log/notes-script.js</a>, <a href="components_daily-log_notes-script.js.html#line74">line 74</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
     <h4 class="name" id="setDefaultDateHelperfunctiontofetchcurrentdateandformattobe%22%7Bdayofweek%7D,%7Bmonth%7D%7Bdate%7D,%7Byear%7D%22"><span class="type-signature"></span>setDefaultDate
 Helper function to fetch current date and format
 to be "{day of week}, {month} {date}, {year}"<span class="signature">()</span><span class="type-signature"></span></h4>
@@ -350,7 +1264,20 @@ to be "{day of week}, {month} {date}, {year}"<span class="signature">()</span><s
 <nav>
     <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="DailyLogPreview%250AClass%2520that%2520renders%2520a%2520brief%2520preview%2520of%2520a%2520daily%2520logmodule_.html">DailyLogPreview
 Class that renders a brief preview of a daily log</a></li><li><a href="DailyLogPreview%250AClass%2520that%2520renders%2520a%2520full%2520daily%2520logmodule_.html">DailyLogPreview
-Class that renders a full daily log</a></li><li><a href="module-add-component.html">add-component</a></li><li><a href="module-inboxHelper.html">inboxHelper</a></li><li><a href="module-Storage.html">Storage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertStorageDate">convertStorageDate</a></li><li><a href="global.html#setDefaultDateHelperfunctiontofetchcurrentdateandformattobe%2522%257Bdayofweek%257D,%257Bmonth%257D%257Bdate%257D,%257Byear%257D%2522">setDefaultDate
+Class that renders a full daily log</a></li><li><a href="module-add-component.html">add-component</a></li><li><a href="module-inboxHelper.html">inboxHelper</a></li><li><a href="module-Storage.html">Storage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#changeBulletChangesthebullettypetoselectedbulletandautoclosesmodal">changeBullet
+Changes the bullet type to selected bullet and auto closes modal</a></li><li><a href="global.html#convertStorageDate">convertStorageDate</a></li><li><a href="global.html#createListElementCreatesanewnoteentryelementandappendsittotheNotessection">createListElement
+Creates a new note entry element and appends it to the Notes section</a></li><li><a href="global.html#currentEntries">currentEntries</a></li><li><a href="global.html#deleteEntryDeletesabulletiftheuserpressesbackspaceonanemptybulletanddeletesentryfromcurrentEntries.Helperfunctionforcontrol.">deleteEntry
+Deletes a bullet if the user presses backspace on an empty bullet
+and deletes entry from currentEntries.
+Helper function for control.</a></li><li><a href="global.html#deleteEntryUpdatesvalueofentryincurrentEntries.">deleteEntry
+Updates value of entry in currentEntries.</a></li><li><a href="global.html#enterKeyPressedCreatesanewbulletonthenextlineiftheuserpressesenterandaddscurrententrytocurrentEntries,orifanexistingbulletiseditedthenitupdatestheentryincurrentEntriesHelperfunctionforcontrol.">enterKeyPressed
+Creates a new bullet on the next line if the user presses enter and adds
+current entry to currentEntries, or if an existing bullet is edited then
+it updates the entry in currentEntries
+Helper function for control.</a></li><li><a href="global.html#launchBulletModalUpdatesmostrecentbulletwiththebulletthattriggeredthiseventhandlerandlaunchesbulletmodalwithadisplayofthisselectedlistelement">launchBulletModal
+Updates most recent bullet with the bullet that triggered this event handler
+and launches bullet modal with a display of this selected list element</a></li><li><a href="global.html#notesClickHidesthenotesplaceholderandcreatesanewbullet.">notesClick
+Hides the notes placeholder and creates a new bullet.</a></li><li><a href="global.html#setDefaultDateHelperfunctiontofetchcurrentdateandformattobe%2522%257Bdayofweek%257D,%257Bmonth%257D%257Bdate%257D,%257Byear%257D%2522">setDefaultDate
 Helper function to fetch current date and format
 to be "{day of week}, {month} {date}, {year}"</a></li></ul>
 </nav>
@@ -358,7 +1285,7 @@ to be "{day of week}, {month} {date}, {year}"</a></li></ul>
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 08 2022 03:43:51 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 08 2022 05:09:44 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

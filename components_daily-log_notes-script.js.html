@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/daily-log/notes-script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/daily-log/notes-script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import { currentEntries, autoGrow } from './daily-log.js';
+import { cancel, click, start } from './long-press.js';
+import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET } from './bullet-helper.js';
+
+/* global variable to keep track of the most recently changed bullet */
+let mostRecentBullet = null;
+
+/**
+ * @function enterKeyPressed
+ * Creates a new bullet on the next line if the user presses enter and adds
+ * current entry to currentEntries, or if an existing bullet is edited then
+ * it updates the entry in currentEntries
+ * Helper function for control.
+ * @param {Event} event keyup
+ */
+function enterKeyPressed(event) {
+    // check if entry is the only one in the list
+    const nextNoteEntry = this.parentNode.nextElementSibling;
+    if (event.key === 'Enter') {
+        event.preventDefault();
+        if (this.getAttribute('new') === 'true' &amp;&amp; this.value) {
+            currentEntries.set(this, this.value);
+            this.setAttribute('new', 'false');
+            createListElement();
+        } else if (this.getAttribute('new') === 'false'
+                &amp;&amp; nextNoteEntry === null
+                &amp;&amp; this.value) {
+            updateCurrentEntry(this);
+            createListElement();
+        } else {
+            updateCurrentEntry(this);
+            this.blur();
+        }
+    }
+}
+
+/**
+ * @function deleteEntry
+ * Deletes a bullet if the user presses backspace on an empty bullet
+ * and deletes entry from currentEntries.
+ * Helper function for control.
+ * @param {Event} event keydown
+ */
+function deleteEntry(event) {
+    const nextListElement = this.parentNode.nextElementSibling;
+    const prevListElement = this.parentNode.previousElementSibling;
+    if (!this.value &amp;&amp; event.key === 'Backspace') {
+        const entryToDelete = this;
+        currentEntries.delete(entryToDelete);
+        this.parentNode.remove();
+
+        /** if it is the last entry in the list, and there is an entry above it
+         * autofocus to line above on delete
+         */
+        if (nextListElement === null &amp;&amp; prevListElement !== null
+            &amp;&amp; currentEntries.size !== 0) { // focus on text area
+            prevListElement.childNodes[1].focus();
+        } else if (nextListElement === null
+                &amp;&amp; prevListElement.id === 'notes-placeholder') {
+            document.querySelector('daily-log').shadowRoot.getElementById('notes-placeholder').style.display = 'block';
+        }
+    }
+}
+
+/**
+ * @function deleteEntry
+ * Updates value of entry in currentEntries.
+ * @param {Element} noteEntry the entry to update
+ */
+function updateCurrentEntry(noteEntry) {
+    currentEntries.set(noteEntry, noteEntry.value);
+}
+
+/**
+ * @function notesClick
+ * Hides the notes placeholder and creates a new bullet.
+ */
+export function notesClick() {
+    const notesPlaceholder = document.querySelector('daily-log').shadowRoot.getElementById('notes-placeholder');
+    if (currentEntries.size === 0) {
+        notesPlaceholder.style.display = 'none';
+        createListElement();
+    }
+}
+
+/**
+ * @function launchBulletModal
+ * Updates most recent bullet with the bullet that triggered this event handler
+ * and launches bullet modal with a display of this selected list element
+ * @param {Element} currentBullet the bullet that triggered this event handler
+ */
+export function launchBulletModal(currentBullet) {
+    /* update most recent bullet entry */
+    mostRecentBullet = currentBullet;
+
+    /* Get bullet modal and display bullet and entry from shadow DOM */
+    const bulletModal = document.querySelector('bullet-modal').shadowRoot;
+    const displayBullet = document.querySelector('bullet-modal').shadowRoot.getElementById('display-bullet');
+    const displayText = document.querySelector('bullet-modal').shadowRoot.getElementById('display-text');
+
+    /* Get bullet type and entry text to display */
+    const bulletType = currentBullet.parentNode.getAttribute('bullet-type');
+    let entryText = currentBullet.nextSibling.value;
+
+    /** If entry text is longer than 25 chars, only display the first 25 chars followed
+     *  by ellipses
+     */
+    if (entryText.length > 15) {
+        entryText = `${entryText.substring(0, 15)} ...`;
+    }
+
+    /* Remove old display bullet and set display entry to selected bullet and text */
+    if (displayBullet.hasChildNodes() === true) {
+        displayBullet.removeChild(displayBullet.childNodes[0]);
+    }
+    displayBullet.appendChild(currentBullet.childNodes[0].cloneNode());
+    displayBullet.setAttribute('bullet-type', bulletType);
+    displayText.innerHTML = entryText;
+
+    /* Make modal visible and toggle button corresponding to selected bullet */
+    bulletModal.getElementById('wrapper').style.display = 'block';
+    if (bulletType === 'default-bullet') {
+        bulletModal.getElementById('default-bullet-btn').setAttribute('state', 'on');
+    }
+    if (bulletType === 'important-bullet') {
+        bulletModal.getElementById('important-bullet-btn').setAttribute('state', 'on');
+    }
+    if (bulletType === 'checkbox-bullet') {
+        bulletModal.getElementById('checkbox-bullet-btn').setAttribute('state', 'on');
+    }
+    if (bulletType === 'event-bullet') {
+        bulletModal.getElementById('event-bullet-btn').setAttribute('state', 'on');
+    }
+}
+
+/**
+ * @function changeBullet
+ * Changes the bullet type to selected bullet and auto closes modal
+ * @param {Event} event the button event that corresponds to the bullet to change to
+ */
+export function changeBullet(event) {
+    const bulletModal = document.querySelector('bullet-modal').shadowRoot;
+
+    /** Get bullet type of current bullet */
+    const bulletType = mostRecentBullet.parentNode.getAttribute('bullet-type');
+
+    /** Get bullet option buttons */
+
+    const bulletBtns = bulletModal.querySelectorAll('.bullet-btn');
+    let newBulletNode = null;
+
+    /** Turn buttons off */
+    bulletBtns.forEach((button) => {
+        button.setAttribute('state', 'off');
+    });
+
+    if (event.target.id === 'default-bullet-btn' &amp;&amp; bulletType !== 'default-bullet') {
+        mostRecentBullet.parentNode.setAttribute('bullet-type', 'default-bullet');
+        newBulletNode = document.createTextNode(DEFAULTBULLET);
+    }
+    if (event.target.id === 'important-bullet-btn' &amp;&amp; bulletType !== 'important-bullet') {
+        mostRecentBullet.parentNode.setAttribute('bullet-type', 'important-bullet');
+        newBulletNode = document.createTextNode(IMPORTANTBULLET);
+    }
+    if (event.target.id === 'checkbox-bullet-btn' &amp;&amp; bulletType !== 'checkbox-bullet') {
+        mostRecentBullet.parentNode.setAttribute('bullet-type', 'checkbox-bullet');
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        newBulletNode = checkbox;
+    }
+    if (event.target.id === 'event-bullet-btn' &amp;&amp; bulletType !== 'event-bullet') {
+        mostRecentBullet.parentNode.setAttribute('bullet-type', 'event-bullet');
+        newBulletNode = document.createTextNode(EVENTBULLET);
+    }
+    if (newBulletNode !== null) {
+        mostRecentBullet.removeChild(mostRecentBullet.childNodes[0]);
+        mostRecentBullet.appendChild(newBulletNode.cloneNode());
+    }
+
+    /** Highlight button on click */
+    const currButton = event.target;
+    currButton.setAttribute('state', 'on');
+
+    /** Automatically close modal 200ms after user selects a bullet */
+    setTimeout(() => {
+        currButton.setAttribute('state', 'off');
+        bulletModal.getElementById('wrapper').style.display = 'none';
+    }, 200, currButton);
+}
+
+/**
+ * @function createListElement
+ * Creates a new note entry element and appends it to the Notes section
+ */
+
+export function createListElement() {
+    /* Get notes section container from Shadow DOM */
+    const notesContainer = document.querySelector('daily-log').shadowRoot.getElementById('notes-container');
+
+    /** List element structure: &lt;span>&lt;span>&lt;/span>&lt;input>&lt;/input>&lt;/span>
+     * Span element holds bullet container and input area for note entry
+     */
+    const listElement = document.createElement('span');
+    const bulletContainer = document.createElement('span');
+    const noteEntry = document.createElement('textarea');
+
+    /* Set attributes for styling */
+    listElement.setAttribute('id', 'list-element');
+    bulletContainer.setAttribute('id', 'bullet-container');
+    noteEntry.setAttribute('id', 'note-entry');
+
+    /* Add default bullet text node to entry */
+    const defaultBullet = document.createTextNode(DEFAULTBULLET);
+    bulletContainer.appendChild(defaultBullet);
+
+    /* Set 'bullet-type' attribute for this list element */
+    listElement.setAttribute('bullet-type', 'default-bullet');
+
+    /** Note entry textarea should default to one line and dynamically grow with input
+     * Note entry 'new' attribute should be set to true since it is a new entry
+     */
+    noteEntry.setAttribute('rows', '1');
+    noteEntry.oninput = function () { autoGrow(this); };
+    noteEntry.setAttribute('new', 'true');
+
+    /* Append children to List Element */
+    listElement.appendChild(bulletContainer);
+    listElement.appendChild(noteEntry);
+
+    /* Add event listeners */
+    noteEntry.addEventListener('keyup', enterKeyPressed);
+    noteEntry.addEventListener('keydown', deleteEntry);
+    /* Prevent user from creating a newline with 'Enter' within note entry textarea */
+    noteEntry.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
+    });
+
+    /* Add longpress event listeners to List Element to launch bullet modal */
+    bulletContainer.addEventListener('mousedown', start);
+    bulletContainer.addEventListener('touchstart', start);
+    bulletContainer.addEventListener('click', click);
+    bulletContainer.addEventListener('mouseout', cancel);
+    bulletContainer.addEventListener('touchend', cancel);
+    bulletContainer.addEventListener('touchleave', cancel);
+    bulletContainer.addEventListener('touchcancel', cancel);
+    bulletContainer.oncontextmenu = (e) => {
+        e.preventDefault();
+    };
+
+    /* Append list element to Notes section */
+    notesContainer.appendChild(listElement);
+
+    /* Automatically focus on new element's input area */
+    noteEntry.focus();
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="DailyLogPreview%250AClass%2520that%2520renders%2520a%2520brief%2520preview%2520of%2520a%2520daily%2520logmodule_.html">DailyLogPreview
+Class that renders a brief preview of a daily log</a></li><li><a href="DailyLogPreview%250AClass%2520that%2520renders%2520a%2520full%2520daily%2520logmodule_.html">DailyLogPreview
+Class that renders a full daily log</a></li><li><a href="module-add-component.html">add-component</a></li><li><a href="module-inboxHelper.html">inboxHelper</a></li><li><a href="module-Storage.html">Storage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#changeBulletChangesthebullettypetoselectedbulletandautoclosesmodal">changeBullet
+Changes the bullet type to selected bullet and auto closes modal</a></li><li><a href="global.html#convertStorageDate">convertStorageDate</a></li><li><a href="global.html#createListElementCreatesanewnoteentryelementandappendsittotheNotessection">createListElement
+Creates a new note entry element and appends it to the Notes section</a></li><li><a href="global.html#currentEntries">currentEntries</a></li><li><a href="global.html#deleteEntryDeletesabulletiftheuserpressesbackspaceonanemptybulletanddeletesentryfromcurrentEntries.Helperfunctionforcontrol.">deleteEntry
+Deletes a bullet if the user presses backspace on an empty bullet
+and deletes entry from currentEntries.
+Helper function for control.</a></li><li><a href="global.html#deleteEntryUpdatesvalueofentryincurrentEntries.">deleteEntry
+Updates value of entry in currentEntries.</a></li><li><a href="global.html#enterKeyPressedCreatesanewbulletonthenextlineiftheuserpressesenterandaddscurrententrytocurrentEntries,orifanexistingbulletiseditedthenitupdatestheentryincurrentEntriesHelperfunctionforcontrol.">enterKeyPressed
+Creates a new bullet on the next line if the user presses enter and adds
+current entry to currentEntries, or if an existing bullet is edited then
+it updates the entry in currentEntries
+Helper function for control.</a></li><li><a href="global.html#launchBulletModalUpdatesmostrecentbulletwiththebulletthattriggeredthiseventhandlerandlaunchesbulletmodalwithadisplayofthisselectedlistelement">launchBulletModal
+Updates most recent bullet with the bullet that triggered this event handler
+and launches bullet modal with a display of this selected list element</a></li><li><a href="global.html#notesClickHidesthenotesplaceholderandcreatesanewbullet.">notesClick
+Hides the notes placeholder and creates a new bullet.</a></li><li><a href="global.html#setDefaultDateHelperfunctiontofetchcurrentdateandformattobe%2522%257Bdayofweek%257D,%257Bmonth%257D%257Bdate%257D,%257Byear%257D%2522">setDefaultDate
+Helper function to fetch current date and format
+to be "{day of week}, {month} {date}, {year}"</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 08 2022 05:09:44 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

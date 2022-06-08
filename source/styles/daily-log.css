@@ -257,7 +257,9 @@ h3 {
 
     #list-element[bullet-type="important-bullet"] > #bullet-container {
         color: var(--red);
-        font-size: 28px;
+        font-size: 30px;
+        padding: 0;
+        padding-left: 2px;
     }
 }
 

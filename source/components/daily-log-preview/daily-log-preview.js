@@ -8,7 +8,7 @@ export const PREVIEW_PARAGRAPH_CLASS = 'preview-paragraph';
 export const DAILY_LOG_TITLE = 'Daily Log ';
 
 // Preview constants
-export const NO_PREVIEW_TEXT = 'No preivew text available.';
+export const NO_PREVIEW_TEXT = 'No preview text available.';
 const MAX_PREVIEW_LENGTH = 75;
 
 // Icon constants

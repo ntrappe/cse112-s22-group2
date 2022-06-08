@@ -108,6 +108,16 @@ document.addEventListener('openLog', (event) => {
     }
 });
 
+/**
+ * Give user status of system. When page fully loads (not just
+ * html) but also styles (aka using load vs DOMContentLoaded)
+ * then change status to 'updated'.
+ */
+window.addEventListener('load', () => {
+    const inboxStatus = document.getElementById('inbox-status');
+    inboxStatus.textContent = 'Updated Just Now';
+});
+
 /* Control functions on frontend */
 /**
  * Removes logs from the screen (NOT local storage)

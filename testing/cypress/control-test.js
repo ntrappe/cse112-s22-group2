@@ -6,7 +6,7 @@ const EXIT_FAILURE = 0;
 
 describe('Open Page', () => {
     it('Opens index.html', () => {
-        cy.visit('./source/inbox.html')
+        cy.visit('./source/index.html')
     });
 });
 

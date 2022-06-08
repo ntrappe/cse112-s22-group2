@@ -1,7 +1,9 @@
 @import "./home-screen.css";
 
 /* ==== DAILY LOG HEADING ==== */
+
 div.nav-text {
+    
     /* space between text in nav section and button icon */
     margin-right: 20px;
 }
@@ -20,7 +22,7 @@ button.control-btn {
     margin: 0;
 
     /* top | right | bottom | left */
-    padding: 5px 0 2px 0;
+    padding: 5px 0 2px;
 }
 
 button.control-btn[priority="high"] {
@@ -37,12 +39,14 @@ button.arrow-btn {
 }
 
 /* holds "Date" label and the actual date */
+
 #date-container {
     display: flex;
     align-items: baseline;
 }
 
 #date-title {
+
     /* gap between Date label and date button */
     margin-right: var(--date-gap);
 }
@@ -93,6 +97,7 @@ button.arrow-btn {
 }
 
 section {
+    
     /* bottom of each section (except last) is horizontal line */
     border-bottom: var(--line-thickness) solid var(--line-grey);
 
@@ -120,27 +125,26 @@ section:last-child {
     background-color: var(--section-background);
     width: 98%;
     height: 100%;
-    /* min-height: 25%;
-    max-height: 100%; */
-    border: 1px solid orange;
 }
 
 /* container for span bullet and text */
+
 #list-element {
     display: flex;
     align-items: center;
     
     /* top | right | bottom | left */
     margin: 2px 0.5em 2px 0;
-    border: 1px solid red;
 }
 
 /* Keep constant distance between last list element and section divider */
+
 #list-element:last-child {
     margin-bottom: 14px;
 }
 
 /* align and center the bullet point */
+
 #bullet-container {
     display: flex;
     justify-content: center;
@@ -153,6 +157,7 @@ section:last-child {
 }
 
 /* h2 for log title (BIG) */
+
 h2 {
     font-family: var(--font-sans);
     color: var(--snow);
@@ -161,6 +166,7 @@ h2 {
 }
 
 /* h3 for section titles (e.g. Notes) */
+
 h3 {
     font-family: var(--font-sans);
     color: var(--snow);
@@ -174,6 +180,7 @@ h3 {
     border-top-right-radius: var(--rounded-rect);
 
     /* add space between edges of wrapper and internal contents */
+
     /* top | right | bottom | left */
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
     margin-left: var(--pad-screen-edge);
@@ -183,6 +190,7 @@ h3 {
 /* ===== same across browsers ===== */
 
 /* event '◦' SAME */
+
 #list-element[bullet-type="event-bullet"] > #bullet-container {
     color: var(--purple);
     font-size: 32px;
@@ -195,20 +203,24 @@ h3 {
 @supports (-moz-appearance: none) {
     
     /* force height/width of bullet pt container */
+
     #bullet-container {
+
         /* actually 24 x 24 when rendered */
         width: 20px;
         height: 16px;
     }
 
     /* default '.' bullet sized up */
+
     #list-element[bullet-type="default-bullet"] > #bullet-container {
-        color: rgb(121, 241, 163);
+        color: var(--green);
         font-size: 45px;
         padding-bottom: 6px;
     }
 
     /* important '*' sized down */
+    
     #list-element[bullet-type="important-bullet"] > #bullet-container {
         color: var(--red);
         font-size: 30px;
@@ -217,30 +229,25 @@ h3 {
 }
 
 /* Safari/Chrome */
+
 @supports (not (-moz-appearance: none)) {
 
     /* force height/width of bullet pt container */
+
     #bullet-container {
+
         /* actually 24 x 24 when rendered */
         width: 22px;
         height: 17px;
     }
 
     /* default '.' sized down */
+
     #list-element[bullet-type="default-bullet"] > #bullet-container {
-        color: rgb(121, 241, 163);
+        color: var(--green);
         font-size: 28px;
         padding-bottom: 5px;
     }
-}
-
-#list-element :not(textarea) {
-    -webkit-touch-callout: none !important; /* iOS Safari */
-    -webkit-user-select: none !important; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none; /* Non-prefixed version for Chrome/Firefox */
 }
 
 /* ===== end normalizing ===== */
@@ -271,10 +278,19 @@ h3 {
     --line-grey: #3d3c41;
     --snow: #fff;
     --red: #ff7070;
-    --green: rgb(121, 241, 163);
-    --purple: rgb(199, 174, 255);
+    --green: rgb(121 241 163);
+    --purple: rgb(199 174 255);
     --blue: #0a84fe;
     --button-blue: #53a1d9;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
     --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
+}
+
+#list-element :not(textarea) {
+    -webkit-touch-callout: none !important; /* iOS Safari */
+    -webkit-user-select: none !important; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version for Chrome/Firefox */
 }

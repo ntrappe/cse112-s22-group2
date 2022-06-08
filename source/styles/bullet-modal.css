@@ -22,7 +22,7 @@
 
 #display-entry {
     display: flex;
-    margin: 0 0 10px 0;
+    margin: 0 0 10px;
 }
 
 #display-text {
@@ -30,9 +30,12 @@
     font-size: 16px;
     padding: 0;
     margin: 0;
+    width: 90%;
+    border: 1px solid yellow;
 }
 
 /* align and center bullet in container */
+
 #display-bullet {
     display: flex;
     justify-content: center;
@@ -47,7 +50,6 @@
 }
 
 #options-container {
-    /* position: absolute; */
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -59,6 +61,7 @@
 }
 
 /* button contains name of bullet + example of bullet */
+
 button.bullet-btn {
     display: flex;
     justify-content: space-between;
@@ -67,12 +70,11 @@ button.bullet-btn {
     font-size: 16px;
     margin: 0;
     border: none;
-
-    /* top | right | bottom | left */
-    padding: 10px 15px 10px 15px;   
+    padding: 10px 15px;
 }
 
 /* bottom of each section (except last) is horizontal line */
+
 button.bullet-btn:not(:last-child) {
     border-bottom: 1.5px solid var(--line-grey);
 }
@@ -87,15 +89,16 @@ button.bullet-btn:last-child {
     border-bottom-right-radius: 15px;
 }
 
-button.bullet-btn[state='off'] {
+button.bullet-btn[state="off"] {
     background-color: inherit;
 }
 
-button.bullet-btn[state='on'] {
+button.bullet-btn[state="on"] {
     background-color: #0a84fe;
 }
 
 /* example of bullet point (same as in daily-log.css) */
+
 span.bullet-icon {
     display: block;
     display: flex;
@@ -111,9 +114,10 @@ span.bullet-icon {
 /* ==== INDIVIDUAL BULLET POINT STYLES ==== */
 
 /* each are 20 x 20 in the button */
+
 #default-bullet-btn span.bullet-icon,
 #display-bullet[bullet-type="default-bullet"] {
-    color: rgb(121, 241, 163);
+    color: rgb(121 241 163);
     font-size: 60px;
     height: 10px;
     padding-bottom: 10px;
@@ -143,14 +147,14 @@ span.bullet-icon {
     height: 19px;
 }
 
-#display-bullet[bullet-type="checkbox-bullet"]  {
+#display-bullet[bullet-type="checkbox-bullet"] {
     font-size: 20px;
     padding-top: 2px;
 }
 
 #event-bullet-btn span.bullet-icon,
 #display-bullet[bullet-type="event-bullet"] {
-    color: rgb(199, 174, 255);
+    color: rgb(199 174 255);
     font-size: 30px;
     padding-bottom: 2px;
     height: 18px;
@@ -162,7 +166,9 @@ span.bullet-icon {
 }
 
 /* Safari/Chrome */
-@supports (not (-moz-appearance: none)) { 
+
+@supports (not (-moz-appearance: none)) {
+
     #display-bullet[bullet-type="default-bullet"] {
         font-size: 35px;
         padding-top: 2px;

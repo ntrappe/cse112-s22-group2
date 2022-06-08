@@ -17,12 +17,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 60%;
+    width: 65%;
 }
 
 #display-entry {
     display: flex;
     margin: 0 0 10px;
+    align-items: stretch;
 }
 
 #display-text {
@@ -31,7 +32,7 @@
     padding: 0;
     margin: 0;
     width: 90%;
-    border: 1px solid yellow;
+    flex-grow: 2;
 }
 
 /* align and center bullet in container */
@@ -47,6 +48,8 @@
     padding: 0;
     margin: 0;
     padding-right: 5px;
+    padding-top: 3px;
+    flex-grow: 1;
 }
 
 #options-container {

@@ -17,17 +17,17 @@ class BulletModal extends HTMLElement {
         const wrapper = document.createElement('div');
         wrapper.setAttribute('id', 'wrapper');
 
-        /*create container to hold display entry and bullet option container*/
+        /* create container to hold display entry and bullet option container */
         const modalContainer = document.createElement('div');
         modalContainer.setAttribute('id', 'modal-container');
-        
+
         /* create list element to show current text of selected bullet entry */
         const displayEntry = document.createElement('span');
         const bullet = document.createElement('span');
         const entry = document.createElement('p');
         displayEntry.setAttribute('id', 'display-entry');
         bullet.setAttribute('id', 'display-bullet');
-        entry.setAttribute('id','display-text');
+        entry.setAttribute('id', 'display-text');
         displayEntry.appendChild(bullet);
         displayEntry.appendChild(entry);
 
@@ -47,7 +47,7 @@ class BulletModal extends HTMLElement {
 
         /* add id attribute to each button type */
         defaultBulletBtn.setAttribute('id', 'default-bullet-btn');
-        importantBulletBtn.setAttribute('id','important-bullet-btn');
+        importantBulletBtn.setAttribute('id', 'important-bullet-btn');
         checkBoxBtn.setAttribute('id', 'checkbox-bullet-btn');
         eventBulletBtn.setAttribute('id', 'event-bullet-btn');
 
@@ -77,36 +77,36 @@ class BulletModal extends HTMLElement {
         checkBox.setAttribute('class', 'bullet-icon');
         eventBullet.setAttribute('class', 'bullet-icon');
 
-
         /* append symbols to bullet option buttons */
         defaultBulletBtn.appendChild(defaultBullet);
         importantBulletBtn.appendChild(importantBullet);
         checkBoxBtn.appendChild(checkBox);
         eventBulletBtn.appendChild(eventBullet);
 
-         /* append bullet buttons to options container */
+        /* append bullet buttons to options container */
         optionsContainer.appendChild(defaultBulletBtn);
         optionsContainer.appendChild(importantBulletBtn);
         optionsContainer.appendChild(checkBoxBtn);
         optionsContainer.appendChild(eventBulletBtn);
 
-         /* append selected entry element and options container to modal container */
+        /* append selected entry element and options container to modal container */
         modalContainer.appendChild(displayEntry);
         modalContainer.appendChild(optionsContainer);
 
-         /* append modal container to wrapper */
-         wrapper.appendChild(modalContainer);
+        /* append modal container to wrapper */
+        wrapper.appendChild(modalContainer);
 
-         /* add event listeners */
+        /* add event listeners */
         defaultBulletBtn.addEventListener('click', changeBullet);
         importantBulletBtn.addEventListener('click', changeBullet);
         checkBoxBtn.addEventListener('click', changeBullet);
         eventBulletBtn.addEventListener('click', changeBullet);
 
-         /* append to shadow root */
+        /* append to shadow root */
         shadow.appendChild(bulletModalStyle);
         shadow.appendChild(wrapper);
     }
 }
+
 /* Custom HTML element can be used as <bullet-modal></bullet-modal> */
 customElements.define('bullet-modal', BulletModal);

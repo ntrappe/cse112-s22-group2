@@ -11,11 +11,13 @@ const JOURNAL = 'Journal';
 const LOG_TITLE = 'New Daily Log';
 const JOURNAL_PLACEHOLDER = 'Click to start typing...';
 export const PIXELS = 'px';
-/** dictionary to keep track of current note entries 
-* currentEntries[entry] = entry.value
-* Needs to be var so it can be updated globally
-*/
-export var currentEntries = new Map();
+
+/**
+ * dictionary to keep track of current note entries
+ * currentEntries[entry] = entry.value
+ * 'Let' so can be updated globally
+ */
+export const currentEntries = new Map();
 
 /**
  * @module DailyLogPreview
@@ -35,8 +37,7 @@ class DailyLog extends HTMLElement {
         /* wrap all the content in one */
         const wrapper = document.createElement('div');
         wrapper.setAttribute('id', 'wrapper');
-        wrapper.style.height = 'auto'; //auto expand wrapper so no scroll
-
+        wrapper.style.height = 'auto'; // auto expand wrapper so no scroll
 
         const dailyLogStyle = document.createElement('link');
         dailyLogStyle.setAttribute('rel', 'stylesheet');
@@ -84,7 +85,6 @@ class DailyLog extends HTMLElement {
         trackers.setAttribute('id', 'tracker-container');
         const trackersTitle = document.createElement('h3');
         const trackersBtn = document.createElement('button');
-       
 
         /* add attributes and text to trackers section */
         trackersTitle.textContent = TRACKERS;
@@ -117,8 +117,8 @@ class DailyLog extends HTMLElement {
         journal.appendChild(journalInput);
 
         /* on input, journal text area should dynamically grow */
-        journalInput.oninput = function() {autoGrow(this)};
-    
+        journalInput.oninput = function () { autoGrow(this); };
+
         /* Append elements to wrapper and wrapper and style to shadow DOM */
         shadow.appendChild(dailyLogStyle);
         shadow.appendChild(wrapper);

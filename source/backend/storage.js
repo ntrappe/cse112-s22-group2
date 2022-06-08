@@ -192,7 +192,7 @@ export function updateLog(date, notes, journal) {
  * Retrieves value stored at key that corresponds to date param
  * then parses and returns it
  * @param {String} date of preview
- * @returns JS object with {date, notes, journal}
+ * @returns JS object with date, notes, journal
  */
 export function fetchLog(date) {
     if (validateDate(date, true) === EXIT_FAILURE) {
@@ -212,7 +212,7 @@ export function fetchLog(date) {
 /**
  * Iterates through all values in local storage, parses,
  * adds to list, and returns
- * @returns list of JS objects with {date, notes, journal}
+ * @returns list of JS objects with date, notes, journal
  */
 export function fetchAll() {
     const searchResult = [];

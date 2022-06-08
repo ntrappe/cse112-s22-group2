@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Global</title>
+    <title>JSDoc: Module: inboxHelper</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Global</h1>
+    <h1 class="page-title">Module: inboxHelper</h1>
 
     
 
@@ -28,7 +28,6 @@
 
 <header>
     
-        <h2></h2>
         
     
 </header>
@@ -37,45 +36,6 @@
     <div class="container-overview">
     
         
-
-        
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-</dl>
-
 
         
     
@@ -94,83 +54,20 @@
     
 
     
-
-    
-        <h3 class="subsection-title">Methods</h3>
+        <h3 class="subsection-title">Members</h3>
 
         
             
+<h4 class="name" id="~activeEditEvent"><span class="type-signature">(inner, constant) </span>activeEditEvent<span class="type-signature"></span></h4>
 
-    
-
-    
-    <h4 class="name" id="convertStorageDate"><span class="type-signature"></span>convertStorageDate<span class="signature">(date)</span><span class="type-signature"></span></h4>
-    
-
-    
 
 
 
 <div class="description">
-    Converts date (workday, month day, year) to a date that
-orders items in local storage from most to least recent
+    When user clicks 'Edit', they are now in edit mode so
+let control know (so that other operations are suspended)
 </div>
 
-
-
-
-
-
-
-
-
-    <h5>Parameters:</h5>
-    
-
-<table class="params">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>date</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"></td>
-        </tr>
-
-    
-    </tbody>
-</table>
 
 
 
@@ -206,7 +103,7 @@ orders items in local storage from most to least recent
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_control_control-helpers.js.html">components/control/control-helpers.js</a>, <a href="components_control_control-helpers.js.html#line29">line 29</a>
+        <a href="components_control_inbox-helper.js.html">components/control/inbox-helper.js</a>, <a href="components_control_inbox-helper.js.html#line120">line 120</a>
     </li></ul></dd>
     
 
@@ -222,29 +119,74 @@ orders items in local storage from most to least recent
 
 
 
-
-
-
-
-
-
-
-
-
-<h5>Returns:</h5>
-
         
-<div class="param-desc">
-    date as yyyy/mm/dd
+            
+<h4 class="name" id="~deactiveEditEvent"><span class="type-signature">(inner, constant) </span>deactiveEditEvent<span class="type-signature"></span></h4>
+
+
+
+
+<div class="description">
+    When user clicks 'Cancel', they are NOT in edit mode
+so normal operations can resume
 </div>
 
 
 
+
+
+
+
+<dl class="details">
+
     
 
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_control_inbox-helper.js.html">components/control/inbox-helper.js</a>, <a href="components_control_inbox-helper.js.html#line129">line 129</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
 
 
 
+
+
+
+        
+    
+
+    
+        <h3 class="subsection-title">Methods</h3>
 
         
             
@@ -252,14 +194,17 @@ orders items in local storage from most to least recent
     
 
     
-    <h4 class="name" id="setDefaultDateHelperfunctiontofetchcurrentdateandformattobe%22%7Bdayofweek%7D,%7Bmonth%7D%7Bdate%7D,%7Byear%7D%22"><span class="type-signature"></span>setDefaultDate
-Helper function to fetch current date and format
-to be "{day of week}, {month} {date}, {year}"<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="~toggleCheckboxDisplay"><span class="type-signature">(inner) </span>toggleCheckboxDisplay<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
 
 
+
+<div class="description">
+    toggles the display of the delete checkboxes and updates the edit/cancel
+button accordingly
+</div>
 
 
 
@@ -302,7 +247,7 @@ to be "{day of week}, {month} {date}, {year}"<span class="signature">()</span><s
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="components_control_control-helpers.js.html">components/control/control-helpers.js</a>, <a href="components_control_control-helpers.js.html#line45">line 45</a>
+        <a href="components_control_inbox-helper.js.html">components/control/inbox-helper.js</a>, <a href="components_control_inbox-helper.js.html#line41">line 41</a>
     </li></ul></dd>
     
 

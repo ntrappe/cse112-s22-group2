@@ -56,6 +56,673 @@
     
 
     
+        <h3 class="subsection-title">Methods</h3>
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createDailyLog"><span class="type-signature">(inner) </span>createDailyLog<span class="signature">(date)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Helper function: creates HTML of daily log
+Called when user clicks new log button/existing log
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_control_control.js.html">components/control/control.js</a>, <a href="components_control_control.js.html#line178">line 178</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <daily-log> created
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~createDailyLogPreview"><span class="type-signature">(inner) </span>createDailyLogPreview<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Does all the HTML dirty work in setting up a preview
+to be displayed on inbox.html (along w/ checkbox)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_control_control.js.html">components/control/control.js</a>, <a href="components_control_control.js.html#line158">line 158</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    <daily-log-preview>
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~openFullLog"><span class="type-signature">(inner) </span>openFullLog<span class="signature">(date)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Helper function: removes whatever is on screen
+to just display a full daily log
+Called when user clicks on specific daily preview
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>date</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last">from preview</td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_control_control.js.html">components/control/control.js</a>, <a href="components_control_control.js.html#line198">line 198</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~populateInbox"><span class="type-signature">(inner) </span>populateInbox<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Uses local storage to fetch contents of each log
+then populates inbox.html with each log preview
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_control_control.js.html">components/control/control.js</a>, <a href="components_control_control.js.html#line126">line 126</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<h5>Returns:</h5>
+
+        
+<div class="param-desc">
+    success or failure (if nothing to add)
+</div>
+
+
+
+    
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~removeAllLogs"><span class="type-signature">(inner) </span>removeAllLogs<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Removes logs from the screen (NOT local storage)
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_control_control.js.html">components/control/control.js</a>, <a href="components_control_control.js.html#line115">line 115</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id="~updateLogCount"><span class="type-signature">(inner) </span>updateLogCount<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    Helper function: updates display of number of logs
+in footer to reflect state of system
+Called whenever we add/delete logs
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="components_control_control.js.html">components/control/control.js</a>, <a href="components_control_control.js.html#line223">line 223</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+    
 
     
 
@@ -72,13 +739,15 @@
 <nav>
     <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="DailyLogPreview%250AClass%2520that%2520renders%2520a%2520brief%2520preview%2520of%2520a%2520daily%2520logmodule_.html">DailyLogPreview
 Class that renders a brief preview of a daily log</a></li><li><a href="DailyLogPreview%250AClass%2520that%2520renders%2520a%2520full%2520daily%2520logmodule_.html">DailyLogPreview
-Class that renders a full daily log</a></li><li><a href="module-add-component.html">add-component</a></li></ul><h3>Global</h3><ul><li><a href="global.html#toggleCheckboxDisplay">toggleCheckboxDisplay</a></li></ul>
+Class that renders a full daily log</a></li><li><a href="module-add-component.html">add-component</a></li><li><a href="module-inboxHelper.html">inboxHelper</a></li><li><a href="module-Storage.html">Storage</a></li></ul><h3>Global</h3><ul><li><a href="global.html#convertStorageDate">convertStorageDate</a></li><li><a href="global.html#setDefaultDateHelperfunctiontofetchcurrentdateandformattobe%2522%257Bdayofweek%257D,%257Bmonth%257D%257Bdate%257D,%257Byear%257D%2522">setDefaultDate
+Helper function to fetch current date and format
+to be "{day of week}, {month} {date}, {year}"</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Sun May 29 2022 22:41:28 GMT+0000 (Coordinated Universal Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.4</a> on Wed Jun 08 2022 03:43:51 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script> prettyPrint(); </script>

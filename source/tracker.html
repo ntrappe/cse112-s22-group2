@@ -21,6 +21,7 @@
         <script defer src="components/tracker-modal/tracker-modal.js"></script>
         <script defer src="components/tracker-modal/water-modal.js"></script>
         <script defer src="components/tracker-modal/stress-modal.js"></script>
+        <script defer src="components/tracker-modal/edit-trackers-modal.js"></script>
     </head>
     <body>
         <header>
@@ -29,17 +30,20 @@
                     <li id="home-list-item">
                         <a href="index.html">
                             <i class="fa-solid fa-angle-left fa-xl"></i>
-                            Home
+                            Back
                         </a>
                     </li>
                     <li id="inbox-list-item">
-                        <h1>Daily Logs</h1>
+                        <h1>Trackers</h1>
                     </li>
                 </ul>
             </nav>
         </header>
         <main id="main">
+            <edit-trackers-modal></edit-trackers-modal>
+            <!--<stress-modal></stress-modal>-->
             <stress-modal></stress-modal>
+            
         </main>
     </body>
 </html>

@@ -5,6 +5,15 @@ water-modal,
 stress-modal {
     display: flex;
     justify-content: center;
+    flex-grow: 1;
+}
+
+html,
+body,
+main {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
 }
 
 :root {

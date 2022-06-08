@@ -3,9 +3,9 @@
     border-radius: var(--button-radius);
     padding: 1.5em;
     background-image: linear-gradient(var(--container-background-color-start), var(--container-background-color-end));
-    position: fixed;
     width: 60%;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
   
 #image-container {
@@ -27,6 +27,7 @@
 #buttons-container {
     display: flex;
     justify-content: space-between;
+    margin-top: auto;
 }
   
 #instruction-text {

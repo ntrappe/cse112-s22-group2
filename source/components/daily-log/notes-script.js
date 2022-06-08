@@ -1,9 +1,17 @@
-import { currentEntries, autoGrow } from './daily-log.js';
+// import { currentEntries, autoGrow } from './daily-log.js';
+import { autoGrow } from './daily-log.js';
 import { cancel, click, start } from './long-press.js';
 import { DEFAULTBULLET, IMPORTANTBULLET, EVENTBULLET } from './bullet-helper.js';
 
 /* global variable to keep track of the most recently changed bullet */
 let mostRecentBullet = null;
+
+/**
+ * dictionary to keep track of current note entries
+ * currentEntries[entry] = entry.value
+ * 'Let' so can be updated globally
+ */
+const currentEntries = new Map();
 
 /**
  * @function enterKeyPressed
@@ -192,7 +200,6 @@ export function changeBullet(event) {
  * @function createListElement
  * Creates a new note entry element and appends it to the Notes section
  */
-
 export function createListElement() {
     /* Get notes section container from Shadow DOM */
     const notesContainer = document.querySelector('daily-log').shadowRoot.getElementById('notes-container');
@@ -254,4 +261,92 @@ export function createListElement() {
 
     /* Automatically focus on new element's input area */
     noteEntry.focus();
+}
+
+/**
+ * @method populateListElement
+ * Yes this is a very redundant function. (TODO: rely on above fxn).
+ * Will repopulate the list of bullet points from local storage
+ * by creating a bullet point, adding content, and setting bullet style.
+ * @param {String} style (type of bullet like default)
+ * @param {String} text (content user typed)
+ */
+export function populateListElement(style, text) {
+    /* Get notes section container from Shadow DOM */
+    const notesContainer = document.querySelector('daily-log').shadowRoot.getElementById('notes-container');
+
+    /** List element structure: <span><span></span><input></input></span>
+     * Span element holds bullet container and input area for note entry
+     */
+    const listElement = document.createElement('span');
+    const bulletContainer = document.createElement('span');
+    const noteEntry = document.createElement('textarea');
+
+    /* Set attributes for styling */
+    listElement.setAttribute('id', 'list-element');
+    bulletContainer.setAttribute('id', 'bullet-container');
+    noteEntry.setAttribute('id', 'note-entry');
+    noteEntry.value = text;
+
+    /* Add default bullet text node to entry */
+    let bulletPoint = null;
+
+    if (style === 'important-bullet') {
+        bulletPoint = document.createTextNode(IMPORTANTBULLET);
+    } else if (style === 'event-bullet') {
+        bulletPoint = document.createTextNode(EVENTBULLET);
+    } else if (style === 'checkbox-bullet') {
+        const checkbox = document.createElement('input');
+        checkbox.setAttribute('type', 'checkbox');
+        bulletPoint = checkbox;
+    } else {
+        bulletPoint = document.createTextNode(DEFAULTBULLET);
+    }
+
+    /* Set 'bullet-type' attribute for this list element */
+    bulletContainer.appendChild(bulletPoint);
+    listElement.setAttribute('bullet-type', style);
+
+    /** Note entry textarea should default to one line and dynamically grow with input
+     * Note entry 'new' attribute should be set to true since it is a new entry
+     */
+    noteEntry.setAttribute('rows', '1');
+    noteEntry.oninput = function () { autoGrow(this); };
+    noteEntry.setAttribute('new', 'true');
+
+    /* Append children to List Element */
+    listElement.appendChild(bulletContainer);
+    listElement.appendChild(noteEntry);
+
+    /* Add event listeners */
+    noteEntry.addEventListener('keyup', enterKeyPressed);
+    noteEntry.addEventListener('keydown', deleteEntry);
+    /* Prevent user from creating a newline with 'Enter' within note entry textarea */
+    noteEntry.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+        }
+    });
+
+    /* Add longpress event listeners to List Element to launch bullet modal */
+    bulletContainer.addEventListener('mousedown', start);
+    bulletContainer.addEventListener('touchstart', start);
+    bulletContainer.addEventListener('click', click);
+    bulletContainer.addEventListener('mouseout', cancel);
+    bulletContainer.addEventListener('touchend', cancel);
+    bulletContainer.addEventListener('touchleave', cancel);
+    bulletContainer.addEventListener('touchcancel', cancel);
+    bulletContainer.oncontextmenu = (e) => {
+        e.preventDefault();
+    };
+
+    /* Append list element to Notes section */
+    notesContainer.appendChild(listElement);
+
+    /* Automatically focus on new element's input area */
+    noteEntry.focus();
+
+    /* Remove placeholder */
+    const notesPlaceholder = document.querySelector('daily-log').shadowRoot.getElementById('notes-placeholder');
+    notesPlaceholder.style.display = 'none';
 }

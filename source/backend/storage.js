@@ -110,10 +110,12 @@ export function addLog(date, notes, journal) {
     }
 
     // Input validation for notes: check if contains only strings
-    for (let i = 0; i < notes.length; i++) {
-        if (typeof (notes[i]) !== 'string') {
-            console.error('Notes must contain only strings.');
-            return EXIT_FAILURE;
+    if (notes != null) {
+        for (let i = 0; i < notes.length; i++) {
+            if (typeof (notes[i]) !== 'string') {
+                console.error('Notes must contain only strings.');
+                return EXIT_FAILURE;
+            }
         }
     }
 
@@ -156,10 +158,12 @@ export function updateLog(date, notes, journal) {
     }
 
     // Input validation for notes: check if contains strings
-    for (let i = 0; i < notes.length; i++) {
-        if (typeof (notes[i]) !== 'string') {
-            console.log('Notes must contain only strings.');
-            return EXIT_FAILURE;
+    if (notes != null) {
+        for (let i = 0; i < notes.length; i++) {
+            if (typeof (notes[i]) !== 'string') {
+                console.log('Notes must contain only strings.');
+                return EXIT_FAILURE;
+            }
         }
     }
 

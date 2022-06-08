@@ -9,7 +9,7 @@ export const DAILY_LOG_TITLE = 'Daily Log ';
 
 // Preview constants
 export const NO_PREVIEW_TEXT = 'No preview text available.';
-const MAX_PREVIEW_LENGTH = 75;
+const MAX_PREVIEW_LENGTH = 30;
 
 // Icon constants
 const TRACKER_ICON = './icons/tracker';

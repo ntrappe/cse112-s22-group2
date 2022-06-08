@@ -168,6 +168,16 @@ span.bullet-icon {
     padding-top: 2px;
 }
 
+/* Firefox */
+
+@supports (-moz-appearance: none) {
+
+    #display-bullet[bullet-type="important-bullet"] {
+        padding: 0;
+        margin: 0;
+    }
+}
+
 /* Safari/Chrome */
 
 @supports (not (-moz-appearance: none)) {
@@ -175,6 +185,10 @@ span.bullet-icon {
     #display-bullet[bullet-type="default-bullet"] {
         font-size: 35px;
         padding-top: 2px;
+    }
+
+    #display-bullet[bullet-type="important-bullet"] {
+        padding-top: 1px;
     }
 }
 

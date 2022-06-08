@@ -61,7 +61,7 @@ button.arrow-btn {
     background-color: var(--button-blue);
     color: var(--snow);
     height: 24px;
-    font-size: var(--log-text-size);
+    font-size: var(--button-text-size);
     font-weight: 500;
     padding-left: var(--button-text-pad);
     padding-right: var(--button-text-pad);
@@ -254,6 +254,11 @@ h3 {
         font-size: 28px;
         padding-bottom: 5px;
     }
+
+    #list-element[bullet-type="important-bullet"] > #bullet-container {
+        color: var(--red);
+        font-size: 28px;
+    }
 }
 
 /* ===== end normalizing ===== */
@@ -264,6 +269,7 @@ h3 {
     --line-thickness: 1px;
     --button-text-pad: 10px;
     --log-text-size: 16px;
+    --button-text-size: 14px;
     --date-gap: 10px;
     --max-mobile-width: 500px;
     --midnight: #020c1b;

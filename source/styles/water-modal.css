@@ -85,6 +85,7 @@ input {
     background: none;
     font-size: 5em;
     text-align: center;
+    caret-color: white;
 }
 
 @media screen and (max-width: 500px) {

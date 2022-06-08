@@ -1,3 +1,5 @@
+import { notesClick } from './notes-script.js';
+import { ARROWICON } from './bullet-helper.js';
 import { setDefaultDate } from '../control/control-helpers.js';
 
 const CANCEL = 'Cancel';
@@ -6,9 +8,16 @@ const DATE = 'Date: ';
 const TRACKERS = 'Trackers';
 const NOTES = 'Notes';
 const JOURNAL = 'Journal';
-const JOURNAL_PLACEHOLDER = 'Click to start typing...';
 const LOG_TITLE = 'New Daily Log';
-const PIXELS = 'px';
+const JOURNAL_PLACEHOLDER = 'Click to start typing...';
+export const PIXELS = 'px';
+
+/**
+ * dictionary to keep track of current note entries
+ * currentEntries[entry] = entry.value
+ * 'Let' so can be updated globally
+ */
+export const currentEntries = new Map();
 
 /**
  * @module DailyLogPreview
@@ -28,6 +37,7 @@ class DailyLog extends HTMLElement {
         /* wrap all the content in one */
         const wrapper = document.createElement('div');
         wrapper.setAttribute('id', 'wrapper');
+        wrapper.style.height = 'auto'; // auto expand wrapper so no scroll
 
         const dailyLogStyle = document.createElement('link');
         dailyLogStyle.setAttribute('rel', 'stylesheet');
@@ -74,34 +84,42 @@ class DailyLog extends HTMLElement {
         /* trackers consists of title and button */
         trackers.setAttribute('id', 'tracker-container');
         const trackersTitle = document.createElement('h3');
-        trackersTitle.textContent = TRACKERS;
+        const trackersBtn = document.createElement('button');
 
-        /* trackers button */
-        // UPDATE: commented out bc no longer works :( so switched to img
-        // const trackersBtn = document.createElement('button');
-        // trackersBtn.innerHTML = `<svg id = "arrow-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 512">
-        // <path d="M64 448c-8.188 0-16.38-3.125-22.62-9.375c-12.5-12.5-12.5-32.75 0-45.25L178.8 256L41.38 118.6c-12.5-12.5-12.5-32.75
-        // 0-45.25s32.75-12.5 45.25 0l160 160c12.5 12.5 12.5 32.75 0 45.25l-160 160C80.38 444.9 72.19 448 64 448z"/></svg>`;
-        const trackersBtn = document.createElement('img');
-        trackersBtn.setAttribute('src', './icons/arrow-icon.png');
+        /* add attributes and text to trackers section */
+        trackersTitle.textContent = TRACKERS;
+        trackersBtn.innerHTML = ARROWICON;
         trackersBtn.setAttribute('class', 'arrow-btn');
         trackers.appendChild(trackersTitle);
         trackers.appendChild(trackersBtn);
 
-        /* notes consist of title and input bullet text */
+        /* notes consist of title and placeholder */
+        notes.setAttribute('id', 'notes-container');
         const notesTitle = document.createElement('h3');
-        const notesInput = document.createElement('ul');
+        const notesPlaceholder = document.createElement('p');
+        notesPlaceholder.textContent = 'Click to add a note...';
+        notesPlaceholder.setAttribute('id', 'notes-placeholder');
         notesTitle.textContent = NOTES;
-        notesInput.setAttribute('id', 'note-text');
         notes.appendChild(notesTitle);
+        notes.appendChild(notesPlaceholder);
 
+        /* When user clicks placeholder, it should create a new bullet */
+        notesPlaceholder.addEventListener('click', notesClick);
+
+        /* journal consists of placeholder and input area */
+        journal.setAttribute('id', 'journal-container');
         const journalTitle = document.createElement('h3');
         const journalInput = document.createElement('textarea');
         journalTitle.textContent = JOURNAL;
         journalInput.setAttribute('id', 'journal-text');
+        journalInput.setAttribute('placeholder', JOURNAL_PLACEHOLDER);
         journal.appendChild(journalTitle);
         journal.appendChild(journalInput);
 
+        /* on input, journal text area should dynamically grow */
+        journalInput.oninput = function () { autoGrow(this); };
+
+        /* Append elements to wrapper and wrapper and style to shadow DOM */
         shadow.appendChild(dailyLogStyle);
         shadow.appendChild(wrapper);
         wrapper.appendChild(controlsContainer);
@@ -127,8 +145,8 @@ class DailyLog extends HTMLElement {
          * @method populateFields
          * Fills in daily log component with given data.
          * Helper function for control.
-         * @param {String} titleOfLog likely "Daily Log"
-         * @param {String} dateOfLog in form "{day of week}, {month} {date}, {year}"
+         * @param {String} titleOfLog likely 'Daily Log'
+         * @param {String} dateOfLog in form '{day of week}, {month} {date}, {year}'
          * @param {Object} notesOfLog in form [String, ... String]
          * @param {String} journalOfLog
          */
@@ -147,20 +165,6 @@ class DailyLog extends HTMLElement {
         /* Getter functions */
         this.getDate = () => dateBtn.textContent;
         this.getJournal = () => journalInput.value;
-
-        /* Functions */
-        /**
-         * @method auto_grow
-         * Journal textarea (input) expands as user types and the
-         * entire daily log also expands so users dont have to
-         * scroll within the textarea (no scroll bar within it)
-         * @param {Object} element journal input (textarea)
-         */
-        function autoGrow(element) {
-            element.style.height = 'auto';
-            wrapper.style.height = 'auto'; // expand too so no scroll bar
-            element.style.height = (element.scrollHeight) + PIXELS;
-        }
 
         /* Events */
         const cancelLogEvent = new CustomEvent('cancelLog', {
@@ -189,6 +193,17 @@ class DailyLog extends HTMLElement {
     }
 }
 
-customElements.define('daily-log', DailyLog);
+/**
+ * @method autoGrow
+ * Journal textarea (input) expands as user types and the
+ * entire daily log also expands so users dont have to
+ * scroll within the textarea (no scroll bar within it)
+ * @param {Object} element journal input (textarea)
+ */
+export function autoGrow(element) {
+    element.style.height = 'auto';
+    element.style.height = (element.scrollHeight) + PIXELS;
+}
 
+customElements.define('daily-log', DailyLog);
 export default DailyLog;

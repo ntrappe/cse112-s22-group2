@@ -1,9 +1,9 @@
 @import "./home-screen.css";
 
-/* @media only screen and (max-width: 500px) { */
+/* ==== DAILY LOG HEADING ==== */
 
 div.nav-text {
-
+    
     /* space between text in nav section and button icon */
     margin-right: 20px;
 }
@@ -12,8 +12,6 @@ div.control-container {
     display: flex;
     justify-content: space-between;
     background-color: var(--section-background);
-    padding-top: var(--section-pad);
-    padding-bottom: var(--section-pad);
 }
 
 button.control-btn {
@@ -21,30 +19,32 @@ button.control-btn {
     color: var(--snow);
     border: none;
     cursor: pointer;
+    font-size: var(--log-text-size);
+    margin: 0;
+
+    /* top | right | bottom | left */
+    padding: 10px 0 2px;
 }
 
 button.control-btn[priority="high"] {
     color: var(--red);
 }
 
-/* button.arrow-btn {
+button.arrow-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 10px;
-    height: 20px;
+    background-color: transparent;
+    border: none;
     fill: var(--granite);
-} */
-
-img.arrow-btn {
-    width: var(--arrow-size);
-    height: auto;
+    cursor: pointer;
 }
 
 /* holds "Date" label and the actual date */
 
 #date-container {
     display: flex;
+    align-items: baseline;
 }
 
 #date-title {
@@ -53,32 +53,44 @@ img.arrow-btn {
     margin-right: var(--date-gap);
 }
 
+/* ==== DAILY LOG HEADING DONE ==== */
+
 #date-button {
     border: none;
     border-radius: var(--rounded-button);
     background-color: var(--button-blue);
     color: var(--snow);
-    height: 22px;
-    font-size: 12px;
+    height: 24px;
+    font-size: var(--log-text-size);
     font-weight: 500;
-    margin-top: var(--vertically-center-date);
     padding-left: var(--button-text-pad);
     padding-right: var(--button-text-pad);
+    cursor: pointer;
 }
 
 #tracker-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    cursor: pointer;
+}
+
+/* notes and journal placeholder and text same size and color */
+
+#journal-text,
+#notes-placeholder,
+#note-entry,
+::placeholder {
+    font-family: var(--font-sans);
+    color: var(--stone);
+    font-size: var(--log-text-size);
+    opacity: 1;
 }
 
 #journal-text {
     resize: none;
     outline: none;
     border: none;
-    font-family: var(--font-sans);
-    font-size: 14px;
-    color: var(--stone);
     caret-color: var(--snow);
     background-color: var(--section-background);
     margin-left: auto;
@@ -102,14 +114,59 @@ section:last-child {
     border: none;
 }
 
-/* } */
+#bullet-list {
+    list-style-type: none;
+    padding-left: 22px;
+}
+
+#note-entry {
+    display: block;
+    outline: none;
+    resize: none;
+    border: none;
+    box-sizing: border-box;
+    caret-color: var(--snow);
+    background-color: var(--section-background);
+    width: 98%;
+    height: 100%;
+}
+
+/* container for span bullet and text */
+
+#list-element {
+    display: flex;
+    align-items: center;
+    
+    /* top | right | bottom | left */
+    margin: 2px 0.5em 2px 0;
+}
+
+/* Keep constant distance between last list element and section divider */
+
+#list-element:last-child {
+    margin-bottom: 14px;
+}
+
+/* align and center the bullet point */
+
+#bullet-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--bullet-text-gap);
+    color: var(--snow);
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
 
 /* h2 for log title (BIG) */
 
 h2 {
     font-family: var(--font-sans);
     color: var(--snow);
-    font-size: 25px;
+    font-size: 28px;
     font-weight: 700;
 }
 
@@ -118,30 +175,95 @@ h2 {
 h3 {
     font-family: var(--font-sans);
     color: var(--snow);
-    font-size: 15px;
+    font-size: 17px;
     font-weight: 400;
 }
 
 #wrapper {
     background: var(--section-background);
-    border-radius: var(--rounded-rect);
+    border-top-left-radius: var(--rounded-rect);
+    border-top-right-radius: var(--rounded-rect);
 
     /* add space between edges of wrapper and internal contents */
-    
+
     /* top | right | bottom | left */
     padding: var(--wrap-top) var(--wrap-edge) var(--wrap-top) var(--wrap-edge);
     margin-left: var(--pad-screen-edge);
     margin-right: var(--pad-screen-edge);
 }
 
+/* ===== same across browsers ===== */
+
+/* event '◦' SAME */
+
+#list-element[bullet-type="event-bullet"] > #bullet-container {
+    color: var(--purple);
+    font-size: 32px;
+    padding-bottom: 2px;
+}
+
+/* ===== normalizing text/size across browsers ===== */
+
+/* Firefox */
+@supports (-moz-appearance: none) {
+    
+    /* force height/width of bullet pt container */
+
+    #bullet-container {
+
+        /* actually 24 x 24 when rendered */
+        width: 20px;
+        height: 16px;
+    }
+
+    /* default '.' bullet sized up */
+
+    #list-element[bullet-type="default-bullet"] > #bullet-container {
+        color: var(--green);
+        font-size: 45px;
+        padding-bottom: 6px;
+    }
+
+    /* important '*' sized down */
+    
+    #list-element[bullet-type="important-bullet"] > #bullet-container {
+        color: var(--red);
+        font-size: 30px;
+        padding-bottom: 2px;
+    }
+}
+
+/* Safari/Chrome */
+
+@supports (not (-moz-appearance: none)) {
+
+    /* force height/width of bullet pt container */
+
+    #bullet-container {
+
+        /* actually 24 x 24 when rendered */
+        width: 22px;
+        height: 17px;
+    }
+
+    /* default '.' sized down */
+
+    #list-element[bullet-type="default-bullet"] > #bullet-container {
+        color: var(--green);
+        font-size: 28px;
+        padding-bottom: 5px;
+    }
+}
+
+/* ===== end normalizing ===== */
+
 :root {
     --rounded-rect: 15px;
     --rounded-button: 5px;
     --line-thickness: 1px;
     --button-text-pad: 10px;
-    --arrow-size: 10px;
-    --date-gap: 15px;
-    --vertically-center-date: 14px;
+    --log-text-size: 16px;
+    --date-gap: 10px;
     --max-mobile-width: 500px;
     --midnight: #020c1b;
     --full-background: #000;
@@ -150,17 +272,30 @@ h3 {
     --header-height: 50px;
     --pad-screen-edge: 5px;
     --section-distance: 20px;
-    --section-pad: 2px;
-    --wrap-edge: 16px;
-    --wrap-top: 12px;
+    --section-pad: 5px;
+    --wrap-edge: 15px;
+    --wrap-top: 15px;
     --distance-to-header: 30px;
+    --bullet-text-gap: 2px;
+    --bullet-center: 5px;
     --stone: #a6a3ae;
     --granite: #807f86;
     --line-grey: #3d3c41;
     --snow: #fff;
     --red: #ff7070;
+    --green: rgb(121 241 163);
+    --purple: rgb(199 174 255);
     --blue: #0a84fe;
     --button-blue: #53a1d9;
     --font-mono: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
     --font-sans: "Calibre", "SF Pro Text", "Inter", "San Francisco", -apple-system, system-ui, blinkmacsystemfont, sans-serif;
+}
+
+#list-element :not(textarea) {
+    -webkit-touch-callout: none !important; /* iOS Safari */
+    -webkit-user-select: none !important; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version for Chrome/Firefox */
 }

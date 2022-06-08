@@ -1,0 +1,193 @@
+@import "./home-screen.css";
+
+#wrapper {
+    display: none;
+    background-color: rgba(0 0 0 / 80%);
+    backdrop-filter: blur(4px);
+    z-index: 1;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+}
+
+#modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 65%;
+}
+
+#display-entry {
+    display: flex;
+    margin: 0 0 10px;
+    align-items: stretch;
+}
+
+#display-text {
+    color: white;
+    font-size: 16px;
+    padding: 0;
+    margin: 0;
+    width: 90%;
+    flex-grow: 2;
+}
+
+/* align and center bullet in container */
+
+#display-bullet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 20px;
+    height: 20px;
+    color: white;
+    padding: 0;
+    margin: 0;
+    padding-right: 5px;
+    padding-top: 3px;
+    flex-grow: 1;
+}
+
+#options-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: none;
+    border-radius: 15px;
+    padding: 0;
+    background-color: #29292c;
+    width: 100%;
+}
+
+/* button contains name of bullet + example of bullet */
+
+button.bullet-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: inherit;
+    font-size: 16px;
+    margin: 0;
+    border: none;
+    padding: 10px 15px;
+}
+
+/* bottom of each section (except last) is horizontal line */
+
+button.bullet-btn:not(:last-child) {
+    border-bottom: 1.5px solid var(--line-grey);
+}
+
+button.bullet-btn:first-child {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+button.bullet-btn:last-child {
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+button.bullet-btn[state="off"] {
+    background-color: inherit;
+}
+
+button.bullet-btn[state="on"] {
+    background-color: #0a84fe;
+}
+
+/* example of bullet point (same as in daily-log.css) */
+
+span.bullet-icon {
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--snow);
+    height: 20px;
+    width: 20px;
+    margin: 0;
+}
+
+/* ==== INDIVIDUAL BULLET POINT STYLES ==== */
+
+/* each are 20 x 20 in the button */
+
+#default-bullet-btn span.bullet-icon,
+#display-bullet[bullet-type="default-bullet"] {
+    color: rgb(121 241 163);
+    font-size: 60px;
+    height: 10px;
+    padding-bottom: 10px;
+}
+
+#display-bullet[bullet-type="default-bullet"] {
+    font-size: 45px;
+    padding-bottom: 4px;
+}
+
+#important-bullet-btn span.bullet-icon,
+#display-bullet[bullet-type="important-bullet"] {
+    color: #ff7070;
+    font-size: 28px;
+    height: 20px;
+}
+
+#display-bullet[bullet-type="important-bullet"] {
+    font-size: 28px;
+}
+
+#checkbox-bullet-btn span.bullet-icon,
+#display-bullet[bullet-type="checkbox-bullet"] {
+    color: white;
+    font-size: 25px;
+    padding-bottom: 1px;
+    height: 19px;
+}
+
+#display-bullet[bullet-type="checkbox-bullet"] {
+    font-size: 20px;
+    padding-top: 2px;
+}
+
+#event-bullet-btn span.bullet-icon,
+#display-bullet[bullet-type="event-bullet"] {
+    color: rgb(199 174 255);
+    font-size: 30px;
+    padding-bottom: 2px;
+    height: 18px;
+}
+
+#display-bullet[bullet-type="event-bullet"] {
+    font-size: 25px;
+    padding-top: 2px;
+}
+
+/* Safari/Chrome */
+
+@supports (not (-moz-appearance: none)) {
+
+    #display-bullet[bullet-type="default-bullet"] {
+        font-size: 35px;
+        padding-top: 2px;
+    }
+}
+
+/* ==== INDIVIDUAL BULLET POINT DONE ==== */
+
+p,
+button,
+span {
+    color: white;
+}
+
+:root {
+    --line-grey: #7b8695;
+    --highlight-blue: #0a84fe;
+    --default-color: white;
+}

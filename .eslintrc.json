@@ -14,7 +14,7 @@
         "import/extensions": 0,                                         // Allow .js in filenames
         "no-unused-vars": [0,{"argsIgnorePartern": "res|next|~err"}],   // Don't allow unused variables
         "no-var": 2,                                                    // Disallow the use of var (enforce let and const)
-        "max-len": ["error", { "code": 100, "comments": 150 }],         // Code must be 100 but comments have more length
+        "max-len": ["error", { "code": 100, "comments": 150, "ignoreStrings": true }],  // Code must be 100 but comments have more length
         "indent": [2, 4],                                               // Enforce the use of 4-space indentation
         "semi": [2, "always"],                                          // Always use semi colons
         "spaced-comment": [2, "always"],                                // Force one space after // comment
@@ -27,6 +27,8 @@
         "new-cap": ["error", {"newIsCap": true}],                       // Ensure all new operators to be called with uppercase-started function
         "no-plusplus": 0,
         "no-console": 0,
+        "import/no-cycle": 1,
+        "import/no-mutable-exports": 0,
         "no-else-return": 0,
         "object-shorthand": 0,
         "prefer-template": 1,

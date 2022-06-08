@@ -9,6 +9,7 @@
         "declaration-block-semicolon-newline-after": "always",
         "rule-empty-line-before": "always-multi-line",
         "indentation": 4,
+        "property-no-vendor-prefix": null,
         "no-eol-whitespace": null,
         "block-closing-brace-newline-after": null,
         "declaration-colon-space-after": "always",

@@ -41,8 +41,6 @@ class waterModal extends HTMLElement {
         backBtnImage.setAttribute('src', './icons/arrow-icon.png');
         forwardBtnImage.setAttribute('src', './icons/arrow-icon.png');
         waterInput.setAttribute('type', 'number');
-        waterInput.setAttribute('min', '0');
-        waterInput.setAttribute('max', '1000');
         waterInput.value = 0;
 
         // set the inner text/html of the created elements
@@ -73,14 +71,8 @@ class waterModal extends HTMLElement {
         shadow.appendChild(modalContainer);
 
         waterInput.focus();
-        waterInput.addEventListener('input', sanitize);
+        
         imageContainer.addEventListener('click', focusInput);
-
-        function sanitize() {
-            if (parseInt(waterInput.value, 10) > 1000) {
-                waterInput.value = 1000;
-            }
-        }
 
         function focusInput() {
             waterInput.focus();

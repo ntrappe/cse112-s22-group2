@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="./styles/inbox.css"/>
         <link rel="stylesheet" href="./styles/daily-log.css">
         <link rel="stylesheet" href="./styles/daily-log-preview.css">
+        <link rel="stylesheet" href="./styles/tracker-home.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
@@ -22,7 +23,7 @@
         <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
         <script defer src="components/popup-modal/popup-modal.js"></script>
     </head>
-    <body>
+    <body id="body">
         <header>
             <nav>
                 <ul>
@@ -49,7 +50,9 @@
         <script type="module" defer src="./components/control/inbox-helper.js"></script>
         <script type="module" defer src="./components/daily-log/notes-script.js"></script>
         <script type="module" defer src="./components/daily-log/bullet-helper.js"></script>
-        <footer>
+        <script type="module" src="./components/tracker-modal/emoji-picker.js"></script>
+        <script type="module" src="./components/tracker-modal/tracker-modal.js"></script>
+        <footer id="footer">
             <button id="delete-all-btn" type="button">Delete All</button>
             <button id="delete-selected-btn" type="button">Delete Selected</button>
             <div id="inbox-info">

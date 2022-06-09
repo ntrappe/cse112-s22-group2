@@ -216,12 +216,21 @@ class DailyLog extends HTMLElement {
             composed: true,
         });
 
+        const openTrackerEvent = new CustomEvent('openTracker', {
+            bubbles: true, // event listenable outside of container
+            composed: true,
+        });
+
         cancelBtn.onclick = () => {
             shadow.dispatchEvent(cancelLogEvent);
         };
 
         saveBtn.onclick = () => {
             shadow.dispatchEvent(saveLogEvent);
+        };
+
+        trackers.onclick = () => {
+            shadow.dispatchEvent(openTrackerEvent);
         };
 
         /* call functions */
@@ -242,7 +251,7 @@ class DailyLog extends HTMLElement {
 export function autoGrow(element) {
     element.style.height = 'auto';
     element.style.height = (element.scrollHeight) + PIXELS;
-    if (element.id == 'journal-text') {
+    if (element.id === 'journal-text') {
         element.scrollIntoView();
     }
 }

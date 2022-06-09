@@ -25,7 +25,7 @@ jobs:
       # Run HTML Linters automatically
       - name: Run HTML Style and Format Linters 
         run: | 
-              npm i                     # Handle installation on virtual machine
+              npm install --save --legacy-peer-deps # Handle installation on virtual machine
               npm run html_style_lint   # Run html style linter
               npm run html_format_lint  # Run html format linter
               npm run js_lint_test      # Run javascript linter

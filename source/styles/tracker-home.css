@@ -2,22 +2,27 @@
 
 /* ====== HEADER ====== */
 
+ul {
+    justify-content: space-between;
+}
+
 #save-list-item {
     text-align: right;
 }
 
-#save-btn {
+#save-btn,
+#cancel-btn {
     padding: 0;
     margin: 0;
     border: none;
     background: none;
-}
-
-#save-btn,
-#tracker-list-item a {
     font-size: var(--home-edit-size);
     color: var(--header-button-color);
     text-decoration: none;
+}
+
+#cancel-btn {
+    color: var(--stone);
 }
 
 #tracker-list-item h1 {
@@ -30,3 +35,25 @@
 }
 
 /* ====== HEADER DONE ====== */
+
+tracker-modal {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+}
+
+html,
+body,
+main {
+    height: 100%;
+    flex-direction: column;
+    display: flex;
+}
+
+:root {
+    --image-container-background-color: black;
+    --container-background-color-start: rgb(49 49 52);
+    --container-background-color-end: rgb(28 28 30);
+    --button-background-color: rgb(91 90 95);
+    --header-text-color: white;
+}

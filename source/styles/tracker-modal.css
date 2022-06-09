@@ -1,0 +1,105 @@
+#modal-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 1.5em;
+    background-image: linear-gradient(var(--container-background-color-start), var(--container-background-color-end));
+    width: 80%;
+    align-items: center;
+}
+
+#tracker-control-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#tracker-save-btn,
+#tracker-cancel-btn {
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: none;
+    font-size: var(--home-edit-size);
+    color: white;
+    text-decoration: none;
+}
+
+#tracker-cancel-btn {
+    color: var(--red);
+}
+
+#image-container {
+    display: flex;
+    background-color: var(--image-container-background-color);
+    border: solid var(--image-container-background-color) 1px;
+    border-radius: 50%;
+    height: 70vw;
+    width: 70vw;
+    max-width: 400px;
+    max-height: 400px;
+    margin: 0;
+    margin-top: 20px;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+}
+
+#instruction-text {
+    text-align: center;
+    color: var(--stone);
+}
+
+#image-container > img {
+    width: 50%;
+    height: 50%;
+}
+
+h1,
+p {
+    color: var(--header-text-color);
+}
+
+button {
+    cursor: pointer;
+}
+
+emoji {
+    font-size: 40vw;
+}
+
+emoji-picker {
+    display: none;
+    margin: 0 auto;
+    width: 100%;
+    height: inherit;
+}
+
+@media screen and (max-height: 600px) {
+    
+    h1 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-height: 601px) {
+    
+    h1 {
+        font-size: 35px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    
+    emoji {
+        font-size: 280px;
+    }
+}
+
+:root {
+    --stone: #a6a3ae;
+    --tracker-radius: 25px;
+    --red: #ff7070;
+}

@@ -64,6 +64,7 @@ document.addEventListener('deleteConfirm', (event) => {
 newLogBtn.addEventListener('click', () => {
     const today = convertPreviewDate(setDefaultDate());
     const todayLog = fetchLog(today);
+    newLogBtn.disabled = true;
 
     if (todayLog !== EXIT_FAILURE) { // we found a log
         openFullLog(today);
@@ -74,18 +75,20 @@ newLogBtn.addEventListener('click', () => {
         main.appendChild(dailyLog);
 
         dailyLog.addEventListener('cancelLog', () => {
-            console.log('CANCEL');
             main.removeChild(dailyLog); // remove full log
             // editBtn.disabled = false; // allow edit
             populateInbox(); // add previews back
+            console.log('allow button');
+            newLogBtn.disabled = false;
         });
 
         dailyLog.addEventListener('saveLog', () => {
-            console.log('SAVE');
             main.removeChild(dailyLog); // remove full log
             // editBtn.disabled = false; // allow edit
             addLog(dailyLog.getDate(), dailyLog.getNotes(), dailyLog.getJournal());
             populateInbox(); // add previews back
+            console.log('allow button');
+            newLogBtn.disabled = false;
         });
     }
 });
@@ -207,6 +210,7 @@ function openFullLog(date) {
         main.removeChild(dailyLog); // remove full daily log from screen
         editBtn.disabled = false; // users can edit inbox again
         populateInbox(); // add previews
+        newLogBtn.disabled = false;
     });
 
     dailyLog.addEventListener('saveLog', () => {
@@ -214,6 +218,7 @@ function openFullLog(date) {
         editBtn.disabled = false; // users can edit inbox again
         updateLog(dailyLog.getDate(), dailyLog.getNotes(), dailyLog.getJournal()); // save changes
         populateInbox(); // add previews (with changes)
+        newLogBtn.disabled = false;
     });
 }
 

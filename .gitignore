@@ -11,6 +11,7 @@ desktop.ini
 # VSCode
 .vscode
 
+node_modules
 coverage
 package-lock.json
 

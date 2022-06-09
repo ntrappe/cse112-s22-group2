@@ -209,6 +209,7 @@ function createDailyLog(date) {
  */
 function openFullLog(date) {
     editBtn.disabled = true; // do not let users mess outside of log
+    newLogBtn.disabled = true;
     removeAllLogs(); // clear out main
     const dailyLog = createDailyLog(date);
 
@@ -216,12 +217,14 @@ function openFullLog(date) {
     dailyLog.addEventListener('cancelLog', () => {
         main.removeChild(dailyLog); // remove full daily log from screen
         editBtn.disabled = false; // users can edit inbox again
+        newLogBtn.disabled = false;
         populateInbox(); // add previews
     });
 
     dailyLog.addEventListener('saveLog', () => {
         main.removeChild(dailyLog); // remove full daily log from screen
         editBtn.disabled = false; // users can edit inbox again
+        newLogBtn.disabled = false;
         updateLog(dailyLog.getDate(), dailyLog.getNotes(), dailyLog.getJournal()); // save changes
         populateInbox(); // add previews (with changes)
     });

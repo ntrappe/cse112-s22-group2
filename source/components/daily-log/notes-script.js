@@ -258,11 +258,10 @@ export function createListElement() {
 
     /* Append list element to Notes section */
     notesContainer.appendChild(listElement);
-    
 
     /* Automatically focus on new element's input area */
     noteEntry.focus();
-    noteEntry.scrollIntoView({block: 'nearest'});
+    noteEntry.scrollIntoView({ block: 'nearest' });
 }
 
 /**

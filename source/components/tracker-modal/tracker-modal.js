@@ -25,7 +25,7 @@ class TrackerModal extends HTMLElement {
 
         const cancelBtn = document.createElement('button');
         const saveBtn = document.createElement('button');
-        let emoji = document.createElement('emoji');
+        const emoji = document.createElement('emoji');
         const emojiPicker = document.createElement('emoji-picker');
         const instructionsText = document.createElement('p');
 
@@ -125,7 +125,7 @@ class TrackerModal extends HTMLElement {
             const emojiDecimal = savedEmoji.codePointAt(0);
             const emojiDecimalCode = '&#' + emojiDecimal;
             emoji.innerHTML = emojiDecimalCode;
-        }
+        };
 
         /* Events */
         const saveTrackersEvent = new CustomEvent('saveTrackers', {

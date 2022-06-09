@@ -231,7 +231,7 @@ class DailyLog extends HTMLElement {
 
         trackers.onclick = () => {
             shadow.dispatchEvent(openTrackerEvent);
-        }
+        };
 
         /* call functions */
         this.defaultFields();
@@ -251,7 +251,7 @@ class DailyLog extends HTMLElement {
 export function autoGrow(element) {
     element.style.height = 'auto';
     element.style.height = (element.scrollHeight) + PIXELS;
-    if (element.id == 'journal-text') {
+    if (element.id === 'journal-text') {
         element.scrollIntoView();
     }
 }

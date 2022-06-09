@@ -4,6 +4,7 @@
         margin: 0;
         width: 100%;
         height: var(--header-height);
+        min-height: var(--header-height);
         
         /* to help align text vertically inside header */
         padding-top: 10px;

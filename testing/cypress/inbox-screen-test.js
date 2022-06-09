@@ -13,8 +13,8 @@ const dailyLogPreviewNormal = new DailyLogPreview();
 const dailyLogPreviewNoJournal = new DailyLogPreview();
 
 describe('Open Page', () => {
-    it('Opens inbox.html', () => {
-        cy.visit('./source/inbox.html')
+    it('Opens index.html', () => {
+        cy.visit('./source/index.html')
     });
 });
 
@@ -23,8 +23,8 @@ describe('Check contents of header', { includeShadowDom: true }, () => {
         cy.get('header').should('exist');
     });
 
-    it('header should say Daily Logs', () => {
-        cy.contains('Daily Logs');
+    it('header should say JOT', () => {
+        cy.contains('JOT');
     });
 });
 

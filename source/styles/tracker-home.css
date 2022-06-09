@@ -1,6 +1,7 @@
 @import "./inbox.css";
 
 /* ====== HEADER ====== */
+
 ul {
     justify-content: space-between;
 }
@@ -15,10 +16,6 @@ ul {
     margin: 0;
     border: none;
     background: none;
-}
-
-#save-btn,
-#cancel-btn {
     font-size: var(--home-edit-size);
     color: var(--header-button-color);
     text-decoration: none;

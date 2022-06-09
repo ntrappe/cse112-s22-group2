@@ -22,10 +22,6 @@
     margin: 0;
     border: none;
     background: none;
-}
-
-#tracker-save-btn,
-#tracker-cancel-btn {
     font-size: var(--home-edit-size);
     color: white;
     text-decoration: none;
@@ -79,18 +75,17 @@ emoji-picker {
     margin: 0 auto;
     width: 100%;
     height: inherit;
-    /* width: 50vw;
-    max-width: 400px;
-    max-height: 400px; */
 }
 
 @media screen and (max-height: 600px) {
+    
     h1 {
         font-size: 22px;
     }
 }
 
 @media screen and (min-height: 601px) {
+    
     h1 {
         font-size: 35px;
     }

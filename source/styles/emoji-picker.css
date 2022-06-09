@@ -51,6 +51,7 @@ div.indicator {
 }
 
 /* Remove emojis with bad unicodes */
+
 #emo-☺️,
 #emo-☹️,
 #emo-❣️,

@@ -1,7 +1,7 @@
 // Inital No Actvity Tests
 describe('Fresh Entry, No Activity Tests', () => {
     beforeEach(() => {
-        cy.visit('./source/inbox.html');
+        cy.visit('./source/index.html');
     });
 
     it('Find Header/Footer and visible', () => {
@@ -41,7 +41,7 @@ describe('Fresh Entry, No Activity Tests', () => {
 // Edit Mode Tests
 describe('Edit Mode Tests', () => {
     beforeEach(() => {
-        cy.visit('./source/inbox.html');
+        cy.visit('./source/index.html');
         // enter edit mode
         cy.get('#edit-btn').click();
     });
@@ -177,7 +177,7 @@ describe('Edit Mode Tests', () => {
 
 describe('Check PopupModals Content', { includeShadowDom: true }, () => {
     beforeEach(() => {
-        cy.visit('./source/inbox.html');
+        cy.visit('./source/index.html');
         // enter edit mode
         cy.get('#edit-btn').click();
     });
@@ -240,7 +240,7 @@ describe('Check PopupModals Content', { includeShadowDom: true }, () => {
 
 describe('Close PopupModals', { includeShadowDom: true }, () => {
     beforeEach(() => {
-        cy.visit('./source/inbox.html');
+        cy.visit('./source/index.html');
         // enter edit mode
         cy.get('#edit-btn').click();
     });

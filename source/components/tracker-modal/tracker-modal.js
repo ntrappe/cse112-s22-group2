@@ -80,7 +80,7 @@ class trackerModal extends HTMLElement {
 
         function showEmojiPicker() {
             emojiPicker.style.display = 'flex';
-            // imageContainer.style.display = 'none';
+            emoji.style.display = 'none';
             instructionsText.style.visibility = 'hidden';
             emojiPicker.shadowRoot.children[1].children[1].children[0].children[0].value = '';
             emojiPicker.shadowRoot.children[1].children[1].children[0].children[0]
@@ -89,6 +89,7 @@ class trackerModal extends HTMLElement {
 
         function showEmoji() {
             emojiPicker.style.display = 'none';
+            emoji.style.display = 'flex';
             imageContainer.style.display = 'flex';
             instructionsText.style.visibility = 'unset';
         }

@@ -82,7 +82,8 @@ emoji {
 emoji-picker {
     display: none;
     margin: 0 auto;
-    width: 50%;
+    width: 100%;
+    height: inherit;
     /* width: 50vw;
     max-width: 400px;
     max-height: 400px; */

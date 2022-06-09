@@ -1,0 +1,133 @@
+@media screen and (max-width: 680px) {
+    
+    div.nav[role="tablist"] {
+        grid-template-columns: repeat(5, 1fr) !important;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    
+    .emoji-menu {
+        grid-template-columns: repeat(6, var(--total-emoji-size));
+    }
+}
+
+@media screen and (max-width: 460px) {
+    
+    .emoji-menu {
+        grid-template-columns: repeat(4, var(--total-emoji-size));
+    }
+}
+
+@media screen and (max-width: 400px) {
+    
+    .emoji-menu {
+        grid-template-columns: repeat(3, var(--total-emoji-size));
+    }
+    
+    .favorites {
+        display: none;
+    }
+
+    div.nav[role="tablist"] {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+section.picker {
+    border-radius: var(--button-radius);
+}
+
+button.nav-button[aria-selected="true"] > div {
+    background-color: var(--indicator-color);
+}
+
+button.nav-button[aria-selected="false"] > div {
+    background-color: none;
+}
+
+div.indicator {
+    display: none;
+}
+
+/* Remove emojis with bad unicodes */
+#emo-☺️,
+#emo-☹️,
+#emo-❣️,
+#emo-❤️,
+#emo-☕️,
+#emo-✈️,
+#emo-☂️,
+#emo-☔️,
+#emo-⚡️,
+#emo-❄️,
+#emo-☃️,
+#emo-☄️,
+#emo-♟️,
+#emo-♣️,
+#emo-♥️,
+#emo-♠️,
+#emo-☎️,
+#emo-✉️,
+#emo-✏️,
+#emo-✒️,
+#emo-♿️,
+#emo-⚠️,
+#emo-☢️,
+#emo-☣️,
+#emo-↗️,
+#emo-➡️,
+#emo-↘️,
+#emo-↙️,
+#emo-↖️,
+#emo-↕️,
+#emo-↔️,
+#emo-↩️,
+#emo-↪️,
+#emo-✡️,
+#emo-☸️,
+#emo-☯️,
+#emo-✝️,
+#emo-☦️,
+#emo-☪️,
+#emo-☮️,
+#emo-♈️,
+#emo-♉️,
+#emo-♊️,
+#emo-♋️,
+#emo-♌️,
+#emo-♍️,
+#emo-♎️,
+#emo-♏️,
+#emo-♐️,
+#emo-♑️,
+#emo-♒️,
+#emo-♓️,
+#emo-▶️,
+#emo-◀️,
+#emo-⏏️,
+#emo-♀️,
+#emo-♂️,
+#emo-✖️,
+#emo-♾️,
+#emo-‼️,
+#emo-⁉️,
+#emo-⚕️,
+#emo-♻️,
+#emo-⚜️,
+#emo-☑️,
+#emo-✔️,
+#emo-✳️,
+#emo-✴️,
+#emo-❇️,
+#emo-©️,
+#emo-®️,
+#emo-™️,
+#emo-◼️,
+#emo-◼️,
+#emo-◾️,
+#emo-◽️,
+#emo-▪️,
+#emo-▫️ {
+    display: none;
+}

@@ -13,8 +13,6 @@
         <link rel="stylesheet" href="./styles/home-screen.css">
         <link rel="stylesheet" href="./styles/inbox.css">
         <link rel="stylesheet" href="./styles/tracker-home.css">
-        <link rel="stylesheet" href="./styles/daily-log.css">
-        <link rel="stylesheet" href="./styles/daily-log-preview.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet"> 
         <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet"> 
@@ -23,14 +21,11 @@
         <link href="https://fonts.googleapis.com/css?family=Inter" rel="stylesheet">
     </head>
     <body>
-        <header>
+        <header id="tracker-header">
             <nav>
                 <ul>
-                    <li id="home-list-item">
-                        <a href="index.html">
-                            <i class="fa-solid fa-angle-left fa-xl"></i>
-                            Home
-                        </a>
+                    <li id="cancel-list-item">
+                        <button id="cancel-btn">Cancel</button>
                     </li>
                     <li id="tracker-list-item">
                         <h1>Trackers</h1>
@@ -41,7 +36,9 @@
                 </ul>
             </nav>
         </header>
-        <main id="main">
-        </main>
-    </body>
+        <main id="tracker-main"></main>
+        <script type="module" src="./components/control/control-tracker.js"></script>
+        <script type="module" src="./components/tracker-modal/emoji-picker.js"></script>
+        <script type="module" src="./components/tracker-modal/tracker-modal.js"></script>
+   </body>
 </html>

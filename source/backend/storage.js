@@ -100,11 +100,12 @@ function validateDate(date, fetch) {
  * strings where each string is text of <li> and journal is a string
  * from content of that textarea
  * @param {String} date date text of log (DIFF THAN STORAGE KEY)
+ * @param {String} tracker emoji for mood
  * @param {Object} notes list of strings
  * @param {String} journal text of journal
  * @returns whether operation was successful
  */
-export function addLog(date, notes, journal) {
+export function addLog(date, tracker, notes, journal) {
     if (validateDate(date, false) === EXIT_FAILURE) {
         return EXIT_FAILURE;
     }
@@ -132,6 +133,7 @@ export function addLog(date, notes, journal) {
 
     const logObj = {
         date: date,
+        tracker: tracker,
         notes: notes,
         journal: journal,
     };
@@ -148,11 +150,12 @@ export function addLog(date, notes, journal) {
  * NOTE: does NOT support if user updated the date of the
  * daily log (bc that functionality isn't done in daily log)
  * @param {String} date date text of log (DIFF THAN STORAGE KEY)
+ * @param {String} tracker emoji for mood
  * @param {Object} notes list of strings
  * @param {String} journal text of journal
  * @returns whether operation was successful
  */
-export function updateLog(date, notes, journal) {
+export function updateLog(date, tracker, notes, journal) {
     if (validateDate(date, false) === EXIT_FAILURE) {
         return EXIT_FAILURE;
     }
@@ -184,6 +187,7 @@ export function updateLog(date, notes, journal) {
 
     const logObj = {
         date: previousDate,
+        tracker: tracker,
         notes: notes,
         journal: journal,
     };

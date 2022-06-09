@@ -216,6 +216,11 @@ class DailyLog extends HTMLElement {
             composed: true,
         });
 
+        const openTrackerEvent = new CustomEvent('openTracker', {
+            bubbles: true, // event listenable outside of container
+            composed: true,
+        });
+
         cancelBtn.onclick = () => {
             shadow.dispatchEvent(cancelLogEvent);
         };
@@ -223,6 +228,10 @@ class DailyLog extends HTMLElement {
         saveBtn.onclick = () => {
             shadow.dispatchEvent(saveLogEvent);
         };
+
+        trackers.onclick = () => {
+            shadow.dispatchEvent(openTrackerEvent);
+        }
 
         /* call functions */
         this.defaultFields();

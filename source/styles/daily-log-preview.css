@@ -43,7 +43,7 @@ link {
 }
 
 :root {
-    --rounded-rect: 15px;
+    --rounded-rect: 20px;
     --rounded-button: 5px;
     --header-height: 50px;
     --pad-screen-edge: 15px;

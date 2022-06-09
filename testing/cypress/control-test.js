@@ -6,7 +6,7 @@ const EXIT_FAILURE = 0;
 
 describe('Open Page', () => {
     it('Opens index.html', () => {
-        cy.visit('./source/index.html')
+        cy.visit('./source/inbox.html')
     });
 });
 
@@ -100,20 +100,20 @@ describe('User creates 1 log', { includeShadowDom: true }, () => {
         });
     });
 
-    // it('Open log', () => {
-    //     cy.get('daily-log-preview').first().click();
-    // });
+    it('Open log', () => {
+        cy.get('daily-log-preview').first().click();
+    });
 
-    // it('Title should be \"Daily Log\"', () => {
-    //     cy.get('daily-log').get('h2').then(($el) => {
-    //         expect($el).to.contain('Daily Log');
-    //     });
-    // });
+    it('Title should be \"Daily Log\"', () => {
+        cy.get('daily-log').get('h2').then(($el) => {
+            expect($el).to.contain('Daily Log');
+        });
+    });
 
-    // it('Check that date is the same', () => {
-    //     cy.get('#date-button').should('have.css', 'border-radius', '5px');
-    //     // cy.contains('#date-button', '2022');
-    // });
+    it('Check that date is the same', () => {
+        cy.get('#date-button').should('have.css', 'border-radius', '5px');
+        // cy.contains('#date-button', '2022');
+    });
 
     // it('Click on preview and open log', () => {
     //     cy.get('daily-log').get('#journal-text').then(($el) => {

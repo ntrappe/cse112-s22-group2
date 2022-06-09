@@ -14,7 +14,7 @@ const dailyLogPreviewNoJournal = new DailyLogPreview();
 
 describe('Open Page', () => {
     it('Opens inbox.html', () => {
-        cy.visit('./source/index.html')
+        cy.visit('./source/inbox.html')
     });
 });
 
@@ -23,8 +23,8 @@ describe('Check contents of header', { includeShadowDom: true }, () => {
         cy.get('header').should('exist');
     });
 
-    it('header should say title of bujo', () => {
-        cy.contains('JOT');
+    it('header should say Daily Logs', () => {
+        cy.contains('Daily Logs');
     });
 });
 

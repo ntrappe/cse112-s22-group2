@@ -228,6 +228,7 @@ export function createListElement() {
      */
     noteEntry.setAttribute('rows', '1');
     noteEntry.oninput = function () { autoGrow(this); };
+    //noteEntry.onclick = function () { this.scrollIntoView(); };
     noteEntry.setAttribute('new', 'true');
 
     /* Append children to List Element */
@@ -258,9 +259,11 @@ export function createListElement() {
 
     /* Append list element to Notes section */
     notesContainer.appendChild(listElement);
+    
 
     /* Automatically focus on new element's input area */
     noteEntry.focus();
+    noteEntry.scrollIntoView({block: 'nearest'});
 }
 
 /**

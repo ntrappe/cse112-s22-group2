@@ -183,6 +183,8 @@ h3 {
     background: var(--section-background);
     border-top-left-radius: var(--rounded-rect);
     border-top-right-radius: var(--rounded-rect);
+    border-bottom-left-radius: var(--rounded-rect);
+    border-bottom-right-radius: var(--rounded-rect);
 
     /* add space between edges of wrapper and internal contents */
 
@@ -191,6 +193,7 @@ h3 {
     margin-left: var(--pad-screen-edge);
     margin-right: var(--pad-screen-edge);
     padding-bottom: 100px;
+    
 }
 
 /* ===== same across browsers ===== */
@@ -266,7 +269,7 @@ h3 {
 /* ===== end normalizing ===== */
 
 :root {
-    --rounded-rect: 15px;
+    --rounded-rect: 20px;
     --rounded-button: 5px;
     --line-thickness: 1px;
     --button-text-pad: 10px;

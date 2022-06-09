@@ -228,7 +228,6 @@ export function createListElement() {
      */
     noteEntry.setAttribute('rows', '1');
     noteEntry.oninput = function () { autoGrow(this); };
-    //noteEntry.onclick = function () { this.scrollIntoView(); };
     noteEntry.setAttribute('new', 'true');
 
     /* Append children to List Element */

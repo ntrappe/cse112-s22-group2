@@ -60,6 +60,7 @@ class editTrackers extends HTMLElement {
         arrowIcon.setAttribute('class', 'right-edit-icon');
 
         title.textContent = EDIT_TRACKERS_TITLE;
+        console.log(EDIT_TRACKERS_TITLE);
 
         wrapper.addEventListener('click', function () {
             location.href = "edit-trackers.html";

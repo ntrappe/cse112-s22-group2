@@ -1,19 +1,21 @@
 #modal-container {
-    border-style: solid;
-    border-radius: var(--button-radius);
-    padding: 1.5em;
-    background-image: linear-gradient(var(--container-background-color-start), var(--container-background-color-end));
-    width: 60%;
     display: flex;
     flex-direction: column;
+    margin: 0;
+    border-style: solid;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding: 1.5em;
+    background-image: linear-gradient(var(--container-background-color-start), var(--container-background-color-end));
+    width: 80%;
 }
 
 #image-container {
     background-color: var(--image-container-background-color);
     border: solid var(--image-container-background-color) 1px;
     border-radius: 50%;
-    height: 50vw;
-    width: 50vw;
+    height: 70vw;
+    width: 70vw;
     max-width: 400px;
     max-height: 400px;
     margin: auto auto 0;
@@ -31,31 +33,41 @@
 
 #instruction-text {
     text-align: center;
+    color: var(--stone);
 }
 
 #buttons-container > button {
     border-radius: 50%;
     margin: 0;
     padding: 0;
-    width: 65px;
-    height: 65px;
+    width: 50px;
+    height: 50px;
     background-color: var(--button-background-color);
     border: none;
     cursor: pointer;
+    align-items: center;
+    align-items: baseline;
+}
+
+#back-btn > img,
+#forward-btn > img {
+    width: 15px;
+    height: auto;
+    margin-top: 3px;
 }
 
 #back-btn > img {
-    transform: rotate(180deg);
+    transform: rotate(180deg); 
+    margin-right: 3px; 
+}
+
+#forward-btn > img {
+    margin-left: 3px; 
 }
 
 #image-container > img {
     width: 50%;
     height: 50%;
-}
-
-#buttons-container > button > img {
-    width: 30px;
-    height: auto;
 }
 
 h1,
@@ -64,15 +76,28 @@ p {
 }
 
 emoji {
-    font-size: 35vw;
+    font-size: 40vw;
 }
 
 emoji-picker {
     display: none;
     margin: 0 auto;
-    width: 50vw;
+    width: 50%;
+    /* width: 50vw;
     max-width: 400px;
-    max-height: 400px;
+    max-height: 400px; */
+}
+
+@media screen and (max-height: 600px) {
+    h1 {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-height: 601px) {
+    h1 {
+        font-size: 35px;
+    }
 }
 
 @media screen and (min-width: 800px) {
@@ -80,4 +105,9 @@ emoji-picker {
     emoji {
         font-size: 280px;
     }
+}
+
+:root {
+    --stone: #a6a3ae;
+    --tracker-radius: 25px;
 }
